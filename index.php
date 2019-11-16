@@ -207,7 +207,7 @@ include "tpl/header.php";
     <div class="container my-5">
         <section class="p-md-3 mx-md-5">
             <h3 class="mb-4 pb-2">Jurusan</h3>
-            <div class="row mb-5 d-flex align-items-center">
+            <div class="row mb-5 d-flex align-items-center wow fadeInLeft">
                 <div class="col-lg-6 col-md-6">
                     <div class="card">
                         <div class="card-header white">
@@ -233,7 +233,7 @@ include "tpl/header.php";
                     </div>
                 </div>
             </div>
-            <div class="row mb-5 d-flex align-items-center justify-content-end">
+            <div class="row mb-5 d-flex align-items-center justify-content-end wow fadeInRight">
                 <div class="col-md-6 col-lg-4">
                     <div class="view overlay rounded z-depth-1">
                         <img src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" class="img-fluid"
@@ -262,7 +262,7 @@ include "tpl/header.php";
                     </div>
                 </div>
             </div>
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center wow fadeInLeft">
                 <div class="col-lg-6 col-md-6">
                     <div class="card">
                         <div class="card-header white">
