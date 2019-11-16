@@ -32,8 +32,15 @@ include "tpl/header.php";
                     <li class="nav-item">
                         <a class="nav-link" href="#">Testimoni</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Aktivitas Mahasiswa</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdownAktivitasMahasiswa" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Aktivitas Mahasiswa</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdownAktivitasMahasiswa">
+                            <a class="dropdown-item" href="#">Himpunan Mahasiswa (HIMA)</a>
+                            <a class="dropdown-item" href="#">Unit Kegiatan Kerohanian (UKK)</a>
+                            <a class="dropdown-item" href="#">Unit Kegiatan Mahasiswa (UKM)</a>
+                            <a class="dropdown-item" href="#">Badan Eksekutif Mahasiswa (BEM)</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Akademik</a>
@@ -41,10 +48,18 @@ include "tpl/header.php";
                     <li class="nav-item">
                         <a class="nav-link" href="#">Dosen</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.php">Tentang</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Bahasa</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdownBahasa" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Bahasa</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdownBahasa">
+                            <a class="dropdown-item" href="#">Indonesia</a>
+                            <a class="dropdown-item" href="#">Inggris</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -205,8 +220,16 @@ include "tpl/header.php";
     </div>
 
     <div class="container my-5">
-        <section class="p-md-3 mx-md-5">
+        <section class="p-md-3 mx-md-5" id="section1">
             <h3 class="mb-4 pb-2">Jurusan</h3>
+            <div class="btn-group mb-3" data-toggle="buttons">
+                <button class="btn btn-primary page1">
+                    Page 1
+                </button>
+                <button class="btn btn-primary page2">
+                    Page 2
+                </button>
+            </div>
             <div class="row mb-5 d-flex align-items-center wow fadeInLeft">
                 <div class="col-lg-6 col-md-6">
                     <div class="card">
@@ -224,8 +247,8 @@ include "tpl/header.php";
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="view overlay rounded z-depth-1">
-                        <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid"
+                    <div class="view overlay rounded d-flex justify-content-center">
+                        <img src="assets/img/logo-infor.png" class="img-fluid mt-1"
                             alt="Sample project image" />
                         <a href="#">
                             <div class="mask rgba-white-slight"></div>
@@ -235,8 +258,8 @@ include "tpl/header.php";
             </div>
             <div class="row mb-5 d-flex align-items-center justify-content-end wow fadeInRight">
                 <div class="col-md-6 col-lg-4">
-                    <div class="view overlay rounded z-depth-1">
-                        <img src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" class="img-fluid"
+                    <div class="view overlay rounded z-depth-1 d-flex justify-content-center">
+                        <img src="assets/img/logo-sib.jpg" class="img-fluid"
                             alt="Sample project image" />
                         <a href="#">
                             <div class="mask rgba-white-slight"></div>
@@ -281,7 +304,7 @@ include "tpl/header.php";
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="view overlay rounded z-depth-1">
-                        <img src="https://mdbootstrap.com/img/Photos/Others/images/88.jpg" class="img-fluid"
+                        <img src="assets/img/logo-dkv.png" class="img-fluid"
                             alt="Sample project image" />
                         <a href="#">
                             <div class="mask rgba-white-slight"></div>
@@ -289,6 +312,130 @@ include "tpl/header.php";
                     </div>
                 </div>
             </div>
+        </section>
+        <section class="p-md-3 mx-md-5" id="section2">
+            <h3 class="mb-4 pb-2">Jurusan</h3>
+            <div class="btn-group mb-3" data-toggle="buttons">
+                <button class="btn btn-primary page1">
+                    Page 1
+                </button>
+                <button class="btn btn-primary page2">
+                    Page 2
+                </button>
+            </div>
+            <div class="row mb-5 d-flex align-items-center wow fadeInLeft">
+                <div class="col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header white">
+                            <h4 class="font-weight-bold mb-0">S1 Teknik Industri</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Teknik Industri (Industrial Engineering) adalah ilmu teknik yang mencakup bidang perencanaan, desain, instalasi, perbaikan, dan pengembangan sistem terintegrasi yang terdiri dari sumber daya manusia, material, energi, peralatan, dan informasi. Di iSTTS, setiap sarjana Teknik Industri dipersiapkan sebagai industrial system designer, industrial problem analyzer, industrial problem solver, dan &nbsp;technopreneur yang handal memanfaatkan teknologi terkini dalam menghadapi dinamika bisnis global.</p>
+                            </p>
+                            <a class="blue-text font-weight-bold" href="#">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="view overlay rounded d-flex justify-content-center">
+                        <img src="assets/img/logo-industri.jpg" class="img-fluid mt-1"
+                            alt="Sample project image" />
+                        <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5 d-flex align-items-center justify-content-end wow fadeInRight">
+                <div class="col-md-6 col-lg-4">
+                    <div class="view overlay rounded z-depth-1 d-flex justify-content-center">
+                        <img src="assets/img/logo-despro.jpeg" class="img-fluid"
+                            alt="Sample project image" />
+                        <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header white">
+                            <h4 class="font-weight-bold mb-0">S1 Desain Produk</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Desain Produk iSTTS adalah Program Studi yang memadukan desain dan teknologi otomasi untuk menghasilkan produk yang tidak hanya menarik secara tampilan, tetapi memiliki fungsi smart product.
+                            </p>
+                            <a class="blue-text font-weight-bold" href="#">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center wow fadeInLeft">
+                <div class="col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header white">
+                            <h4 class="font-weight-bold mb-0">S1 Teknik Elektro</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Program studi S1 Teknik Elektro iSTTS mampu menghasilkan sumber daya manusia yang menguasai teknologi Elektronika dan Komputer agar berperan dalam peningkatan mutu kehidupan di tingkat Nasional maupun Internasional.
+                            </p>
+                            <a class="blue-text font-weight-bold" href="#">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="assets/img/logo-default.png" class="img-fluid"
+                            alt="Sample project image" />
+                        <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <section class="grey lighten-2 py-5">
+            
+            <div class="flex-center">
+            <!--First row-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Annual Events</h3>
+                </div>
+                <!--First column-->
+                <div class="col-md-3 flex-center">
+                <img src="assets/img/pk.png" width="250" class="img-fluid wow fadeIn" data-wow-delay=".2s">
+                </div>
+                <!--/First column-->
+
+                <!--Second column-->
+                <div class="col-md-3 flex-center">
+                <img src="assets/img/bunkasai.jpg" width="180" class="img-fluid wow fadeIn" data-wow-delay=".3s">
+                </div>
+                <!--/Second column-->
+
+                <!--Third column-->
+                <div class="col-md-3 flex-center">
+                <img src="assets/img/dies.png" width="180" class="img-fluid wow fadeIn" data-wow-delay=".4s">
+                </div>
+                <!--/Third column-->
+
+                <!--Fourth column-->
+                <div class="col-md-3 flex-center">
+                <img src="assets/img/kartini.png" width="200" class="img-fluid wow fadeIn" data-wow-delay=".5s">
+                </div>
+                <!--/Fourth column-->
+
+            </div>
+            <!--/First row-->
+
+            </div>
+            
         </section>
     </div>
 

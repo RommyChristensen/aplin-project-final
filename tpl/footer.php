@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
+<footer class="page-footer font-small bg-primary pt-4">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -47,20 +47,26 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
+                <h5 class="text-uppercase">Jurusan</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="#!">S1 - Teknik Informatika</a>
                     </li>
                     <li>
-                        <a href="#!">Link 2</a>
+                        <a href="#!">S1 - Sistem Informasi Bisnis</a>
                     </li>
                     <li>
-                        <a href="#!">Link 3</a>
+                        <a href="#!">S1 - Desain Komunikasi Visual</a>
                     </li>
                     <li>
-                        <a href="#!">Link 4</a>
+                        <a href="#!">S1 - Teknik Industri</a>
+                    </li>
+                    <li>
+                        <a href="#!">S1 - Desain Produk</a>
+                    </li>
+                    <li>
+                        <a href="#!">S1 - Teknik Elektro</a>
                     </li>
                 </ul>
 
@@ -94,6 +100,25 @@
 <script type="text/javascript" src="assets/js/mdb.min.js"></script>
 <script>
     new WOW().init();
+
+    $(document).ready(function(){
+        $("#section2").hide();
+        $(".page1").addClass("active");
+
+        $(".page2").click(function(){
+            $("#section1").hide();
+            $("#section2").show();
+            $(".page2").addClass("active");
+            $(".page1").removeClass("active");
+        });
+
+        $(".page1").click(function(){
+            $("#section1").show();
+            $("#section2").hide();
+            $(".page1").addClass("active");
+            $(".page2").removeClass("active");
+        });
+    });
 </script>
 
 </body>
