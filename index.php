@@ -1,66 +1,15 @@
 <?php
+
 require_once("helpers/koneksi.php");
 $query = "SELECT * FROM agenda a JOIN agenda_bahasa ab ON ab.agenda_id = a.agenda_id ORDER BY a.agenda_tgl LIMIT 3";
 $res = mysqli_query($conn, $query);
-// require_once("helpers/dashboard-helper.php");
-// $news_data = getLatestNews()->fetch_all(MYSQLI_ASSOC);
-// print_r($res);
 
 $query_testimoni = "SELECT * FROM testimoni t JOIN testimoni_bahasa tb ON tb.testimoni_id = t.testimoni_id LIMIT 3";
 $res_testimoni = mysqli_query($conn, $query_testimoni);
+include "tpl/header.php";
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="assets/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <style>
-        .intro-2 {
-            background: url("./assets/img/header-intro.jpg") no-repeat center center;
-            background-size: cover;
-        }
-
-        .navbar {
-            background-color: transparent;
-        }
-
-        .top-nav-collapse {
-            background-color: #4285F4;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .navbar {
-                background-color: #4285F4;
-            }
-        }
-
-        html,
-        body,
-        header,
-        .view {
-            height: 100%;
-        }
-
-        .btn-rounded {
-            border-radius: 50px;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <nav class="navbar navbar-trans fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
         <div class="container">
             <a class="navbar-brand" href=""><img src="assets/img/logo_stts.png" width="200" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -266,7 +215,9 @@ $res_testimoni = mysqli_query($conn, $query_testimoni);
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                Bidang ini mempelajari bagaimana teknologi informasi mengubah pola hidup manusia. Mahasiswa akan belajar memanfaatkan komputasi untuk problem solving menggunakan teknologi informasi yang sangat dinamis dan terus berkembang.
+                                Bidang ini mempelajari bagaimana teknologi informasi mengubah pola hidup manusia.
+                                Mahasiswa akan belajar memanfaatkan komputasi untuk problem solving menggunakan
+                                teknologi informasi yang sangat dinamis dan terus berkembang.
                             </p>
                             <a class="blue-text font-weight-bold" href="#">Learn more</a>
                         </div>
@@ -299,7 +250,12 @@ $res_testimoni = mysqli_query($conn, $query_testimoni);
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                Sistem Informasi Bisnis adalah program studi yang menggabungkan Information Technology (IT) dan dunia Bisnis. Sarjana Sistem Informasi Bisnis akan dibekali dengan pengetahuan mengenai proses bisnis dari skala retail hingga manufaktur , sehingga tidak hanya mampu memberikan solusi berbasis Tecnologi yang efektif dan efisien tetapi juga mampu merancang proses bisnis yang inovatif serta dapat mendesain aplikasi berskala menengah, hingga besar.
+                                Sistem Informasi Bisnis adalah program studi yang menggabungkan Information Technology
+                                (IT) dan dunia Bisnis. Sarjana Sistem Informasi Bisnis akan dibekali dengan pengetahuan
+                                mengenai proses bisnis dari skala retail hingga manufaktur , sehingga tidak hanya mampu
+                                memberikan solusi berbasis Tecnologi yang efektif dan efisien tetapi juga mampu
+                                merancang proses bisnis yang inovatif serta dapat mendesain aplikasi berskala menengah,
+                                hingga besar.
                             </p>
                             <a class="blue-text font-weight-bold" href="#">Learn more</a>
                         </div>
@@ -314,7 +270,10 @@ $res_testimoni = mysqli_query($conn, $query_testimoni);
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                Desain Komunikasi Visual (DKV) iSTTS berfokus pada 3 pilar utama yaitu Seni, Teknologi, dan Bisnis. Kurikulum Program Studi selalu mengakomodasi kebutuhan dunia desain visual yang selalu berkembang, sehingga lulusan DKV STTS mampu bersaing dalam pasar global khususnya dunia industri kreatif.
+                                Desain Komunikasi Visual (DKV) iSTTS berfokus pada 3 pilar utama yaitu Seni, Teknologi,
+                                dan Bisnis. Kurikulum Program Studi selalu mengakomodasi kebutuhan dunia desain visual
+                                yang selalu berkembang, sehingga lulusan DKV STTS mampu bersaing dalam pasar global
+                                khususnya dunia industri kreatif.
                             </p>
                             <a class="blue-text font-weight-bold" href="#">Learn more</a>
                         </div>
@@ -333,104 +292,4 @@ $res_testimoni = mysqli_query($conn, $query_testimoni);
         </section>
     </div>
 
-    <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4">
-
-        <!-- Footer Links -->
-        <div class="container-fluid text-center text-md-left">
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
-
-                    <!-- Content -->
-                    <h5 class="text-uppercase">Footer Content</h5>
-                    <p>Here you can use rows and columns to organize your footer content.</p>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Footer Links -->
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/"> ISTTS and Made With Love</a>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-
-
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="assets/js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="assets/js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
-
-</body>
-
-</html>
+<?php include "tpl/footer.php"; ?>

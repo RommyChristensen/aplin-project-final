@@ -3,7 +3,7 @@
     background-size: cover !important;
 }
 
-.navbar {
+.navbar-trans {
     background-color: transparent !important;
 }
 
@@ -27,3 +27,14 @@ header,
 .btn-rounded {
     border-radius: 50px !important;
 }
+
+/* .md-pills{
+    margin-bottom: 20px;
+}
+
+.pills-deep-purple .nav-item .active{
+    border-radius: 2px;
+    color: white;
+    background:#9933CC;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+} */
