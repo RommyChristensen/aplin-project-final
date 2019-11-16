@@ -5,6 +5,9 @@ $res = mysqli_query($conn, $query);
 // require_once("helpers/dashboard-helper.php");
 // $news_data = getLatestNews()->fetch_all(MYSQLI_ASSOC);
 // print_r($res);
+
+$query_testimoni = "SELECT * FROM testimoni t JOIN testimoni_bahasa tb ON tb.testimoni_id = t.testimoni_id LIMIT 3";
+$res_testimoni = mysqli_query($conn, $query_testimoni);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,7 +125,7 @@ $res = mysqli_query($conn, $query);
         <section class="">
 
             <!-- Section heading -->
-            <h3 class="text-center font-weight-bold mb-5">Latest news</h3>
+            <h3 class="text-center mb-5">Latest news</h3>
 
             <div class="row">
                 <?php
@@ -130,7 +133,7 @@ $res = mysqli_query($conn, $query);
                 ?>
                 <div class="col-md-4 mb-4">
                     <!--Card-->
-                    <div class="card hoverable wow fadeInUp">
+                    <div class="card hoverable wow fadeInLeft">
 
                         <!--Card image-->
                         <div class="view overlay">
@@ -180,30 +183,28 @@ $res = mysqli_query($conn, $query);
 
         </section>
         <!--Section: Content-->
-
-
-
-
     </div>
 
     <div class="row blue-gradient">
         <div class="container mt-5 mb-5">
-
-
             <!--Section: Content-->
             <section class="text-center dark-grey-text">
-
                 <!-- Section heading -->
-                <h3 class="font-weight-bold mb-4 pb-2 text-white">Testimonials</h3>
+                <h3 class="mb-4 pb-2 text-white">Testimoni Mahasiswa</h3>
 
                 <div class="wrapper-carousel-fix">
                     <!-- Carousel Wrapper -->
-                    <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide carousel-fade"
+                    <div id="carousel-example-1"
+                        class="carousel no-flex testimonial-carousel slide carousel-slide wow fadeIn"
                         data-ride="carousel" data-interval="false">
                         <!--Slides-->
                         <div class="carousel-inner" role="listbox">
-                            <!--First slide-->
-                            <div class="carousel-item active">
+                            <?php
+                                $i = 0;
+                                while($row = mysqli_fetch_assoc($res_testimoni)){
+                                $active = ($i == 0) ? "active" : "";
+                            ?>
+                            <div class="carousel-item <?= $active ?>">
                                 <div class="testimonial">
                                     <!--Avatar-->
                                     <div class="avatar mx-auto mb-4">
@@ -212,17 +213,11 @@ $res = mysqli_query($conn, $query);
                                     </div>
                                     <!--Content-->
                                     <p class="text-white">
-                                        <i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Quod
-                                        eos
-                                        id officiis hic tenetur quae quaerat ad velit ab. Lorem ipsum dolor sit amet,
-                                        consectetur
-                                        adipisicing elit. Dolore cum accusamus eveniet molestias voluptatum inventore
-                                        laboriosam labore
-                                        sit, aspernatur praesentium iste impedit quidem dolor veniam.
+                                        <i class="fas fa-quote-left"></i>
+                                        <?= $row['testimoni_text'] ?>
                                     </p>
-                                    <h4 class="font-weight-bold">Anna Deynah</h4>
-                                    <h6 class="font-weight-bold my-3">Founder at ET Company</h6>
+                                    <h4 class="font-weight-bold text-white"><?= $row['testimoni_nama'] ?></h4>
+                                    <h6 class="font-weight-bold text-white my-3"><?= $row['testimoni_profil'] ?></h6>
                                     <!--Review-->
                                     <i class="fas fa-star blue-text"> </i>
                                     <i class="fas fa-star blue-text"> </i>
@@ -231,75 +226,21 @@ $res = mysqli_query($conn, $query);
                                     <i class="fas fa-star-half-alt blue-text"> </i>
                                 </div>
                             </div>
-                            <!--First slide-->
-                            <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="testimonial">
-                                    <!--Avatar-->
-                                    <div class="avatar mx-auto mb-4">
-                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-                                            class="rounded-circle img-fluid" alt="Second sample avatar image">
-                                    </div>
-                                    <!--Content-->
-                                    <p>
-                                        <i class="fas fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit
-                                        aspernatur aut
-                                        odit
-                                        aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-                                        nesciunt. Neque
-                                        porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                        velit, sed quia
-                                        non numquam eius modi tempora incidunt ut labore. </p>
-                                    <h4 class="font-weight-bold">Maria Kate</h4>
-                                    <h6 class="font-weight-bold my-3">Photographer at Studio LA</h6>
-                                    <!--Review-->
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                </div>
-                            </div>
-                            <!--Second slide-->
-                            <!--Third slide-->
-                            <div class="carousel-item">
-                                <div class="testimonial">
-                                    <!--Avatar-->
-                                    <div class="avatar mx-auto mb-4">
-                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg"
-                                            class="rounded-circle img-fluid" alt="Third sample avatar image">
-                                    </div>
-                                    <!--Content-->
-                                    <p>
-                                        <i class="fas fa-quote-left"></i> Duis aute irure dolor in reprehenderit in
-                                        voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
-                                        omnis iste natus
-                                        error sit voluptatem accusantium doloremque laudantium.</p>
-                                    <h4 class="font-weight-bold">John Doe</h4>
-                                    <h6 class="font-weight-bold my-3">Front-end Developer in NY</h6>
-                                    <!--Review-->
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="far fa-star blue-text"> </i>
-                                </div>
-                            </div>
-                            <!--Third slide-->
+                            <?php
+                                $i++;
+                                }
+                            ?>
                         </div>
                         <!--Slides-->
                         <!--Controls-->
                         <a class="carousel-control-prev left carousel-control" href="#carousel-example-1" role="button"
                             data-slide="prev">
-                            <span class="icon-prev" aria-hidden="true"></span>
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
                         <a class="carousel-control-next right carousel-control" href="#carousel-example-1" role="button"
                             data-slide="next">
-                            <span class="icon-next" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
                         <!--Controls-->
@@ -313,6 +254,168 @@ $res = mysqli_query($conn, $query);
 
         </div>
     </div>
+
+    <div class="container my-5">
+        <section class="p-md-3 mx-md-5">
+            <h3 class="mb-4 pb-2">Jurusan</h3>
+            <div class="row mb-5 d-flex align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header white">
+                            <h4 class="font-weight-bold mb-0">S1 Teknik Informatika</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Bidang ini mempelajari bagaimana teknologi informasi mengubah pola hidup manusia. Mahasiswa akan belajar memanfaatkan komputasi untuk problem solving menggunakan teknologi informasi yang sangat dinamis dan terus berkembang.
+                            </p>
+                            <a class="blue-text font-weight-bold" href="#">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid"
+                            alt="Sample project image" />
+                        <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5 d-flex align-items-center justify-content-end">
+                <div class="col-md-6 col-lg-4">
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" class="img-fluid"
+                            alt="Sample project image" />
+                        <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header white">
+                            <h4 class="font-weight-bold mb-0">S1 Sistem Informasi Bisnis</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Sistem Informasi Bisnis adalah program studi yang menggabungkan Information Technology (IT) dan dunia Bisnis. Sarjana Sistem Informasi Bisnis akan dibekali dengan pengetahuan mengenai proses bisnis dari skala retail hingga manufaktur , sehingga tidak hanya mampu memberikan solusi berbasis Tecnologi yang efektif dan efisien tetapi juga mampu merancang proses bisnis yang inovatif serta dapat mendesain aplikasi berskala menengah, hingga besar.
+                            </p>
+                            <a class="blue-text font-weight-bold" href="#">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header white">
+                            <h4 class="font-weight-bold mb-0">S1 Desain Komunikasi Visual</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Desain Komunikasi Visual (DKV) iSTTS berfokus pada 3 pilar utama yaitu Seni, Teknologi, dan Bisnis. Kurikulum Program Studi selalu mengakomodasi kebutuhan dunia desain visual yang selalu berkembang, sehingga lulusan DKV STTS mampu bersaing dalam pasar global khususnya dunia industri kreatif.
+                            </p>
+                            <a class="blue-text font-weight-bold" href="#">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="https://mdbootstrap.com/img/Photos/Others/images/88.jpg" class="img-fluid"
+                            alt="Sample project image" />
+                        <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase">Footer Content</h5>
+                    <p>Here you can use rows and columns to organize your footer content.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/"> ISTTS and Made With Love</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 
 
     <!-- SCRIPTS -->
