@@ -23,10 +23,9 @@
     <link href="../assets/css/style2.css" rel="stylesheet">
 </head>
 <body style='width:50%;margin:auto;margin-top:10%;'>
-
-<!-- HAI MONICA!!, YOUR CODE GOES DOWN HERE -->
-
+<form class="text-center border border-light p-5">
     <p class="h4 mb-4">LOGIN</p>
+
     <!-- Email -->
     <input type="text" name='tbUsername' id="tbUsername" class="form-control mb-4" placeholder="Username">
 
@@ -34,9 +33,7 @@
     <input type="password" name='tbPassword' id="tbPassword" class="form-control mb-4" placeholder="Password">
     <!-- Sign in button -->
     <button class="btn btn-info btn-block my-4" type="button" id='btnLogin' onclick='login()'>LOGIN</button>
-
-<!-- HAPPY CODING!!! KEEP FIGHTING!!! -->
-    
+</form>
 </body>
 </html>
 <script language='javascript'>
