@@ -21,14 +21,20 @@
     <link href="../assets/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="../assets/css/style2.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/mdb.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/mdb.lite.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/mdb.lite.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+	<script src='../assets/js/jquery-3.4.1.min.js'></script>
+	<script src='../assets/js/mdb.min.js'></script>
+	<script src='../assets/js/popper.min.js'></script>
 </head>
 <body style='width:50%;margin:auto;margin-top:10%;'>
 <form class="text-center border border-light p-5">
     <p class="h4 mb-4">LOGIN</p>
-
     <!-- Email -->
     <input type="text" name='tbUsername' id="tbUsername" class="form-control mb-4" placeholder="Username">
-
     <!-- Password -->
     <input type="password" name='tbPassword' id="tbPassword" class="form-control mb-4" placeholder="Password">
     <!-- Sign in button -->
