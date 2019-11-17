@@ -4,7 +4,7 @@
 	//require_once("navbar.php");
 ?>
 <head>
-	<title>AGENDA</title>
+	<title>DOSEN</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -25,26 +25,12 @@
 	<script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
 </head>
 <body>
-	<h1 style='text-align:center;'>AGENDA</h1>
+	<h1 style='text-align:center;'>DOSEN</h1>
 	<div class='container'>
-		Bahasa<br>
-		<select id='cbBahasa' class="browser-default custom-select">
-		</select>
-		<br><br>
 		<!-- Default input -->
-		<label for="tbJudulAgenda">Judul Agenda</label>
-		<input type="text" id="tbJudulAgenda" class="form-control">
+		<label for="tbNamaDosen">Nama Dosen</label>
+		<input type="text" id="tbNamaDosen" class="form-control">
 		<br>
-		<!-- Default input -->
-		<label for="tbDeskripsiAgenda">Deskripsi Agenda</label>
-		<textarea id="tbDeskripsiAgenda" class="form-control"></textarea>
-		Foto 
-		<div class="custom-file">
-		  <input type="file" class="custom-file-input" id="tbFile">
-		  <label class="custom-file-label" for="tbFile" data-browse="Browse">Choose File</label>
-		</div>
-		<label for="tbLokasi">Lokasi</label>
-		<input type="text" id="tbLokasi" class="form-control"><br>
 		Status Aktif<br>
 		<select id='cbAktif' class="browser-default custom-select">
 			<option value='1'>Aktif</option>
@@ -52,87 +38,59 @@
 		</select>
 		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 		<br>
-		<table id="tbAgenda" class="table table-striped" cellspacing="0" width="100%">
+		<table id="tbDosen" class="table table-striped" cellspacing="0" width="100%">
 		</table>
 	</div>
 </body>
 <script language='javascript'>
-	isicbBahasa();
-	isitabelAgenda();
-	function isicbBahasa(){
+	isitabelDosen();
+	function isitabelDosen(){
 		$.post("response.php",
-			{jenis:"isicbBahasa"},
+			{jenis:"isitabelDosen"},
 			function(result){
-				$("#cbBahasa").html(result);
-			}
-		);
-	}
-	function isitabelAgenda(){
-		$.post("response.php",
-			{jenis:"isitabelAgenda"},
-			function(result){
-				$("#tbAgenda").html(result);
-				$('#tbAgenda').DataTable();
+				$("#tbDosen").html(result);
+				$('#tbDosen').DataTable();
 			}
 		);
 	}
 	function add(){
-		var bahasa = $("#cbBahasa").val();
-		var judul = $("#tbJudulAgenda").val();
-		var deskripsi = $("#tbDeskripsiAgenda").val();
-		var file = $("#tbFile").val();
-		var lokasi = $("#tbLokasi").val();
-		var aktif=$("#cbAktif").val();
-		if(bahasa!="" && judul!="" && deskripsi!="" && aktif!=""){
-			if(file==""){
-				file=" ";
-			}
-			if(lokasi==""){
-				lokasi=" ";
-			}
+		var nama = $("#tbNamaDosen").val();
+		var aktif = $("#cbAktif").val();
+		if(nama!="" && aktif!=""){
 			$.post("response.php",
-				{jenis:"AddAgenda",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,lokasi:lokasi,aktif:aktif},
+				{jenis:"AddDosen",nama:nama,aktif:aktif},
 				function(result){
 					//alert(result);
 					$("#btnAdd").html(result);
-					isitabelAgenda();
+					isitabelDosen();
 				}
 			);
 		}
 		else{
-			alert("Bahasa, Judul, Deskripsi, dan Status Aktif harus terisi");
+			alert("Semua field harus terisi");
 		}
 	}
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteAgenda",nomer:ambil},
+			{jenis:"DeleteDosen",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelAgenda();
+				isitabelDosen();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditAgenda",nomer:ambil},
+			{jenis:"EditDosen",nomer:ambil},
 			function(result){
-				//alert(result);
 				var array = JSON.parse(result);
-				var bahasa=array['bahasa'];
-				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
+				var nama=array['nama'];
 				var aktif=array['aktif'];
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
-				var judul = array['judul'];
-				$("#tbJudulAgenda").val(judul);
-				var desc = array['deskripsi'];
-				$("#tbDeskripsiAgenda").val(desc);
-				var lokasi = array['lokasi'];
-				$("#tbLokasi").val(lokasi);
-				var foto = array['foto'];
+				$("#tbNamaDosen").val(nama);
 				$("#btnAdd").html("SAVE");
-				$("#tbFile").val(foto);
 			}
 		);
 	}
