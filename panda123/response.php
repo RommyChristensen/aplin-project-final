@@ -13,6 +13,14 @@
 		}
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isicbJurusan"){
+		$query = mysqli_query($conn,"select * from jurusan_bahasa");
+		$kalimat="";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<option value='".$row['jurusan_id']."'>".$row['jurusan_nama']."</option>";
+		}
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="isitabelAgenda"){
 		$query = mysqli_query($conn,"select * from agenda_bahasa");
 		$kalimat="<thead><tr><th class='th-sm'>Judul</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Foto</th><th class='th-sm'>Lokasi</th><th class='th-sm'>Deskripsi</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
