@@ -4,7 +4,7 @@
 	//require_once("navbar.php");
 ?>
 <head>
-	<title>AGENDA</title>
+	<title>BERITA</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -25,35 +25,33 @@
 	<script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
 </head>
 <body>
-	<h1 style='text-align:center;'>AGENDA</h1>
+	<h1 style='text-align:center;'>BERITA</h1>
 	<div class='container'>
 		Bahasa<br>
 		<select id='cbBahasa' class="browser-default custom-select">
 		</select>
 		<br><br>
 		<!-- Default input -->
-		<label for="tbJudulAgenda">Judul Agenda</label>
-		<input type="text" id="tbJudulAgenda" class="form-control">
+		<label for="tbJudulBerita">Judul Berita</label>
+		<input type="text" id="tbJudulBerita" class="form-control">
 		<br>
 		<!-- Default input -->
-		<label for="tbDeskripsiAgenda">Deskripsi Agenda</label>
-		<textarea id="tbDeskripsiAgenda" class="form-control"></textarea>
+		<label for="tbDeskripsiBerita">Deskripsi Berita</label>
+		<textarea id="tbDeskripsiBerita" class="form-control"></textarea>
 		Foto 
 		<div class="custom-file">
 		  <input type="file" class="custom-file-input" id="tbFile">
 		  <label class="custom-file-label" for="tbFile" data-browse="Browse">Choose File</label>
 		</div>
-		<label for="tbLokasi">Lokasi</label>
-		<input type="text" id="tbLokasi" class="form-control"><br>
 		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 		<br>
-		<table id="tbAgenda" class="table table-striped" cellspacing="0" width="100%">
+		<table id="tbBerita" class="table table-striped" cellspacing="0" width="100%">
 		</table>
 	</div>
 </body>
 <script language='javascript'>
 	isicbBahasa();
-	isitabelAgenda();
+	isitabelBerita();
 	function isicbBahasa(){
 		$.post("response.php",
 			{jenis:"isicbBahasa"},
@@ -62,34 +60,30 @@
 			}
 		);
 	}
-	function isitabelAgenda(){
+	function isitabelBerita(){
 		$.post("response.php",
-			{jenis:"isitabelAgenda"},
+			{jenis:"isitabelBerita"},
 			function(result){
-				$("#tbAgenda").html(result);
-				$('#tbAgenda').DataTable();
+				$("#tbBerita").html(result);
+				$('#tbBerita').DataTable();
 			}
 		);
 	}
 	function add(){
 		var bahasa = $("#cbBahasa").val();
-		var judul = $("#tbJudulAgenda").val();
-		var deskripsi = $("#tbDeskripsiAgenda").val();
+		var judul = $("#tbJudulBerita").val();
+		var deskripsi = $("#tbDeskripsiBerita").val();
 		var file = $("#tbFile").val();
-		var lokasi = $("#tbLokasi").val();
 		if(bahasa!="" && judul!="" && deskripsi!=""){
 			if(file==""){
 				file=" ";
 			}
-			if(lokasi==""){
-				lokasi=" ";
-			}
 			$.post("response.php",
-				{jenis:"AddAgenda",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,lokasi:lokasi},
+				{jenis:"AddBerita",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file},
 				function(result){
-					alert(result);
+					//alert(result);
 					$("#btnAdd").html(result);
-					isitabelAgenda();
+					isitabelBerita();
 				}
 			);
 		}
@@ -100,27 +94,25 @@
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteAgenda",nomer:ambil},
+			{jenis:"DeleteBerita",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelAgenda();
+				isitabelBerita();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditAgenda",nomer:ambil},
+			{jenis:"EditBerita",nomer:ambil},
 			function(result){
 				var array = JSON.parse(result);
 				var bahasa=array['bahasa'];
 				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
 				var judul = array['judul'];
-				$("#tbJudulAgenda").val(judul);
+				$("#tbJudulBerita").val(judul);
 				var desc = array['deskripsi'];
-				$("#tbDeskripsiAgenda").val(desc);
-				var lokasi = array['lokasi'];
-				$("#tbLokasi").val(lokasi);
+				$("#tbDeskripsiBerita").val(desc);
 				var foto = array['foto'];
 				$("#btnAdd").html("SAVE");
 				$("#tbFile").val(foto);
