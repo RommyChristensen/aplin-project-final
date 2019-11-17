@@ -176,6 +176,30 @@
 		$kalimat.="</tbody></table>";
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isitabelTag"){
+		$query = mysqli_query($conn,"select * from tag_bahasa");
+		$kalimat="<thead><tr><th class='th-sm'>Nama Tag</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<tr>";
+				$kalimat.="<td>".$row['tag_nama']."</td>";$bahasa=$row['bahasa_id'];
+				$q2=mysqli_query($conn,"select * from bahasa where bahasa_id=$bahasa");
+				while($r2=mysqli_fetch_assoc($q2)){
+					$bahasa=$r2['bahasa_nama'];
+				}
+				$kalimat.="<td>".$bahasa."</td>";
+				$id=$row['tag_id'];
+				$q1=mysqli_query($conn,"select * from tag where tag_id='$id'");
+				while($r1=mysqli_fetch_assoc($q1)){
+					$aktif=$r1['tag_status'];
+				}
+				$kalimat.="<td>".$aktif."</td>";
+				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['tag_bahasa_id'].")'>Edit</button>";
+				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['tag_bahasa_id'].")'>Delete</button></td>";
+			$kalimat.="</tr>";
+		}
+		$kalimat.="</tbody></table>";
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="AddAgenda"){
 		$bahasa		=$_POST['bahasa'];
 		$judul 		=$_POST['judul'];
@@ -305,6 +329,27 @@
 			echo "ADD";
 		}
 	}
+	if($_POST['jenis']=="AddTag"){
+		$bahasa		=$_POST['bahasa'];
+		$aktif 		=$_POST['aktif'];
+		$nama		=$_POST['nama'];
+		if(isset($_SESSION['editTag'])){
+			$nomer = $_SESSION['editTag'];
+			mysqli_query($conn,"update tag set tag_status='$aktif' where tag_id='$nomer'");
+			mysqli_query($conn,"update tag_bahasa set tag_nama='$nama',bahasa_id='$bahasa' where tag_bahasa_id='$nomer'");
+			unset($_SESSION['editTag']);
+			echo "ADD";
+		}
+		else{
+			$q1=mysqli_query($conn,"insert into tag(tag_status) values('$aktif')");
+			$q3=mysqli_query($conn,"select * from tag where tag_id=(select max(tag_id) from tag)");
+			while($r3=mysqli_fetch_assoc($q3)){
+				$tag_id=$r3['tag_id'];
+			}
+			$q2=mysqli_query($conn,"insert into tag_bahasa(tag_id,tag_nama,bahasa_id) values('$tag_id','$nama','$bahasa')");
+			echo "ADD";
+		}
+	}
 	if($_POST['jenis']=="DeleteAgenda"){
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from agenda_bahasa where agenda_bahasa_id='$nomer'");
@@ -338,6 +383,12 @@
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from matkul_bahasa where matkul_bahasa_id='$nomer'");
 		mysqli_query($conn,"delete from matkul where matkul_id='$nomer'");
+		echo "Sukses";
+	}
+	if($_POST['jenis']=="DeleteTag"){
+		$nomer		=$_POST['nomer'];
+		mysqli_query($conn,"delete from tag_bahasa where tag_bahasa_id='$nomer'");
+		mysqli_query($conn,"delete from tag where tag_id='$nomer'");
 		echo "Sukses";
 	}
 	if($_POST['jenis']=="EditAgenda"){
@@ -436,6 +487,21 @@
 			$arr['aktif']=$r2['matkul_status'];
 		}
 		$_SESSION['editMatkul']=$nomer;
+		echo json_encode($arr);
+	}
+	if($_POST['jenis']=="EditTag"){
+		$nomer		=$_POST['nomer'];
+		$arr[]		=array();
+		$q1 = mysqli_query($conn,"select * from tag_bahasa where tag_bahasa_id='$nomer'");
+		while($r1=mysqli_fetch_assoc($q1)){
+			$arr['nama']=$r1['tag_nama'];
+			$arr['bahasa']=$r1['bahasa_id'];
+		}
+		$q2 = mysqli_query($conn,"select * from tag where tag_id='$nomer'");
+		while($r2=mysqli_fetch_assoc($q2)){
+			$arr['aktif']=$r2['tag_status'];
+		}
+		$_SESSION['editTag']=$nomer;
 		echo json_encode($arr);
 	}
 	if($_POST['jenis']=="cekJurusanAda"){

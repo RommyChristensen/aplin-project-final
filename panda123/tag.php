@@ -4,7 +4,7 @@
 	//require_once("navbar.php");
 ?>
 <head>
-	<title>JURUSAN</title>
+	<title>TAG</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -25,18 +25,11 @@
 	<script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
 </head>
 <body>
-	<h1 style='text-align:center;'>JURUSAN</h1>
+	<h1 style='text-align:center;'>TAG</h1>
 	<div class='container'>
 		Bahasa<br>
 		<select id='cbBahasa' class="browser-default custom-select">
 		</select>
-		<br><br>
-		<!-- Default input -->
-		<label for="tbJurusanID">ID Jurusan</label>
-		<input type="text" id="tbJurusanID" class="form-control">
-		<br>
-		<label for="tbNamaJurusan">Nama Jurusan</label>
-		<input type="text" id="tbNamaJurusan" class="form-control">
 		<br>
 		Status Aktif<br>
 		<select id='cbAktif' class="browser-default custom-select">
@@ -44,19 +37,17 @@
 			<option value='0'>Non Aktif</option>
 		</select>
 		<!-- Default input -->
-		<label for="tbDeskripsiJurusan">Deskripsi Jurusan</label>
-		<textarea id="tbDeskripsiJurusan" class="form-control"></textarea>
-		<label for="tbWebsiteJurusan">Website</label>
-		<input type="text" id="tbWebsiteJurusan" class="form-control"><br>
+		<label for="tbNamaTag">Nama Tag</label>
+		<input type="text" id="tbNamaTag" class="form-control"><br>
 		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 		<br>
-		<table id="tbJurusan" class="table table-striped table-responsive" cellspacing="0" width="100%">
+		<table id="tbTag" class="table table-striped" cellspacing="0" width="100%">
 		</table>
 	</div>
 </body>
 <script language='javascript'>
 	isicbBahasa();
-	isitabelJurusan();
+	isitabelTag();
 	function isicbBahasa(){
 		$.post("response.php",
 			{jenis:"isicbBahasa"},
@@ -65,80 +56,56 @@
 			}
 		);
 	}
-	function isitabelJurusan(){
+	function isitabelTag(){
 		$.post("response.php",
-			{jenis:"isitabelJurusan"},
+			{jenis:"isitabelTag"},
 			function(result){
-				$("#tbJurusan").html(result);
-				$('#tbJurusan').DataTable();
+				$("#tbTag").html(result);
+				$('#tbTag').DataTable();
 			}
 		);
 	}
 	function add(){
 		var bahasa = $("#cbBahasa").val();
-		var id = $("#tbJurusanID").val();
-		var nama = $("#tbNamaJurusan").val();
 		var aktif = $("#cbAktif").val();
-		var deskripsi = $("#tbDeskripsiJurusan").val();
-		var website = $("#tbWebsiteJurusan").val();
-		//alert(id);
-		if(bahasa!="" && id!="" && nama!="" && aktif!="" && deskripsi!=""){
+		var nama = $("#tbNamaTag").val();
+		if(bahasa!="" && aktif!="" && nama!=""){
 			$.post("response.php",
-				{jenis:"cekJurusanAda",id:id},
+				{jenis:"AddTag",nama:nama,aktif:aktif,bahasa:bahasa},
 				function(result){
-					if(result=="0"){
-						if(website==""){
-							website=" ";
-						}
-						$.post("response.php",
-							{jenis:"AddJurusan",bahasa:bahasa,id:id,nama:nama,aktif:aktif,deskripsi:deskripsi,website:website},
-							function(result){
-								//alert(result);
-								$("#btnAdd").html(result);
-								isitabelJurusan();
-							}
-						);
-					}
-					else{
-						alert("Jurusan dengan ID tersebut sudah ada");
-					}
+					//alert(result);
+					$("#btnAdd").html(result);
+					isitabelTag();
 				}
 			);
 		}
 		else{
-			alert("Bahasa, ID, Nama, Status Aktif, dan Deskripsi harus terisi");
+			alert("Semua Field Harus terisi");
 		}
-		$("#tbJurusanID").attr('readonly',false);
 	}
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteJurusan",nomer:ambil},
+			{jenis:"DeleteTag",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelJurusan();
+				isitabelTag();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditJurusan",nomer:ambil},
+			{jenis:"EditTag",nomer:ambil},
 			function(result){
 				var array = JSON.parse(result);
 				var bahasa=array['bahasa'];
 				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
 				var aktif=array['aktif'];
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
-				$("#tbJurusanID").val(ambil+"(edit)");
-				var nama = array['nama'];
-				$("#tbNamaJurusan").val(nama);
-				var deskripsi = array['deskripsi'];
-				$("#tbDeskripsiJurusan").val(deskripsi);
-				var website = array['website'];
-				$("#tbWebsiteJurusan").val(website);
+				var nama=array['nama'];
+				$("#tbNamaTag").val(nama);
 				$("#btnAdd").html("SAVE");
-				$("#tbJurusanID").attr('readonly','readonly');
 			}
 		);
 	}

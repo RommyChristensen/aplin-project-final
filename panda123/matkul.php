@@ -64,7 +64,7 @@
 		</select>
 		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 		<br>
-		<table id="tbMatkul" class="table table-striped" cellspacing="0" width="100%">
+		<table id="tbMatkul" class="table table-striped table-responsive" cellspacing="0" width="100%">
 		</table>
 	</div>
 </body>
