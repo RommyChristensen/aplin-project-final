@@ -8,16 +8,16 @@
 }
 
 .top-nav-collapse {
-    background-color: #4285F4 !important;
+    background-color: #6200ea !important;
 }
 
 @media only screen and (max-width: 768px) {
     .navbar {
-        background-color: #4285F4 !important;
+        background-color: #6200ea !important;
     }
 }
 
-html,
+html,   
 body,
 header,
 .view {
@@ -26,6 +26,14 @@ header,
 
 .btn-rounded {
     border-radius: 50px !important;
+}
+
+.bg-custom{
+    background-color: #1de9b6;
+}
+
+.text-custom{
+    color: #6200ea;
 }
 
 /* .md-pills{
