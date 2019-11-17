@@ -45,6 +45,11 @@
 		</div>
 		<label for="tbLokasi">Lokasi</label>
 		<input type="text" id="tbLokasi" class="form-control"><br>
+		Status Aktif<br>
+		<select id='cbAktif' class="browser-default custom-select">
+			<option value='1'>Aktif</option>
+			<option value='0'>Non Aktif</option>
+		</select>
 		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 		<br>
 		<table id="tbAgenda" class="table table-striped" cellspacing="0" width="100%">
@@ -77,7 +82,8 @@
 		var deskripsi = $("#tbDeskripsiAgenda").val();
 		var file = $("#tbFile").val();
 		var lokasi = $("#tbLokasi").val();
-		if(bahasa!="" && judul!="" && deskripsi!=""){
+		var aktif=$("#cbAktif").val();
+		if(bahasa!="" && judul!="" && deskripsi!="" && aktif!=""){
 			if(file==""){
 				file=" ";
 			}
@@ -85,16 +91,16 @@
 				lokasi=" ";
 			}
 			$.post("response.php",
-				{jenis:"AddAgenda",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,lokasi:lokasi},
+				{jenis:"AddAgenda",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,lokasi:lokasi,aktif:aktif},
 				function(result){
-					alert(result);
+					//alert(result);
 					$("#btnAdd").html(result);
 					isitabelAgenda();
 				}
 			);
 		}
 		else{
-			alert("Bahasa, Judul, dan Deskripsi harus terisi");
+			alert("Bahasa, Judul, Deskripsi, dan Status Aktif harus terisi");
 		}
 	}
 	function deletes(e){
@@ -112,9 +118,12 @@
 		$.post("response.php",
 			{jenis:"EditAgenda",nomer:ambil},
 			function(result){
+				//alert(result);
 				var array = JSON.parse(result);
 				var bahasa=array['bahasa'];
 				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
+				var aktif=array['aktif'];
+				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
 				var judul = array['judul'];
 				$("#tbJudulAgenda").val(judul);
 				var desc = array['deskripsi'];

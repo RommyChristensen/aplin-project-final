@@ -76,57 +76,69 @@
 	}
 	function add(){
 		var bahasa = $("#cbBahasa").val();
-		var judul = $("#tbJudulAgenda").val();
-		var deskripsi = $("#tbDeskripsiAgenda").val();
-		var file = $("#tbFile").val();
-		var lokasi = $("#tbLokasi").val();
-		if(bahasa!="" && judul!="" && deskripsi!=""){
-			if(file==""){
-				file=" ";
-			}
-			if(lokasi==""){
-				lokasi=" ";
-			}
+		var id = $("#tbJurusanID").val();
+		var nama = $("#tbNamaJurusan").val();
+		var aktif = $("#cbAktif").val();
+		var deskripsi = $("#tbDeskripsiJurusan").val();
+		var website = $("#tbWebsiteJurusan").val();
+		//alert(id);
+		if(bahasa!="" && id!="" && nama!="" && aktif!="" && deskripsi!=""){
 			$.post("response.php",
-				{jenis:"AddAgenda",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,lokasi:lokasi},
+				{jenis:"cekJurusanAda",id:id},
 				function(result){
-					alert(result);
-					$("#btnAdd").html(result);
-					isitabelAgenda();
+					if(result=="0"){
+						if(website==""){
+							website=" ";
+						}
+						$.post("response.php",
+							{jenis:"AddJurusan",bahasa:bahasa,id:id,nama:nama,aktif:aktif,deskripsi:deskripsi,website:website},
+							function(result){
+								//alert(result);
+								$("#btnAdd").html(result);
+								isitabelJurusan();
+							}
+						);
+					}
+					else{
+						alert("Jurusan dengan ID tersebut sudah ada");
+					}
 				}
 			);
 		}
 		else{
-			alert("Bahasa, Judul, dan Deskripsi harus terisi");
+			alert("Bahasa, ID, Nama, Status Aktif, dan Deskripsi harus terisi");
 		}
+		$("#tbJurusanID").attr('readonly',false);
 	}
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteAgenda",nomer:ambil},
+			{jenis:"DeleteJurusan",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelAgenda();
+				isitabelJurusan();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditAgenda",nomer:ambil},
+			{jenis:"EditJurusan",nomer:ambil},
 			function(result){
 				var array = JSON.parse(result);
 				var bahasa=array['bahasa'];
 				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
-				var judul = array['judul'];
-				$("#tbJudulAgenda").val(judul);
-				var desc = array['deskripsi'];
-				$("#tbDeskripsiAgenda").val(desc);
-				var lokasi = array['lokasi'];
-				$("#tbLokasi").val(lokasi);
-				var foto = array['foto'];
+				var aktif=array['aktif'];
+				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
+				$("#tbJurusanID").val(ambil+"(edit)");
+				var nama = array['nama'];
+				$("#tbNamaJurusan").val(nama);
+				var deskripsi = array['deskripsi'];
+				$("#tbDeskripsiJurusan").val(deskripsi);
+				var website = array['website'];
+				$("#tbWebsiteJurusan").val(website);
 				$("#btnAdd").html("SAVE");
-				$("#tbFile").val(foto);
+				$("#tbJurusanID").attr('readonly','readonly');
 			}
 		);
 	}

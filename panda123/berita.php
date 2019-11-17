@@ -43,6 +43,11 @@
 		  <input type="file" class="custom-file-input" id="tbFile">
 		  <label class="custom-file-label" for="tbFile" data-browse="Browse">Choose File</label>
 		</div>
+		Status Aktif<br>
+		<select id='cbAktif' class="browser-default custom-select">
+			<option value='1'>Aktif</option>
+			<option value='0'>Non Aktif</option>
+		</select>
 		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 		<br>
 		<table id="tbBerita" class="table table-striped" cellspacing="0" width="100%">
@@ -74,21 +79,22 @@
 		var judul = $("#tbJudulBerita").val();
 		var deskripsi = $("#tbDeskripsiBerita").val();
 		var file = $("#tbFile").val();
-		if(bahasa!="" && judul!="" && deskripsi!=""){
+		var aktif=$("#cbAktif").val();
+		if(bahasa!="" && judul!="" && deskripsi!="" && aktif!=""){
 			if(file==""){
 				file=" ";
 			}
 			$.post("response.php",
-				{jenis:"AddBerita",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file},
+				{jenis:"AddBerita",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,aktif:aktif},
 				function(result){
-					//alert(result);
+					alert(result);
 					$("#btnAdd").html(result);
 					isitabelBerita();
 				}
 			);
 		}
 		else{
-			alert("Bahasa, Judul, dan Deskripsi harus terisi");
+			alert("Bahasa, Judul, Deskripsi, dan Status Aktif harus terisi");
 		}
 	}
 	function deletes(e){
@@ -109,6 +115,8 @@
 				var array = JSON.parse(result);
 				var bahasa=array['bahasa'];
 				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
+				var aktif=array['aktif'];
+				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
 				var judul = array['judul'];
 				$("#tbJudulBerita").val(judul);
 				var desc = array['deskripsi'];
