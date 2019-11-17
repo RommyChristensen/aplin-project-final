@@ -32,15 +32,8 @@ include "tpl/header.php";
                     <li class="nav-item">
                         <a class="nav-link" href="#">Testimoni</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdownAktivitasMahasiswa" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Aktivitas Mahasiswa</a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdownAktivitasMahasiswa">
-                            <a class="dropdown-item" href="#">Himpunan Mahasiswa (HIMA)</a>
-                            <a class="dropdown-item" href="#">Unit Kegiatan Kerohanian (UKK)</a>
-                            <a class="dropdown-item" href="#">Unit Kegiatan Mahasiswa (UKM)</a>
-                            <a class="dropdown-item" href="#">Badan Eksekutif Mahasiswa (BEM)</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aktivitasMahasiswa.php">Aktivitas Mahasiswa</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Akademik</a>
@@ -70,13 +63,10 @@ include "tpl/header.php";
         <div class="full-bg-img">
             <div class="mask rgba-blue-slight flex-center">
                 <div class="container text-center white-text wow fadeInUp">
-                    <h2>This Navbar is fixed and transparent</h2>
+                    <h1 class="font-weight-bold">Institut Sains dan Teknologi Terpadu Surabaya</h1>
                     <br>
-                    <h5>It will always stay visible on the top, even when you scroll down</h5>
-                    <p>Navbar's background will switch from transparent to solid color while scrolling down</p>
-                    <br>
-                    <p>Full page intro with background image will be always displayed in full screen mode, regardless of
-                        device </p>
+                    <h5>iSTTS pada mulanya dikenal dengan Institut Teknisi Elektro Surabaya (ITES) yang didirikan pada tanggal 1 Maret 1979. ITES berlokasi di jalan Bali no. 17 Surabaya dan dibawah naungan Yayasan Perguruan Tinggi Teknik Nusantara.</h5>
+                    <button class="btn teal accent-3" style="color: #1e38cc;">Take a Tour</button>
                 </div>
             </div>
         </div>
@@ -89,8 +79,10 @@ include "tpl/header.php";
         <section class="">
 
             <!-- Section heading -->
-            <h3 class="text-center mb-5">Latest news</h3>
-
+            <div class="text-center mt-4 mb-5">
+                <h3 class="text-center mb-5">Latest news</h3>
+                <a class="btn purple-gradient btn-rounded" href="#!">Browse all News <i class="fa fa-angle-right"></i></a>
+            </div>
             <div class="row">
                 <?php
                     while($news = mysqli_fetch_assoc($res)){
@@ -127,7 +119,7 @@ include "tpl/header.php";
                             </p>
                             <p class="font-small grey-text mb-0"><i class="fa fa-map"></i> ISTTS</p>
                             <p class="text-right mb-0 font-small font-weight-bold"><a
-                                    class="btn btn-primary btn-sm">read more <i class="fas fa-angle-right"></i></a></p>
+                                    class="btn btn-outline-default waves-effect btn-sm">read more <i class="fas fa-angle-right"></i></a></p>
                         </div>
                         <!--/.Card content-->
 
@@ -141,15 +133,11 @@ include "tpl/header.php";
                 ?>
             </div>
 
-            <div class="text-center mt-4 mb-5">
-                <a class="btn blue-gradient btn-rounded" href="#!">Browse all News <i class="fa fa-angle-right"></i></a>
-            </div>
-
         </section>
         <!--Section: Content-->
     </div>
 
-    <div class="row blue-gradient">
+    <div class="row aqua-gradient">
         <div class="container mt-5 mb-5">
             <!--Section: Content-->
             <section class="text-center dark-grey-text">
@@ -223,10 +211,10 @@ include "tpl/header.php";
         <section class="p-md-3 mx-md-5" id="section1">
             <h3 class="mb-4 pb-2">Jurusan</h3>
             <div class="btn-group mb-3" data-toggle="buttons">
-                <button class="btn btn-primary page1">
+                <button class="btn bg-custom page1">
                     Page 1
                 </button>
-                <button class="btn btn-primary page2">
+                <button class="btn bg-custom page2">
                     Page 2
                 </button>
             </div>
@@ -316,10 +304,10 @@ include "tpl/header.php";
         <section class="p-md-3 mx-md-5" id="section2">
             <h3 class="mb-4 pb-2">Jurusan</h3>
             <div class="btn-group mb-3" data-toggle="buttons">
-                <button class="btn btn-primary page1">
+                <button class="btn bg-custom page1">
                     Page 1
                 </button>
-                <button class="btn btn-primary page2">
+                <button class="btn bg-custom page2">
                     Page 2
                 </button>
             </div>
@@ -440,3 +428,6 @@ include "tpl/header.php";
     </div>
 
 <?php include "tpl/footer.php"; ?>
+
+</body>
+</html>
