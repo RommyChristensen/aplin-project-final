@@ -40,12 +40,28 @@
 		<label for="tbNamaMatkul">Nama Matkul</label>
 		<input type="text" id="tbNamaMatkul" class="form-control"><br>
 		<label for="tbDeskripsiMatkul">Deskripsi Matkul</label>
-		<textarea id="tbDeskripsiAgenda" class="form-control"></textarea>
+		<textarea id="tbDeskripsiMatkul" class="form-control"></textarea>
+		SKS<br>
+		<select id='cbSKS' class="browser-default custom-select">
+			<option value='1'>1</option>
+			<option value='2'>2</option>
+			<option value='3'>3</option>
+			<option value='6'>6</option>
+		</select>
 		Jurusan<br>
 		<select id='cbJurusan' class="browser-default custom-select">
 		</select>
-		<label for="tbSemester">Semester</label>
-		<input type="text" id="tbSemester" class="form-control"><br>
+		Semester<br>
+		<select id='cbSemester' class="browser-default custom-select">
+			<option value='1'>1</option>
+			<option value='2'>2</option>
+			<option value='3'>3</option>
+			<option value='4'>4</option>
+			<option value='5'>5</option>
+			<option value='6'>6</option>
+			<option value='7'>7</option>
+			<option value='8'>8</option>
+		</select>
 		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 		<br>
 		<table id="tbMatkul" class="table table-striped" cellspacing="0" width="100%">
@@ -84,15 +100,17 @@
 	function add(){
 		var bahasa = $("#cbBahasa").val();
 		var aktif = $("#cbAktif").val();
-		var nama = $("#tbNamaKategori").val();
-		var pendek = $("#tbSingkatanKategori").val();
-		if(bahasa!="" && aktif!="" && nama!="" && pendek!=""){
+		var nama = $("#tbNamaMatkul").val();
+		var deskripsi = $("#tbDeskripsiMatkul").val();
+		var jurusan = $("#cbJurusan").val();
+		var semester = $("#cbSemester").val();
+		var sks = $("#cbSKS").val();
+		if(bahasa!="" && aktif!="" && nama!="" && deskripsi!="" && jurusan!="" && semester!="" && sks!=""){
 			$.post("response.php",
-				{jenis:"AddKategori",nama:nama,aktif:aktif,pendek:pendek,bahasa:bahasa},
+				{jenis:"AddMatkul",bahasa:bahasa,aktif:aktif,nama:nama,deskripsi:deskripsi,jurusan:jurusan,semester:semester,sks:sks},
 				function(result){
-					//alert(result);
 					$("#btnAdd").html(result);
-					isitabelKategori();
+					isitabelMatkul();
 				}
 			);
 		}
@@ -103,17 +121,17 @@
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteKategori",nomer:ambil},
+			{jenis:"DeleteMatkul",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelKategori();
+				isitabelMatkul();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditKategori",nomer:ambil},
+			{jenis:"EditMatkul",nomer:ambil},
 			function(result){
 				var array = JSON.parse(result);
 				var bahasa=array['bahasa'];
@@ -121,9 +139,15 @@
 				var aktif=array['aktif'];
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
 				var nama=array['nama'];
-				$("#tbNamaKategori").val(nama);
-				var pendek = array['pendek'];
-				$("#tbSingkatanKategori").val(pendek);
+				$("#tbNamaMatkul").val(nama);
+				var deskripsi=array['deskripsi'];
+				$("#tbDeskripsiMatkul").val(deskripsi);
+				var sks=array['sks'];
+				$("#cbSKS option[value="+sks+"]").attr('selected','selected');
+				var jurusan=array['jurusan'];
+				$("#cbJurusan option[value="+jurusan+"]").attr('selected','selected');
+				var semester=array['semester'];
+				$("#cbSemester option[value="+semester+"]").attr('selected','selected');
 				$("#btnAdd").html("SAVE");
 			}
 		);

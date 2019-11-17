@@ -140,6 +140,42 @@
 		$kalimat.="</tbody></table>";
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isitabelMatkul"){
+		$query = mysqli_query($conn,"select * from matkul_bahasa");
+		$kalimat="<thead><tr><th class='th-sm'>Nama Matkul</th><th class='th-sm'>Deskripsi</th><th class='th-sm'>SKS</th><th class='th-sm'>Jurusan</th><th class='th-sm'>Semester</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<tr>";
+				$kalimat.="<td>".$row['matkul_nama']."</td>";
+				$kalimat.="<td>".$row['matkul_deskripsi']."</td>";
+				$id=$row['matkul_id'];
+				$q1=mysqli_query($conn,"select * from matkul where matkul_id='$id'");
+				while($r1=mysqli_fetch_assoc($q1)){
+					$sks=$r1['matkul_sks'];
+					$semester=$r1['matkul_semester'];
+					$jurusan=$r1['jurusan_id'];
+					$aktif=$r1['matkul_status'];
+				}
+				$bahasa=$row['bahasa_id'];
+				$q2=mysqli_query($conn,"select * from bahasa where bahasa_id=$bahasa");
+				while($r2=mysqli_fetch_assoc($q2)){
+					$bahasa=$r2['bahasa_nama'];
+				}
+				$kalimat.="<td>".$sks."</td>";
+				$q3=mysqli_query($conn,"select * from jurusan_bahasa where jurusan_id='$jurusan'");
+				while($r3=mysqli_fetch_assoc($q3)){
+					$jurusan=$r3['jurusan_nama'];
+				}
+				$kalimat.="<td>".$jurusan."</td>";
+				$kalimat.="<td>".$semester."</td>";
+				$kalimat.="<td>".$aktif."</td>";
+				$kalimat.="<td>".$bahasa."</td>";
+				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['matkul_bahasa_id'].")'>Edit</button>";
+				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['matkul_bahasa_id'].")'>Delete</button></td>";
+			$kalimat.="</tr>";
+		}
+		$kalimat.="</tbody></table>";
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="AddAgenda"){
 		$bahasa		=$_POST['bahasa'];
 		$judul 		=$_POST['judul'];
@@ -244,6 +280,31 @@
 			echo "ADD";
 		}
 	}
+	if($_POST['jenis']=="AddMatkul"){
+		$bahasa		=$_POST['bahasa'];
+		$aktif 		=$_POST['aktif'];
+		$nama		=$_POST['nama'];
+		$deskripsi	=$_POST['deskripsi'];
+		$jurusan	=$_POST['jurusan'];
+		$semester	=$_POST['semester'];
+		$sks	=$_POST['sks'];
+		if(isset($_SESSION['editMatkul'])){
+			$nomer = $_SESSION['editMatkul'];
+			mysqli_query($conn,"update matkul set matkul_sks='$sks',matkul_semester='$semester',jurusan_id='$jurusan',matkul_status='$aktif' where matkul_id='$nomer'");
+			mysqli_query($conn,"update matkul_bahasa set matkul_nama='$nama',matkul_deskripsi='$deskripsi',bahasa_id='$bahasa' where matkul_bahasa_id='$nomer'");
+			unset($_SESSION['editMatkul']);
+			echo "ADD";
+		}
+		else{
+			$q1=mysqli_query($conn,"insert into matkul(matkul_sks,matkul_semester,jurusan_id,matkul_status) values('$sks','$semester','$jurusan','$aktif')");
+			$q3=mysqli_query($conn,"select * from matkul where matkul_id=(select max(matkul_id) from matkul)");
+			while($r3=mysqli_fetch_assoc($q3)){
+				$matkul_id=$r3['matkul_id'];
+			}
+			$q2=mysqli_query($conn,"insert into matkul_bahasa(matkul_id,matkul_nama,matkul_deskripsi,bahasa_id) values('$matkul_id','$nama','$deskripsi','$bahasa')");
+			echo "ADD";
+		}
+	}
 	if($_POST['jenis']=="DeleteAgenda"){
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from agenda_bahasa where agenda_bahasa_id='$nomer'");
@@ -271,6 +332,12 @@
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from kategori_bahasa where kategori_bahasa_id='$nomer'");
 		mysqli_query($conn,"delete from kategori where kategori_id='$nomer'");
+		echo "Sukses";
+	}
+	if($_POST['jenis']=="DeleteMatkul"){
+		$nomer		=$_POST['nomer'];
+		mysqli_query($conn,"delete from matkul_bahasa where matkul_bahasa_id='$nomer'");
+		mysqli_query($conn,"delete from matkul where matkul_id='$nomer'");
 		echo "Sukses";
 	}
 	if($_POST['jenis']=="EditAgenda"){
@@ -350,6 +417,25 @@
 			$arr['aktif']=$r2['kategori_status'];
 		}
 		$_SESSION['editKategori']=$nomer;
+		echo json_encode($arr);
+	}
+	if($_POST['jenis']=="EditMatkul"){
+		$nomer		=$_POST['nomer'];
+		$arr[]		=array();
+		$q1 = mysqli_query($conn,"select * from matkul_bahasa where matkul_bahasa_id='$nomer'");
+		while($r1=mysqli_fetch_assoc($q1)){
+			$arr['nama']=$r1['matkul_nama'];
+			$arr['deskripsi']=$r1['matkul_deskripsi'];
+			$arr['bahasa']=$r1['bahasa_id'];
+		}
+		$q2 = mysqli_query($conn,"select * from matkul where matkul_id='$nomer'");
+		while($r2=mysqli_fetch_assoc($q2)){
+			$arr['sks']=$r2['matkul_sks'];
+			$arr['semester']=$r2['matkul_semester'];
+			$arr['jurusan']=$r2['jurusan_id'];
+			$arr['aktif']=$r2['matkul_status'];
+		}
+		$_SESSION['editMatkul']=$nomer;
 		echo json_encode($arr);
 	}
 	if($_POST['jenis']=="cekJurusanAda"){
