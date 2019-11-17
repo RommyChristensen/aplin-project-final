@@ -106,6 +106,32 @@
 		$kalimat.="</tbody></table>";
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isitabelKategori"){
+		$query = mysqli_query($conn,"select * from kategori_bahasa");
+		$kalimat="<thead><tr><th class='th-sm'>Nama Kategori</th><th class='th-sm'>Nama Pendek Kategori</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<tr>";
+				$kalimat.="<td>".$row['kategori_nama']."</td>";
+				$kalimat.="<td>".$row['kategori_nama_pendek']."</td>";
+				$bahasa=$row['bahasa_id'];
+				$q2=mysqli_query($conn,"select * from bahasa where bahasa_id=$bahasa");
+				while($r2=mysqli_fetch_assoc($q2)){
+					$bahasa=$r2['bahasa_nama'];
+				}
+				$kalimat.="<td>".$bahasa."</td>";
+				$id=$row['kategori_id'];
+				$q1=mysqli_query($conn,"select * from kategori where kategori_id='$id'");
+				while($r1=mysqli_fetch_assoc($q1)){
+					$aktif=$r1['kategori_status'];
+				}
+				$kalimat.="<td>".$aktif."</td>";
+				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['kategori_bahasa_id'].")'>Edit</button>";
+				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['kategori_bahasa_id'].")'>Delete</button></td>";
+			$kalimat.="</tr>";
+		}
+		$kalimat.="</tbody></table>";
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="AddAgenda"){
 		$bahasa		=$_POST['bahasa'];
 		$judul 		=$_POST['judul'];
@@ -188,6 +214,28 @@
 			echo "ADD";
 		}
 	}
+	if($_POST['jenis']=="AddKategori"){
+		$bahasa		=$_POST['bahasa'];
+		$nama 		=$_POST['nama'];
+		$pendek		=$_POST['pendek'];
+		$aktif		=$_POST['aktif'];
+		if(isset($_SESSION['editKategori'])){
+			$nomer = $_SESSION['editKategori'];
+			mysqli_query($conn,"update kategori set kategori_status='$aktif' where kategori_id='$nomer'");
+			mysqli_query($conn,"update kategori_bahasa set bahasa_id='$bahasa',kategori_nama='$nama',kategori_nama_pendek='$pendek' where kategori_bahasa_id='$nomer'");
+			unset($_SESSION['editKategori']);
+			echo "ADD";
+		}
+		else{
+			$q1=mysqli_query($conn,"insert into kategori(kategori_status) values ('$aktif')");
+			$q3=mysqli_query($conn,"select * from kategori where kategori_id=(select max(kategori_id) from kategori)");
+			while($r3=mysqli_fetch_assoc($q3)){
+				$kategori_id=$r3['kategori_id'];
+			}
+			$q2=mysqli_query($conn,"insert into kategori_bahasa(kategori_id,bahasa_id,kategori_nama,kategori_nama_pendek) values('$kategori_id','$bahasa','$nama','$pendek')");
+			echo "ADD";
+		}
+	}
 	if($_POST['jenis']=="DeleteAgenda"){
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from agenda_bahasa where agenda_bahasa_id='$nomer'");
@@ -209,6 +257,12 @@
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from jurusan_bahasa where jurusan_id='$nomer'");
 		mysqli_query($conn,"delete from jurusan where jurusan_id='$nomer'");
+		echo "Sukses";
+	}
+	if($_POST['jenis']=="DeleteKategori"){
+		$nomer		=$_POST['nomer'];
+		mysqli_query($conn,"delete from kategori_bahasa where kategori_bahasa_id='$nomer'");
+		mysqli_query($conn,"delete from kategori where kategori_id='$nomer'");
 		echo "Sukses";
 	}
 	if($_POST['jenis']=="EditAgenda"){
@@ -272,6 +326,22 @@
 			$arr['aktif']=$r2['jurusan_status'];
 		}
 		$_SESSION['editJurusan']=$nomer;
+		echo json_encode($arr);
+	}
+	if($_POST['jenis']=="EditKategori"){
+		$nomer		=$_POST['nomer'];
+		$arr[]		=array();
+		$q1 = mysqli_query($conn,"select * from kategori_bahasa where kategori_id='$nomer'");
+		while($r1=mysqli_fetch_assoc($q1)){
+			$arr['nama']=$r1['kategori_nama'];
+			$arr['pendek']=$r1['kategori_nama_pendek'];
+			$arr['bahasa']=$r1['bahasa_id'];
+		}
+		$q2 = mysqli_query($conn,"select * from kategori where kategori_id='$nomer'");
+		while($r2=mysqli_fetch_assoc($q2)){
+			$arr['aktif']=$r2['kategori_status'];
+		}
+		$_SESSION['editKategori']=$nomer;
 		echo json_encode($arr);
 	}
 	if($_POST['jenis']=="cekJurusanAda"){
