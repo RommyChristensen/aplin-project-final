@@ -5,44 +5,124 @@
 ?>
 <head>
 	<title>DOSEN</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="../assets/css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="../assets/css/style2.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/mdb.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/mdb.lite.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/mdb.lite.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-	<script src='../assets/js/jquery-3.4.1.min.js'></script>
-	<script src='../assets/js/mdb.min.js'></script>
-	<script src='../assets/js/popper.min.js'></script>
-	
-	<link rel="stylesheet" type="text/css" href="../assets/DataTables/datatables.min.css"/>
-	<script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
+	<?php include "fileinclude.php";?>
 </head>
 <body>
 	<?php include "navbar.php"; ?>
-	<h1 style='text-align:center;'>DOSEN</h1>
-	<div class='container'>
-		<!-- Default input -->
-		<label for="tbNamaDosen">Nama Dosen</label>
-		<input type="text" id="tbNamaDosen" class="form-control">
-		<br>
-		Status Aktif<br>
-		<select id='cbAktif' class="browser-default custom-select">
-			<option value='1'>Aktif</option>
-			<option value='0'>Non Aktif</option>
-		</select>
-		<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
-		<br>
-		<table id="tbDosen" class="table table-striped table-responsive" cellspacing="0" width="100%">
-		</table>
-	</div>
+	<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>DATABASE</h3>
+                <strong>DB</strong>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+					<a href="adminsite.php">
+                        <i class="fas fa-home"></i>
+                        HOME
+                    </a>
+				</li>
+				<li>
+                    <a href="agenda.php">
+                        <i class="fas fa-calendar"></i>
+                        Agenda
+                    </a>
+				</li>
+				<li>
+                    <a href="berita.php">
+                        <i class="fas fa-copy"></i>
+                        Berita
+                    </a>
+				</li>
+				<li class='active'>
+					<a href="dosen.php">
+                        <i class="fas fa-user"></i>
+                        Dosen
+                    </a>
+                </li>
+                <li>
+                    <a href="jurusan.php">
+                        <i class="fas fa-university"></i>
+                        Jurusan
+                    </a>
+                </li>
+                <li>
+                    <a href="kategori.php">
+                        <i class="fas fa-tags"></i>
+                        Kategori
+                    </a>
+                </li>
+				<li>
+                    <a href="matkul.php">
+                        <i class="fas fa-book"></i>
+                        Mata Kuliah
+                    </a>
+                </li>
+                <li>
+                    <a href="media.php">
+                        <i class="fas fa-tablet"></i>
+                        Media
+                    </a>
+                </li>
+				<li>
+                    <a href="organisasi.php">
+                        <i class="fas fa-user-circle"></i>
+                        Organisasi
+                    </a>
+                </li>
+				<li>
+                    <a href="tag.php">
+                        <i class="fas fa-tags"></i>
+                        Tag
+                    </a>
+                </li>
+				<li>
+                    <a href="testimoni.php">
+                        <i class="fas fa-comment"></i>
+                        Testimoni
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>See More</span>
+                    </button>
+					<h1>DOSEN</h1>
+                </div>
+            </nav>
+			<div class='container'>
+				<!-- Default input -->
+				<label for="tbNamaDosen">Nama Dosen</label>
+				<input type="text" id="tbNamaDosen" class="form-control">
+				<br>
+				Status Aktif<br>
+				<select id='cbAktif' class="browser-default custom-select">
+					<option value='1'>Aktif</option>
+					<option value='0'>Non Aktif</option>
+				</select>
+				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
+				<br>
+				<table id="tbDosen" class="table table-striped" cellspacing="0" width="100%">
+				</table>
+			</div>
+        </div>
+    </div>
 </body>
+<?php include "fileinclude2.php";?>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#sidebarCollapse').on('click', function () {
+			$('#sidebar').toggleClass('active');
+		});
+	});
+</script>
 <script language='javascript'>
 	isitabelDosen();
 	function isitabelDosen(){

@@ -200,6 +200,36 @@
 		$kalimat.="</tbody></table>";
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isitabelMedia"){
+		$query = mysqli_query($conn,"select * from media_bahasa");
+		$kalimat="<thead><tr><th class='th-sm'>Judul Media</th><th class='th-sm'>Deskripsi Media</th><th class='th-sm'>Foto</th><th class='th-sm'>Sumber Tajuk Media</th><th class='th-sm'>Halaman Sumber Media</th><th class='th-sm'>Tanggal Sumber Media</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<tr>";
+				$kalimat.="<td>".$row['media_judul']."</td>";
+				$kalimat.="<td>".$row['media_deskripsi']."</td>";
+				$bahasa=$row['bahasa_id'];
+				$q2=mysqli_query($conn,"select * from bahasa where bahasa_id=$bahasa");
+				while($r2=mysqli_fetch_assoc($q2)){
+					$bahasa=$r2['bahasa_nama'];
+				}
+				$id=$row['media_id'];
+				$q1=mysqli_query($conn,"select * from media where media_id='$id'");
+				while($r1=mysqli_fetch_assoc($q1)){
+					$kalimat.="<td>".$r1['media_foto']."</td>";
+					$kalimat.="<td>".$r1['media_sumber_tajuk']."</td>";
+					$kalimat.="<td>".$r1['media_sumber_hal']."</td>";
+					$kalimat.="<td>".$r1['media_sumber_tgl']."</td>";
+					$aktif=$r1['media_status'];
+				}
+				$kalimat.="<td>".$bahasa."</td>";
+				$kalimat.="<td>".$aktif."</td>";
+				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['media_bahasa_id'].")'>Edit</button>";
+				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['media_bahasa_id'].")'>Delete</button></td>";
+			$kalimat.="</tr>";
+		}
+		$kalimat.="</tbody></table>";
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="AddAgenda"){
 		$bahasa		=$_POST['bahasa'];
 		$judul 		=$_POST['judul'];
@@ -350,6 +380,32 @@
 			echo "ADD";
 		}
 	}
+	if($_POST['jenis']=="AddMedia"){
+		$bahasa		=$_POST['bahasa'];
+		$aktif 		=$_POST['aktif'];
+		$judul		=$_POST['judul'];
+		$deskripsi	=$_POST['deskripsi'];
+		$file		=$_POST['file'];
+		$sumbertajukmedia=$_POST['sumbertajukmedia'];
+		$halaman	=$_POST['halaman'];
+		$tanggal	=$_POST['tanggal'];
+		if(isset($_SESSION['editMedia'])){
+			$nomer = $_SESSION['editMedia'];
+			mysqli_query($conn,"update media set media_foto='$file', media_sumber_tgl='$tanggal',media_sumber_tajuk='$sumbertajukmedia',media_sumber_hal='$halaman',media_status='$aktif' where media_id='$nomer'");
+			mysqli_query($conn,"update media_bahasa set media_judul='$judul',bahasa_id='$bahasa',media_deskripsi='$deskripsi' where media_bahasa_id='$nomer'");
+			unset($_SESSION['editMedia']);
+			echo "ADD";
+		}
+		else{
+			$q1=mysqli_query($conn,"insert into media(media_foto,media_tanggal,media_sumber_tajuk,media_sumber_hal,media_sumber_tgl,media_status) values('$file',now(),'$sumbertajukmedia','$halaman','$tanggal','$aktif')");
+			$q3=mysqli_query($conn,"select * from media where media_id=(select max(media_id) from media)");
+			while($r3=mysqli_fetch_assoc($q3)){
+				$media_id=$r3['media_id'];
+			}
+			$q2=mysqli_query($conn,"insert into media_bahasa(media_id,bahasa_id,media_judul,media_deskripsi) values('$media_id','$bahasa','$judul','$deskripsi')");
+			echo "ADD";
+		}
+	}
 	if($_POST['jenis']=="DeleteAgenda"){
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from agenda_bahasa where agenda_bahasa_id='$nomer'");
@@ -389,6 +445,12 @@
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from tag_bahasa where tag_bahasa_id='$nomer'");
 		mysqli_query($conn,"delete from tag where tag_id='$nomer'");
+		echo "Sukses";
+	}
+	if($_POST['jenis']=="DeleteMedia"){
+		$nomer		=$_POST['nomer'];
+		mysqli_query($conn,"delete from media_bahasa where media_bahasa_id='$nomer'");
+		mysqli_query($conn,"delete from media where media_id='$nomer'");
 		echo "Sukses";
 	}
 	if($_POST['jenis']=="EditAgenda"){
@@ -502,6 +564,26 @@
 			$arr['aktif']=$r2['tag_status'];
 		}
 		$_SESSION['editTag']=$nomer;
+		echo json_encode($arr);
+	}
+	if($_POST['jenis']=="EditMedia"){
+		$nomer		=$_POST['nomer'];
+		$arr[]		=array();
+		$q1 = mysqli_query($conn,"select * from media_bahasa where media_bahasa_id='$nomer'");
+		while($r1=mysqli_fetch_assoc($q1)){
+			$arr['judul']=$r1['media_judul'];
+			$arr['deskripsi']=$r1['media_deskripsi'];
+			$arr['bahasa']=$r1['bahasa_id'];
+		}
+		$q2 = mysqli_query($conn,"select * from media where media_id='$nomer'");
+		while($r2=mysqli_fetch_assoc($q2)){
+			$arr['foto']=$r2['media_foto'];
+			$arr['sumbertajuk']=$r2['media_sumber_tajuk'];
+			$arr['halaman']=$r2['media_sumber_hal'];
+			$arr['tanggal']=$r2['media_sumber_tgl'];
+			$arr['aktif']=$r2['media_status'];
+		}
+		$_SESSION['editMedia']=$nomer;
 		echo json_encode($arr);
 	}
 	if($_POST['jenis']=="cekJurusanAda"){

@@ -57,7 +57,7 @@
                         Mata Kuliah
                     </a>
                 </li>
-                <li>
+                <li class='active'>
                     <a href="media.php">
                         <i class="fas fa-tablet"></i>
                         Media
@@ -69,7 +69,7 @@
                         Organisasi
                     </a>
                 </li>
-				<li  class='active'>
+				<li>
                     <a href="tag.php">
                         <i class="fas fa-tags"></i>
                         Tag
@@ -92,7 +92,7 @@
                         <i class="fas fa-align-left"></i>
                         <span>See More</span>
                     </button>
-					<h1>TAG</h1>
+					<h1>MEDIA</h1>
                 </div>
             </nav>
 			<div class='container'>
@@ -106,11 +106,24 @@
 					<option value='0'>Non Aktif</option>
 				</select>
 				<!-- Default input -->
-				<label for="tbNamaTag">Nama Tag</label>
-				<input type="text" id="tbNamaTag" class="form-control"><br>
+				<label for="tbJudulMedia">Judul Media</label>
+				<input type="text" id="tbJudulMedia" class="form-control"><br>
+				<label for="tbDeskripsiMedia">Deskripsi Media</label>
+				<textarea id="tbDeskripsiMedia" class="form-control"></textarea>
+				Foto 
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="tbFile">
+				  <label class="custom-file-label" for="tbFile" data-browse="Browse">Choose File</label>
+				</div>
+				<label for="tbMediaSumberTajuk">Sumber Tajuk Media</label>
+				<input type="text" id="tbMediaSumberTajuk" class="form-control"><br>
+				<label for="tbMediaSumberHal">Halaman Sumber Media</label>
+				<input type="text" id="tbMediaSumberHal" class="form-control"><br>
+				<label for="tbTanggalSumberMedia">Tanggal Sumber Media</label>
+				<input type="date" id="tbTanggalSumberMedia" class="form-control"><br>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbTag" class="table table-striped" cellspacing="0" width="100%">
+				<table id="tbMedia" class="table table-striped table-responsive" cellspacing="0" width="100%">
 				</table>
 			</div>
         </div>
@@ -126,7 +139,7 @@ $(document).ready(function () {
 </script>
 <script language='javascript'>
 	isicbBahasa();
-	isitabelTag();
+	isitabelMedia();
 	function isicbBahasa(){
 		$.post("response.php",
 			{jenis:"isicbBahasa"},
@@ -135,55 +148,76 @@ $(document).ready(function () {
 			}
 		);
 	}
-	function isitabelTag(){
+	function isitabelMedia(){
 		$.post("response.php",
-			{jenis:"isitabelTag"},
+			{jenis:"isitabelMedia"},
 			function(result){
-				$("#tbTag").html(result);
-				$('#tbTag').DataTable();
+				$("#tbMedia").html(result);
+				$('#tbMedia').DataTable();
 			}
 		);
 	}
 	function add(){
 		var bahasa = $("#cbBahasa").val();
 		var aktif = $("#cbAktif").val();
-		var nama = $("#tbNamaTag").val();
-		if(bahasa!="" && aktif!="" && nama!=""){
+		var judul = $("#tbJudulMedia").val();
+		var deskripsi = $("#tbDeskripsiMedia").val();
+		var file = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
+		var sumbertajukmedia = $("#tbMediaSumberTajuk").val();
+		var halaman = $("#tbMediaSumberHal").val();
+		var tanggal = $("#tbTanggalSumberMedia").val();
+		if(bahasa!="" && aktif!="" && judul!="" && deskripsi!="" && file!=""){
+			if(sumbertajukmedia==""){
+				sumbertajukmedia=" ";
+			}
+			if(halaman==""){
+				halaman=0;
+			}
+			if(tanggal==""){
+				tanggal="0000-00-00";
+			}
 			$.post("response.php",
-				{jenis:"AddTag",nama:nama,aktif:aktif,bahasa:bahasa},
+				{jenis:"AddMedia",bahasa:bahasa,aktif:aktif,judul:judul,deskripsi:deskripsi,file:file,sumbertajukmedia:sumbertajukmedia,halaman:halaman,tanggal:tanggal},
 				function(result){
-					//alert(result);
 					$("#btnAdd").html(result);
-					isitabelTag();
+					isitabelMedia();
 				}
 			);
 		}
 		else{
-			alert("Semua Field Harus terisi");
+			alert("Bahasa, Status Aktif, Judul, Deskripsi, dan Foto harus terisi");
 		}
 	}
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteTag",nomer:ambil},
+			{jenis:"DeleteMedia",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelTag();
+				isitabelMedia();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditTag",nomer:ambil},
+			{jenis:"EditMedia",nomer:ambil},
 			function(result){
+				//alert(result);
 				var array = JSON.parse(result);
 				var bahasa=array['bahasa'];
 				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
 				var aktif=array['aktif'];
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
-				var nama=array['nama'];
-				$("#tbNamaTag").val(nama);
+				var judul=array['judul'];
+				$("#tbJudulMedia").val(judul);
+				var deskripsi=array['deskripsi'];
+				$("#tbDeskripsiMedia").val(deskripsi);
+				var sumbertajuk=array['sumbertajuk'];
+				$("#tbMediaSumberTajuk").val(sumbertajuk);
+				var halaman=array['halaman'];
+				$("#tbMediaSumberHal").val(halaman);
+				var tanggal=array['tanggal'];
 				$("#btnAdd").html("SAVE");
 			}
 		);
