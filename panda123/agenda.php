@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require_once("../helpers/koneksi.php");
-	//require_once("navbar.php");
+	include "../tpl/white-navbar.php";
 ?>
 <head>
 	<title>AGENDA</title>
