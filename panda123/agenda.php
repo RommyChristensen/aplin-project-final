@@ -80,7 +80,9 @@
 		var bahasa = $("#cbBahasa").val();
 		var judul = $("#tbJudulAgenda").val();
 		var deskripsi = $("#tbDeskripsiAgenda").val();
-		var file = $("#tbFile").val();
+		var file = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '')
+		//alert(filename);
+		//var file = $("#tbFile").val();
 		var lokasi = $("#tbLokasi").val();
 		var aktif=$("#cbAktif").val();
 		if(bahasa!="" && judul!="" && deskripsi!="" && aktif!=""){
@@ -131,7 +133,9 @@
 				var lokasi = array['lokasi'];
 				$("#tbLokasi").val(lokasi);
 				var foto = array['foto'];
+				//alert(foto);
 				$("#btnAdd").html("SAVE");
+				//$('input[type=file]').val(foto);
 				$("#tbFile").val(foto);
 			}
 		);
