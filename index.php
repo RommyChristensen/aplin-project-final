@@ -27,7 +27,7 @@ include "tpl/header.php";
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Berita</a>
+                        <a class="nav-link" href="berita.php">Berita</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Testimoni</a>
@@ -36,7 +36,7 @@ include "tpl/header.php";
                         <a class="nav-link" href="aktivitasMahasiswa.php">Aktivitas Mahasiswa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Akademik</a>
+                        <a class="nav-link" href="akademik.php">Akademik</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Dosen</a>

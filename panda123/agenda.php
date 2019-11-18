@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	require_once("../helpers/koneksi.php");
-	include "../tpl/white-navbar.php";
 ?>
 <head>
 	<title>AGENDA</title>
@@ -25,6 +24,7 @@
 	<script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
 </head>
 <body>
+	<?php include "navbar.php"; ?>
 	<h1 style='text-align:center;'>AGENDA</h1>
 	<div class='container'>
 		Bahasa<br>
