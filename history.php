@@ -1,5 +1,6 @@
 <?php include "tpl/header.php"; ?>
 <?php include "tpl/white-navbar.php"; ?>
+<script src="assets/js/jquery-3.4.1.min.js"></script>
 <!-- Intro -->
 <div class="card card-intro blue-gradient">
 
@@ -31,19 +32,22 @@
 
 <!-- HAI DEWANGGA!!, YOUR CODE GOES DOWN HERE -->
 
-<div class="container col-lg-2 " style="float:left;">
-<h3>Tentang</h3><br>
-<hr><br><br>
-<ul>
-    <li><a href="">Profil</a></li>
-    <li><a href="">Lokasi</a></li>
-    <li><a href="">Gedung & Fasilitas</a></li>
-    <li><a href="">Lembaga</a></li>
-
-</ul>
+<div class="ganti">
+<div class="row">
+<div class="col-md-3">
+<div class="list-group ml-3 mt-3">
+  <a href="#!" class="list-group-item list-group-item-action active">
+    TENTANG
+  </a>
+  <a href="" class="list-group-item list-group-item-action" onclick="gantiProfile()">Profil</a>
+  <a href="" class="list-group-item list-group-item-action" id="btnGantiLokasi">Lokasi</a>
+  <a href="" class="list-group-item list-group-item-action" onclick="gantiGedung()">Gedung & Fasilitas</a>
+  <a href="" class="list-group-item list-group-item-action" onclick="gantiLembaga()">Lembaga</a>
+ </div>
 </div>
-<div class="jumbotron">
-            <div class="container z-depth-1 my-6 py-6 px-5 px-lg-12">
+<div class="col-md-9">
+<div class="jumbotron mr-3 mt-3">
+            <div class="container z-depth-1 my-5">
     
                 <!-- Section -->
                 <section>
@@ -150,7 +154,6 @@
                     }
                     </style>
                     
-                    <h3 class="font-weight-bold text-center dark-grey-text pb-2">Tentang <i>i</i>STTS</h3>
                     <hr class="w-header my-4">
                     <!-- <p class="lead text-center text-muted pt-2 mb-5">His</p> -->
                     
@@ -449,7 +452,31 @@
                 </div>
     
             </div>
+</div>
+</div>
 
+</div>
+
+
+<script>
+      function gantiProfile() {
+          $.get("profile.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
+      function gantiLokasi() {
+          $.get("lokasi.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
+
+      $(document).ready(function(){
+        $("#btnGantiLokasi").click(function(e){
+            e.preventDefault();
+            gantiLokasi();
+        });
+      });
+  </script>
 <!-- HAPPY CODING!!! KEEP FIGHTING!!! -->
 
 <?php include "tpl/footer.php"; ?>
