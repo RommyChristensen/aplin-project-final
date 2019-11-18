@@ -16,7 +16,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Berita</a>
+                    <a class="nav-link" href="white-navbar.php">Berita</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Testimoni</a>
@@ -25,10 +25,13 @@
                     <a class="nav-link" href="aktivitasMahasiswa.php">Aktivitas Mahasiswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Akademik</a>
+                    <a class="nav-link" href="akademik.php">Akademik</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Dosen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="history.php">Tentang</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

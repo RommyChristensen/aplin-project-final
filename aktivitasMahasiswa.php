@@ -71,11 +71,11 @@
                     <!--Grid column-->
                     <div class="col-md-3 mb-4">
                         <!-- Card -->
-                        <a href="#!" class="card hoverable bg-custom">
+                        <a href="#!" class="card hoverable purple-gradient">
                             <!-- Card content -->
                             <div class="card-body my-4">
-                                <p><i class="fas fa-camera-retro fa-2x text-muted text-custom"></i></p>
-                                <h5 class="text-custom mb-0">Focaloid</h5>
+                                <p><i class="fas fa-camera-retro fa-2x text-muted white-text"></i></p>
+                                <h5 class="white-text mb-0">Focaloid</h5>
                             </div>
                         </a>
                         <!-- Card -->
@@ -206,6 +206,7 @@
                 <!--First row-->
             </section>
         </div>
+
         <div id="pgukk" class="container my-5">
             <!--Section: Content-->
             <section class="magazine-section dark-grey-text text-center">
@@ -302,7 +303,7 @@
             <!--Section: Content-->
             <section class="dark-grey-text text-center">
                 <!-- Section heading -->
-                <h3 class="font-weight-bold black-text mb-4 pb-2">Himpunan Mahasiswa</h3>
+                <h3 class="font-weight-bold black-text mb-4 pb-2">Himpunan Mahasiswa (HIMA)</h3>
                 <hr class="w-header">
                 <!-- Section description -->
                 <p class="lead text-muted mx-auto mt-4 pt-2 mb-5">
