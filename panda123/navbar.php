@@ -1,5 +1,5 @@
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
+<nav class="mb-1 navbar navbar-expand-lg navbar-light info-color">
   <span class="navbar-brand">Admin</span>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
     <ul class="navbar-nav ml-auto">
