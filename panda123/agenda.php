@@ -80,7 +80,7 @@
 		var bahasa = $("#cbBahasa").val();
 		var judul = $("#tbJudulAgenda").val();
 		var deskripsi = $("#tbDeskripsiAgenda").val();
-		var file = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '')
+		var file = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
 		//alert(filename);
 		//var file = $("#tbFile").val();
 		var lokasi = $("#tbLokasi").val();
