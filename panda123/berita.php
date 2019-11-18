@@ -78,7 +78,7 @@
 		var bahasa = $("#cbBahasa").val();
 		var judul = $("#tbJudulBerita").val();
 		var deskripsi = $("#tbDeskripsiBerita").val();
-		var file = $("#tbFile").val();
+		var file = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
 		var aktif=$("#cbAktif").val();
 		if(bahasa!="" && judul!="" && deskripsi!="" && aktif!=""){
 			if(file==""){
