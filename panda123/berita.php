@@ -1,6 +1,9 @@
 <?php
 	session_start();
 	require_once("../helpers/koneksi.php");
+	if(!isset($_SESSION['adminLogin'])){
+		header("Location:index.php");
+	}
 ?>
 <head>
 	<title>BERITA</title>

@@ -2,6 +2,9 @@
 	session_start();
 	require_once("../helpers/koneksi.php");
 	//require_once("navbar.php");
+	if(!isset($_SESSION['adminLogin'])){
+		header("Location:index.php");
+	}
 ?>
 <head>
 	<title>KONTEN TAG</title>
@@ -51,7 +54,7 @@
                         Kategori
                     </a>
                 </li>
-				<li>
+				<li class='active'>
                     <a href="kontentag.php">
                         <i class="fas fa-tags"></i>
                         Konten Tag
@@ -81,7 +84,7 @@
                         Tag
                     </a>
                 </li>
-				<li class='active'>
+				<li>
                     <a href="testimoni.php">
                         <i class="fas fa-comment"></i>
                         Testimoni

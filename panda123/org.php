@@ -1,12 +1,13 @@
 <?php
 	session_start();
 	require_once("../helpers/koneksi.php");
+	//require_once("navbar.php");
 	if(!isset($_SESSION['adminLogin'])){
 		header("Location:index.php");
 	}
 ?>
 <head>
-	<title>DOSEN</title>
+	<title>ORG</title>
 	<?php include "fileinclude.php";?>
 </head>
 <body>
@@ -36,8 +37,6 @@
                         <i class="fas fa-copy"></i>
                         Berita
                     </a>
-				</li>
-				<li class='active'>
 					<a href="dosen.php">
                         <i class="fas fa-user"></i>
                         Dosen
@@ -73,7 +72,7 @@
                         Media
                     </a>
                 </li>
-				<li>
+				<li  class='active'>
                     <a href="organisasi.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
@@ -102,22 +101,34 @@
                         <i class="fas fa-align-left"></i>
                         <span>See More</span>
                     </button>
-					<h1>DOSEN</h1>
+					<h1>ORGANISASI</h1>
                 </div>
             </nav>
 			<div class='container'>
-				<!-- Default input -->
-				<label for="tbNamaDosen">Nama Dosen</label>
-				<input type="text" id="tbNamaDosen" class="form-control">
+				Bahasa<br>
+				<select id='cbBahasa' class="browser-default custom-select">
+				</select>
 				<br>
 				Status Aktif<br>
 				<select id='cbAktif' class="browser-default custom-select">
 					<option value='1'>Aktif</option>
 					<option value='0'>Non Aktif</option>
 				</select>
+				Kategori<br>
+				<select id='cbKategori' class="browser-default custom-select">
+				</select>
+				Foto 
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="tbFile">
+				  <label class="custom-file-label" for="tbFile" data-browse="Browse">Choose File</label>
+				</div>
+				<label for="tbNama">Nama</label>
+				<input type="text" id="tbNama" class="form-control"><br>
+				<label for="tbDeskripsi">Deskripsi</label>
+				<textarea id="tbDeskripsi" class="form-control"></textarea>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbDosen" class="table table-striped" cellspacing="0" width="100%">
+				<table id="tbOrg" class="table table-striped table-responsive" cellspacing="0" width="100%">
 				</table>
 			</div>
         </div>
@@ -125,33 +136,54 @@
 </body>
 <?php include "fileinclude2.php";?>
 <script type="text/javascript">
-	$(document).ready(function () {
-		$('#sidebarCollapse').on('click', function () {
-			$('#sidebar').toggleClass('active');
-		});
+$(document).ready(function () {
+	$('#sidebarCollapse').on('click', function () {
+		$('#sidebar').toggleClass('active');
 	});
+});
 </script>
 <script language='javascript'>
-	isitabelDosen();
-	function isitabelDosen(){
+	isicbBahasa();
+	function isicbBahasa(){
 		$.post("response.php",
-			{jenis:"isitabelDosen"},
+			{jenis:"isicbBahasa"},
 			function(result){
-				$("#tbDosen").html(result);
-				$('#tbDosen').DataTable();
+				$("#cbBahasa").html(result);
+			}
+		);
+	}
+	isicbKategori();
+	function isicbKategori(){
+		$.post("response.php",
+			{jenis:"isicbKategori"},
+			function(result){
+				$("#cbKategori").html(result);
+			}
+		);
+	}
+	isitabelOrg();
+	function isitabelOrg(){
+		$.post("response.php",
+			{jenis:"isitabelOrg"},
+			function(result){
+				$("#tbOrg").html(result);
+				$('#tbOrg').DataTable();
 			}
 		);
 	}
 	function add(){
-		var nama = $("#tbNamaDosen").val();
+		var bahasa = $("#cbBahasa").val();
 		var aktif = $("#cbAktif").val();
-		if(nama!="" && aktif!=""){
+		var kategori = $("#cbKategori").val();
+		var file = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
+		var nama = $("#tbNama").val();
+		var deskripsi = $("#tbDeskripsi").val();
+		if(bahasa!="" && aktif!="" && kategori!="" && file!="" && nama!="" && deskripsi!=""){
 			$.post("response.php",
-				{jenis:"AddDosen",nama:nama,aktif:aktif},
+				{jenis:"AddOrg",bahasa:bahasa,aktif:aktif,kategori:kategori,file:file,nama:nama,deskripsi:deskripsi},
 				function(result){
-					//alert(result);
 					$("#btnAdd").html(result);
-					isitabelDosen();
+					isitabelOrg();
 				}
 			);
 		}
@@ -162,23 +194,30 @@
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteDosen",nomer:ambil},
+			{jenis:"DeleteOrg",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelDosen();
+				isitabelOrg();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditDosen",nomer:ambil},
+			{jenis:"EditOrg",nomer:ambil},
 			function(result){
 				var array = JSON.parse(result);
-				var nama=array['nama'];
+				var bahasa=array['bahasa'];
+				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
 				var aktif=array['aktif'];
+				alert(aktif);
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
-				$("#tbNamaDosen").val(nama);
+				var kategori=array['kategori'];
+				$("#cbKategori option[value="+kategori+"]").attr('selected','selected');
+				var nama=array['nama'];
+				$("#tbNama").val(nama);
+				var deskripsi=array['deskripsi'];
+				$("#tbDeskripsi").val(deskripsi);
 				$("#btnAdd").html("SAVE");
 			}
 		);

@@ -56,6 +56,14 @@
 			echo $kalimat;
 		}
 	}
+	if($_POST['jenis']=="isicbKategori"){
+		$query=mysqli_query($conn,"select * from kategori_bahasa");
+		$kalimat="";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<option value='".$row['kategori_bahasa_id']."'>".$row['kategori_nama']." - ".$row['kategori_nama_pendek']."<option>";
+		}
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="isitabelAgenda"){
 		$query = mysqli_query($conn,"select * from agenda_bahasa");
 		$kalimat="<thead><tr><th class='th-sm'>Judul</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Foto</th><th class='th-sm'>Lokasi</th><th class='th-sm'>Deskripsi</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
@@ -340,6 +348,40 @@
 		$kalimat.="</tbody></table>";
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isitabelOrg"){
+		$query = mysqli_query($conn,"select * from org_bahasa");
+		$kalimat="<thead><tr><th class='th-sm'>Nama</th><th class='th-sm'>Deskripsi</th><th class='th-sm'>Kategori</th><th class='th-sm'>Foto</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<tr>";
+				$kalimat.="<td>".$row['org_nama']."</td>";
+				$kalimat.="<td>".$row['org_deskripsi']."</td>";
+				$org_id=$row['org_id'];
+				$q1=mysqli_query($conn,"select * from org where org_id='$org_id'");
+				while($r1=mysqli_fetch_assoc($q1)){
+					$kategori_id=$r1['kategori_id'];
+					$foto=$r1['org_foto'];
+					$aktif=$r1['org_status'];
+				}
+				$q2=mysqli_query($conn,"select * from kategori_bahasa where kategori_id='$kategori_id'");
+				while($r2=mysqli_fetch_assoc($q2)){
+					$namaKategori = $r2['kategori_nama'];
+				}
+				$kalimat.="<td>".$namaKategori."</td>";
+				$kalimat.="<td>".$foto."</td>";
+				$bahasa=$row['bahasa_id'];
+				$q3=mysqli_query($conn,"select * from bahasa where bahasa_id=$bahasa");
+				while($r3=mysqli_fetch_assoc($q3)){
+					$bahasa=$r3['bahasa_nama'];
+				}
+				$kalimat.="<td>".$bahasa."</td>";
+				$kalimat.="<td>".$aktif."</td>";
+				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['org_bahasa_id'].")'>Edit</button>";
+				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['org_bahasa_id'].")'>Delete</button></td>";
+			$kalimat.="</tr>";
+		}
+		$kalimat.="</tbody></table>";
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="AddAgenda"){
 		$bahasa		=$_POST['bahasa'];
 		$judul 		=$_POST['judul'];
@@ -562,6 +604,30 @@
 			echo "ADD";
 		}
 	}
+	if($_POST['jenis']=="AddOrg"){
+		$bahasa	= $_POST['bahasa'];
+		$aktif	= $_POST['aktif'];
+		$kategori = $_POST['kategori'];
+		$foto	= $_POST['file'];
+		$nama	= $_POST['nama'];
+		$deskripsi=$_POST['deskripsi'];
+		if(isset($_SESSION['editOrg'])){
+			$nomer = $_SESSION['editOrg'];
+			mysqli_query($conn,"update org set kategori_id='$kategori',org_foto='$foto',org_status='$status' where org_id='$nomer'");
+			mysqli_query($conn,"update org_bahasa set bahasa_id='$bahasa',org_nama='$nama',org_deskripsi='$deskripsi' where org_id='$nomer'");
+			unset($_SESSION['editOrg']);
+			echo "ADD";
+		}
+		else{
+			$q1=mysqli_query($conn,"insert into org(kategori_id,org_foto,org_status) values('$kategori','$foto','$aktif')");
+			$q3=mysqli_query($conn,"select * from org where org_id=(select max(org_id) from org)");
+			while($r3=mysqli_fetch_assoc($q3)){
+				$org_id=$r3['org_id'];
+			}
+			$q2=mysqli_query($conn,"insert into org_bahasa(org_id,bahasa_id,org_nama,org_deskripsi) values('$org_id','$bahasa','$nama','$deskripsi')");
+			echo "ADD";
+		}
+	}
 	if($_POST['jenis']=="DeleteAgenda"){
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from agenda_bahasa where agenda_bahasa_id='$nomer'");
@@ -619,6 +685,12 @@
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from konten_tag where konten_id='$nomer'");
 		mysqli_query($conn,"delete from konten where konten_id='$nomer'");
+		echo "Sukses";
+	}
+	if($_POST['jenis']=="DeleteOrg"){
+		$nomer		=$_POST['nomer'];
+		mysqli_query($conn,"delete from org_bahasa where org_id='$nomer'");
+		mysqli_query($conn,"delete from org where org_id='$nomer'");
 		echo "Sukses";
 	}
 	if($_POST['jenis']=="EditAgenda"){
@@ -796,6 +868,24 @@
 			$arr['aktif']=$r2['konten_status'];
 		}
 		$_SESSION['editKontenTag']=$nomer;
+		echo json_encode($arr);
+	}
+	if($_POST['jenis']=="EditOrg"){
+		$nomer		=$_POST['nomer'];
+		$arr[]		=array();
+		$q1 = mysqli_query($conn,"select * from org_bahasa where org_bahasa_id='$nomer'");
+		while($r1=mysqli_fetch_assoc($q1)){
+			$arr['bahasa']=$r1['bahasa_id'];
+			$arr['nama']=$r1['org_nama'];
+			$arr['deskripsi']=$r1['org_deskripsi'];
+		}
+		$q2 = mysqli_query($conn,"select * from org where org_id='$nomer'");
+		while($r2=mysqli_fetch_assoc($q2)){
+			$arr['kategori']=$r2['kategori_id'];
+			$arr['org_foto']=$r2['org_foto'];
+			$arr['aktif']=$r2['org_status'];
+		}
+		$_SESSION['editOrg']=$nomer;
 		echo json_encode($arr);
 	}
 	if($_POST['jenis']=="cekJurusanAda"){

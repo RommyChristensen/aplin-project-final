@@ -2,6 +2,9 @@
 	session_start();
 	require_once("../helpers/koneksi.php");
 	//require_once("navbar.php");
+	if(!isset($_SESSION['adminLogin'])){
+		header("Location:index.php");
+	}
 ?>
 <head>
 	<title>TESTIMONI</title>
