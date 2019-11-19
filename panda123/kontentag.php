@@ -4,7 +4,7 @@
 	//require_once("navbar.php");
 ?>
 <head>
-	<title>TAG</title>
+	<title>KONTEN TAG</title>
 	<?php include "fileinclude.php";?>
 </head>
 <body>
@@ -75,13 +75,13 @@
                         Organisasi
                     </a>
                 </li>
-				<li  class='active'>
+				<li>
                     <a href="tag.php">
                         <i class="fas fa-tags"></i>
                         Tag
                     </a>
                 </li>
-				<li>
+				<li class='active'>
                     <a href="testimoni.php">
                         <i class="fas fa-comment"></i>
                         Testimoni
@@ -98,25 +98,30 @@
                         <i class="fas fa-align-left"></i>
                         <span>See More</span>
                     </button>
-					<h1>TAG</h1>
+					<h1>KONTEN TAG</h1>
                 </div>
             </nav>
 			<div class='container'>
-				Bahasa<br>
-				<select id='cbBahasa' class="browser-default custom-select">
-				</select>
-				<br>
 				Status Aktif<br>
 				<select id='cbAktif' class="browser-default custom-select">
 					<option value='1'>Aktif</option>
 					<option value='0'>Non Aktif</option>
 				</select>
-				<!-- Default input -->
-				<label for="tbNamaTag">Nama Tag</label>
-				<input type="text" id="tbNamaTag" class="form-control"><br>
+				Jenis Konten<br>
+				<select id='cbJenis' class="browser-default custom-select" onchange='isicbParent()'>
+					<option value='0' selected='selected'>Agenda</option>
+					<option value='1'>Berita</option>
+					<option value='2'>Media</option>
+				</select>
+				Parent Konten<br>
+				<select id='cbParent' class="browser-default custom-select">
+				</select>
+				Tag<br>
+				<select id='cbTag' class="browser-default custom-select">
+				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbTag" class="table table-striped" cellspacing="0" width="100%">
+				<table id="tbKontenTag" class="table table-striped table-responsive" cellspacing="0" width="100%">
 				</table>
 			</div>
         </div>
@@ -131,65 +136,89 @@ $(document).ready(function () {
 });
 </script>
 <script language='javascript'>
-	isicbBahasa();
-	isitabelTag();
-	function isicbBahasa(){
+	isicbParent();
+	isicbTag();
+	function isicbTag(){
 		$.post("response.php",
-			{jenis:"isicbBahasa"},
+			{jenis:"isicbTag"},
 			function(result){
-				$("#cbBahasa").html(result);
+				$("#cbTag").html(result);
 			}
 		);
 	}
-	function isitabelTag(){
+	function isicbParent(){
+		var jenisKonten = $("#cbJenis").val();
 		$.post("response.php",
-			{jenis:"isitabelTag"},
+			{jenis:"isicbParentKontenTag",jenisKonten:jenisKonten},
 			function(result){
-				$("#tbTag").html(result);
-				$('#tbTag').DataTable();
+				$("#cbParent").html(result);
+			}
+		);
+	}
+	isitabelKontenTag();
+	function isitabelKontenTag(){
+		$.post("response.php",
+			{jenis:"isitabelKontenTag"},
+			function(result){
+				$("#tbKontenTag").html(result);
+				$('#tbKontenTag').DataTable();
 			}
 		);
 	}
 	function add(){
-		var bahasa = $("#cbBahasa").val();
 		var aktif = $("#cbAktif").val();
-		var nama = $("#tbNamaTag").val();
-		if(bahasa!="" && aktif!="" && nama!=""){
+		var jenisKonten = $("#cbJenis").val();
+		if(jenisKonten==0){
+			jenisKonten="agenda";
+		}
+		else if(jenisKonten==1){
+			jenisKonten="berita";
+		}
+		else{
+			jenisKonten="media";
+		}
+		var parent = $("#cbParent").val();
+		var tag = $("#cbTag").val();
+		if(aktif!="" && jenisKonten!="" && parent!="" && tag!=""){
 			$.post("response.php",
-				{jenis:"AddTag",nama:nama,aktif:aktif,bahasa:bahasa},
+				{jenis:"AddKontenTag",aktif:aktif,jenisKonten:jenisKonten,parent:parent,tag:tag},
 				function(result){
-					//alert(result);
 					$("#btnAdd").html(result);
-					isitabelTag();
+					isitabelTestimoni();
 				}
 			);
 		}
 		else{
-			alert("Semua Field Harus terisi");
+			alert("Semua field harus terisi");
 		}
 	}
 	function deletes(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"DeleteTag",nomer:ambil},
+			{jenis:"DeleteKontenTag",nomer:ambil},
 			function(result){
 				//alert(result);
-				isitabelTag();
+				isitabelKontenTag();
 			}
 		);
 	}
 	function edit(e){
 		var ambil = e;
 		$.post("response.php",
-			{jenis:"EditTag",nomer:ambil},
+			{jenis:"EditKontenTag",nomer:ambil},
 			function(result){
+				//alert(result);
 				var array = JSON.parse(result);
-				var bahasa=array['bahasa'];
-				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
 				var aktif=array['aktif'];
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
-				var nama=array['nama'];
-				$("#tbNamaTag").val(nama);
+				var jenis=array['jenis'];
+				$("#cbJenis option[value="+jenis+"]").attr('selected','selected');
+				isicbParent();
+				var parent=array['parent'];
+				//alert(parent);
+				$("#cbParent option[value="+parent+"]").attr('selected','selected');
+				var tag=array['tag'];
+				$("#cbTag option[value="+tag+"]").attr('selected','selected');
 				$("#btnAdd").html("SAVE");
 			}
 		);

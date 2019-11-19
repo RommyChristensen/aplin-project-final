@@ -13,6 +13,14 @@
 		}
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isicbTag"){
+		$query=mysqli_query($conn,"select * from tag_bahasa");
+		$kalimat="";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<option value='".$row['tag_id']."'>".$row['tag_nama']."<option>";
+		}
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="isicbJurusan"){
 		$query = mysqli_query($conn,"select * from jurusan_bahasa");
 		$kalimat="";
@@ -20,6 +28,33 @@
 			$kalimat.="<option value='".$row['jurusan_id']."'>".$row['jurusan_nama']."</option>";
 		}
 		echo $kalimat;
+	}
+	if($_POST['jenis']=="isicbParentKontenTag"){
+		$jenisKonten=$_POST['jenisKonten'];
+		if($jenisKonten==0){
+			$query=mysqli_query($conn,"select * from agenda_bahasa");
+			$kalimat="";
+			while($row=mysqli_fetch_assoc($query)){
+				$kalimat.="<option value='".$row['agenda_bahasa_id']."'>".$row['agenda_judul']."</option>";
+			}
+			echo $kalimat;
+		}
+		else if($jenisKonten==1){
+			$query=mysqli_query($conn,"select * from berita_bahasa");
+			$kalimat="";
+			while($row=mysqli_fetch_assoc($query)){
+				$kalimat.="<option value='".$row['berita_bahasa_id']."'>".$row['berita_judul']."</option>";
+			}
+			echo $kalimat;
+		}
+		else if($jenisKonten==2){
+			$query=mysqli_query($conn,"select * from media_bahasa");
+			$kalimat="";
+			while($row=mysqli_fetch_assoc($query)){
+				$kalimat.="<option value='".$row['media_bahasa_id']."'>".$row['media_judul']."</option>";
+			}
+			echo $kalimat;
+		}
 	}
 	if($_POST['jenis']=="isitabelAgenda"){
 		$query = mysqli_query($conn,"select * from agenda_bahasa");
@@ -259,6 +294,52 @@
 		$kalimat.="</tbody></table>";
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isitabelKontenTag"){
+		$query = mysqli_query($conn,"select * from konten");
+		$kalimat="<thead><tr><th class='th-sm'>Parent</th><th class='th-sm'>Jenis</th><th class='th-sm'>Tag</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<tr>";
+				$aktif=$row['konten_status'];
+				$jenis=$row['konten_nama'];
+				$id=$row['konten_id'];
+				$q1=mysqli_query($conn,"select * from konten_tag where konten_id='$id'");
+				while($r1=mysqli_fetch_assoc($q1)){
+					$parentId=$r1['konten_parent'];
+					$tag_id=$r1['tag_id'];
+				}
+				if($jenis=='agenda'){
+					$q2=mysqli_query($conn,"select * from agenda_bahasa where agenda_bahasa_id='$parentId'");
+					while($r2=mysqli_fetch_assoc($q2)){
+						$judul=$r2['agenda_judul'];
+					}
+				}
+				else if($jenis=='berita'){
+					$q2=mysqli_query($conn,"select * from berita_bahasa where berita_bahasa_id='$parentId'");
+					while($r2=mysqli_fetch_assoc($q2)){
+						$judul=$r2['berita_judul'];
+					}
+				}
+				else{
+					$q2=mysqli_query($conn,"select * from media_bahasa where media_bahasa_id='$parentId'");
+					while($r2=mysqli_fetch_assoc($q2)){
+						$judul=$r2['media_judul'];
+					}
+				}
+				$kalimat.="<td>".$judul."</td>";
+				$kalimat.="<td>".$jenis."</td>";
+				$q3=mysqli_query($conn,"select * from tag_bahasa where tag_bahasa_id='$tag_id'");
+				while($r3=mysqli_fetch_assoc($q3)){
+					$tags = $r3['tag_nama'];
+				}
+				$kalimat.="<td>".$tags."</td>";
+				$kalimat.="<td>".$aktif."</td>";
+				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['konten_id'].")'>Edit</button>";
+				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['konten_id'].")'>Delete</button></td>";
+			$kalimat.="</tr>";
+		}
+		$kalimat.="</tbody></table>";
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="AddAgenda"){
 		$bahasa		=$_POST['bahasa'];
 		$judul 		=$_POST['judul'];
@@ -459,6 +540,28 @@
 			echo "ADD";
 		}
 	}
+	if($_POST['jenis']=="AddKontenTag"){
+		$aktif 		=$_POST['aktif'];
+		$jenisKonten=$_POST['jenisKonten'];
+		$parent		=$_POST['parent'];
+		$tag		=$_POST['tag'];
+		if(isset($_SESSION['editKontenTag'])){
+			$nomer = $_SESSION['editKontenTag'];
+			mysqli_query($conn,"update konten set konten_nama='$jenisKonten', konten_status='$aktif'where konten_id='$nomer'");
+			mysqli_query($conn,"update konten_tag set konten_parent='$parent',tag_id='$tag' where konten_id='$nomer'");
+			unset($_SESSION['editKontenTag']);
+			echo "ADD";
+		}
+		else{
+			$q1=mysqli_query($conn,"insert into konten(konten_nama,konten_status) values('$jenisKonten','$aktif')");
+			$q3=mysqli_query($conn,"select * from konten where konten_id=(select max(konten_id) from konten)");
+			while($r3=mysqli_fetch_assoc($q3)){
+				$konten_id=$r3['konten_id'];
+			}
+			$q2=mysqli_query($conn,"insert into konten_tag(konten_id,konten_parent,tag_id) values('$konten_id','$parent','$tag')");
+			echo "ADD";
+		}
+	}
 	if($_POST['jenis']=="DeleteAgenda"){
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from agenda_bahasa where agenda_bahasa_id='$nomer'");
@@ -510,6 +613,12 @@
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from testimoni_bahasa where testimoni_bahasa_id='$nomer'");
 		mysqli_query($conn,"delete from testimoni where testimoni_id='$nomer'");
+		echo "Sukses";
+	}
+	if($_POST['jenis']=="DeleteKontenTag"){
+		$nomer		=$_POST['nomer'];
+		mysqli_query($conn,"delete from konten_tag where konten_id='$nomer'");
+		mysqli_query($conn,"delete from konten where konten_id='$nomer'");
 		echo "Sukses";
 	}
 	if($_POST['jenis']=="EditAgenda"){
@@ -661,6 +770,32 @@
 			$arr['aktif']=$r2['testimoni_status'];
 		}
 		$_SESSION['editTestimoni']=$nomer;
+		echo json_encode($arr);
+	}
+	if($_POST['jenis']=="EditKontenTag"){
+		$nomer		=$_POST['nomer'];
+		$arr[]		=array();
+		$q1 = mysqli_query($conn,"select * from konten_tag where konten_id='$nomer'");
+		while($r1=mysqli_fetch_assoc($q1)){
+			$arr['parent']=$r1['konten_parent'];
+			$arr['tag']=$r1['tag_id'];
+		}
+		$q2 = mysqli_query($conn,"select * from konten where konten_id='$nomer'");
+		while($r2=mysqli_fetch_assoc($q2)){
+			$jenisKonten=$r2['konten_nama'];
+			if($jenisKonten=='agenda'){
+				$jenisKonten=0;
+			}
+			else if($jenisKonten=='berita'){
+				$jenisKonten=1;
+			}
+			else{
+				$jenisKonten=2;
+			}
+			$arr['jenis']=$jenisKonten;
+			$arr['aktif']=$r2['konten_status'];
+		}
+		$_SESSION['editKontenTag']=$nomer;
 		echo json_encode($arr);
 	}
 	if($_POST['jenis']=="cekJurusanAda"){
