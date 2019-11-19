@@ -51,6 +51,12 @@
                         Kategori
                     </a>
                 </li>
+				<li>
+                    <a href="kontentag.php">
+                        <i class="fas fa-tags"></i>
+                        Konten Tag
+                    </a>
+                </li>
 				<li  class='active'>
                     <a href="matkul.php">
                         <i class="fas fa-book"></i>
