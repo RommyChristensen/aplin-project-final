@@ -1,17 +1,24 @@
 <?php
     echo "<div class='row'>
     <div class='col-md-3'>
-    <div class='list-group ml-3 mt-3'>
-      <a href='#!' class='list-group-item list-group-item-action active'>
-        TENTANG
-      </a>
-      <a href='' class='list-group-item list-group-item-action' onclick='gantiProfile()'>Profil</a>
-      <a href='' class='list-group-item list-group-item-action' id='btnGantiLokasi'>Lokasi</a>
-      <a href='' class='list-group-item list-group-item-action' onclick='gantiGedung()'>Gedung & Fasilitas</a>
-      <a href='' class='list-group-item list-group-item-action' onclick='gantiLembaga()'>Lembaga</a>
-     </div>
+        <div class='list-group ml-3 mt-3'>
+            <a href='#!' class='list-group-item list-group-item-action active'>
+                TENTANG
+            </a>
+            <a href='' class='list-group-item list-group-item-action' id='btnGantiProfile'>Profil</a>
+            <a href='' class='list-group-item list-group-item-action' id='btnGantiLokasi'>Lokasi</a>
+            <a href='' class='list-group-item list-group-item-action' onclick='gantiGedung()'>Gedung & Fasilitas</a>
+            <a href='' class='list-group-item list-group-item-action' onclick='gantiLembaga()'>Lembaga</a>
+        </div><br>
+        <div>
+        <h4>Visi</h4><hr>
+        Pada Tahun 2022, iSTTS menjadi perguruan tinggi bidang sains, teknologi,
+        dan desain yang mampu bersaing di tingkat Asia Tenggara, dengan mengedepankan kualitas, 
+        inovasi, dan nilai-nilai keindonesiaan.
+        
+        </div>
     </div>
-    <div class='col-md-9'>";
+<div class='col-md-9'>";
     echo "<div class='jumbotron mr-3 mt-3'>
     <div class='container-fluid mt-3 mb-5'>
 

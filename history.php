@@ -43,8 +43,23 @@
             <a href="" class="list-group-item list-group-item-action" id="btnGantiLokasi">Lokasi</a>
             <a href="" class="list-group-item list-group-item-action" onclick="gantiGedung()">Gedung & Fasilitas</a>
             <a href="" class="list-group-item list-group-item-action" onclick="gantiLembaga()">Lembaga</a>
+        </div><br>
+        <div>
+        <h4>Visi</h4><hr>
+        Pada Tahun 2022, iSTTS menjadi perguruan tinggi bidang sains, teknologi,
+        dan desain yang mampu bersaing di tingkat Asia Tenggara, dengan mengedepankan kualitas, 
+        inovasi, dan nilai-nilai keindonesiaan.
+        
+        </div><br>
+        <div>
+        <h4>Misi</h4><hr>
+        <ul>
+        <li>Memberikan materi pendidikan dan pengajaran terbaik di bidang sains, teknologi, dan desain, dengan beberapa warna keindonesiaan di dalamnya, mengacu pada berbagai standar internasional, disesuaikan dengan situasi dan kondisi kebutuhan dan perkembangan sosial, ekonomi, dan budaya masyarakat Asia Tenggara.</li>
+        <li>Melakukan penelitian berstandar internasional di bidang sains, teknologi, dan desain, sesuai kebutuhan dan perkembangan sosial, ekonomi, dan budaya masyarakat Asia Tenggara, menggunakan keindonesiaan sebagai bagian dari elemen penelitian.</li>
+        <li>Menyediakan berbagai solusi inovatif dan unggulan berbasis sains, teknologi, dan desain bagi berbagai masalah sosial, ekonomi, dan budaya, mengacu pada berbagai standar internasional, khususnya dalam menghadapi pasar masyarakat ekonomi ASEAN (AEC)</li>
+        </ul>
         </div>
-</div>
+    </div>
 <div class="col-md-9">
 <div class="jumbotron mr-3 mt-3">
             <div class="container z-depth-1 my-5">
@@ -474,10 +489,6 @@
         $("#btnGantiLokasi").click(function(e){
             e.preventDefault();
             gantiLokasi();
-        });
-        $("#btnGantiProfile").click(function(e){
-            e.preventDefault();
-            gantiProfile();
         });
       });
   </script>
