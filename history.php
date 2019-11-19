@@ -41,7 +41,7 @@
             </a>
             <a href="" class="list-group-item list-group-item-action" id="btnGantiProfile">Profil</a>
             <a href="" class="list-group-item list-group-item-action" id="btnGantiLokasi">Lokasi</a>
-            <a href="" class="list-group-item list-group-item-action" onclick="gantiGedung()">Gedung & Fasilitas</a>
+            <a href="" class="list-group-item list-group-item-action" id="btnGantiGedung">Gedung & Fasilitas</a>
             <a href="" class="list-group-item list-group-item-action" onclick="gantiLembaga()">Lembaga</a>
         </div><br>
         <div>
@@ -484,13 +484,44 @@
             $(".ganti").html(e);
           });
       }
+      function gantiGedung() {
+          $.get("GedungFasilitas.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
+      function RincianGedung() {
+          $.get("RincianGedung.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
 
       $(document).ready(function(){
         $("#btnGantiLokasi").click(function(e){
             e.preventDefault();
             gantiLokasi();
         });
+        $("#btnGantiGedung").click(function(e){
+            e.preventDefault();
+            gantiGedung();
+        });
+        $(document).on("click", "#btnGambarRincian",function(e){
+            e.preventDefault();
+            rincianGedung();
+        })
+        $(document).on("click", "#btnRincianGedung",function(e){
+            e.preventDefault();
+            rincianGedung();
+        })
       });
+
+      function rincianGedung(){
+        $("#btnRincianGedung").click(function(){
+            RincianGedung();
+        });
+        $("#btnGambarRincian").click(function(e){
+            RincianGedung();
+        });
+      }
   </script>
 <!-- HAPPY CODING!!! KEEP FIGHTING!!! -->
 
