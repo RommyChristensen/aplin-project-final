@@ -34,16 +34,16 @@
 
 <div class="ganti">
 <div class="row">
-<div class="col-md-3">
-<div class="list-group ml-3 mt-3">
-  <a href="#!" class="list-group-item list-group-item-action active">
-    TENTANG
-  </a>
-  <a href="" class="list-group-item list-group-item-action" onclick="gantiProfile()">Profil</a>
-  <a href="" class="list-group-item list-group-item-action" id="btnGantiLokasi">Lokasi</a>
-  <a href="" class="list-group-item list-group-item-action" onclick="gantiGedung()">Gedung & Fasilitas</a>
-  <a href="" class="list-group-item list-group-item-action" onclick="gantiLembaga()">Lembaga</a>
- </div>
+    <div class="col-md-3">
+        <div class="list-group ml-3 mt-3">
+            <a href="#!" class="list-group-item list-group-item-action active">
+                TENTANG
+            </a>
+            <a href="" class="list-group-item list-group-item-action" id="btnGantiProfile">Profil</a>
+            <a href="" class="list-group-item list-group-item-action" id="btnGantiLokasi">Lokasi</a>
+            <a href="" class="list-group-item list-group-item-action" onclick="gantiGedung()">Gedung & Fasilitas</a>
+            <a href="" class="list-group-item list-group-item-action" onclick="gantiLembaga()">Lembaga</a>
+        </div>
 </div>
 <div class="col-md-9">
 <div class="jumbotron mr-3 mt-3">
@@ -474,6 +474,10 @@
         $("#btnGantiLokasi").click(function(e){
             e.preventDefault();
             gantiLokasi();
+        });
+        $("#btnGantiProfile").click(function(e){
+            e.preventDefault();
+            gantiProfile();
         });
       });
   </script>

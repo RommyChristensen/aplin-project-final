@@ -13,7 +13,7 @@
     </div>
     <div class='col-md-9'>";
     echo "<div class='jumbotron mr-3 mt-3'>
-    <div class='container z-depth-1 z-depth-1 my-5'>
+    <div class='container z-depth-1 my-5'>
 
         <!-- Section -->
         <section>
@@ -120,7 +120,6 @@
             }
             </style>
             
-            <h3 class='font-weight-bold text-center dark-grey-text pb-2'>Profil <i>i</i>STTS</h3>
             <hr class='w-header my-4'>
             <!-- <p class='lead text-center text-muted pt-2 mb-5'>His</p> -->
             
