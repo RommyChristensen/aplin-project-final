@@ -230,6 +230,35 @@
 		$kalimat.="</tbody></table>";
 		echo $kalimat;
 	}
+	if($_POST['jenis']=="isitabelTestimoni"){
+		$query = mysqli_query($conn,"select * from testimoni_bahasa");
+		$kalimat="<thead><tr><th class='th-sm'>Nama</th><th class='th-sm'>Profil</th><th class='th-sm'>Testimoni</th><th class='th-sm'>Foto</th><th class='th-sm'>Bahasa</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		while($row=mysqli_fetch_assoc($query)){
+			$kalimat.="<tr>";
+				$id=$row['testimoni_id'];
+				$q1=mysqli_query($conn,"select * from testimoni where testimoni_id='$id'");
+				while($r1=mysqli_fetch_assoc($q1)){
+					$kalimat.="<td>".$r1['testimoni_nama']."</td>";
+					$foto=$r1['testimoni_foto'];
+					$aktif=$r1['testimoni_status'];
+				}
+				$kalimat.="<td>".$row['testimoni_profil']."</td>";
+				$kalimat.="<td>".$row['testimoni_text']."</td>";
+				$kalimat.="<td>".$foto."</td>";
+				$bahasa=$row['bahasa_id'];
+				$q2=mysqli_query($conn,"select * from bahasa where bahasa_id=$bahasa");
+				while($r2=mysqli_fetch_assoc($q2)){
+					$bahasa=$r2['bahasa_nama'];
+				}
+				$kalimat.="<td>".$bahasa."</td>";
+				$kalimat.="<td>".$aktif."</td>";
+				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['testimoni_bahasa_id'].")'>Edit</button>";
+				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['testimoni_bahasa_id'].")'>Delete</button></td>";
+			$kalimat.="</tr>";
+		}
+		$kalimat.="</tbody></table>";
+		echo $kalimat;
+	}
 	if($_POST['jenis']=="AddAgenda"){
 		$bahasa		=$_POST['bahasa'];
 		$judul 		=$_POST['judul'];
@@ -406,6 +435,30 @@
 			echo "ADD";
 		}
 	}
+	if($_POST['jenis']=="AddTestimoni"){
+		$bahasa		=$_POST['bahasa'];
+		$aktif 		=$_POST['aktif'];
+		$nama		=$_POST['nama'];
+		$profil		=$_POST['profil'];
+		$file		=$_POST['file'];
+		$testimoni	=$_POST['testimoni'];
+		if(isset($_SESSION['editTestimoni'])){
+			$nomer = $_SESSION['editTestimoni'];
+			mysqli_query($conn,"update testimoni set testimoni_nama='$nama', testimoni_foto='$file',testimoni_status='$aktif' where testimoni_id='$nomer'");
+			mysqli_query($conn,"update testimoni_bahasa set bahasa_id='$bahasa',testimoni_profil='$profil',testimoni_text='$testimoni' where testimoni_bahasa_id='$nomer'");
+			unset($_SESSION['editTestimoni']);
+			echo "ADD";
+		}
+		else{
+			$q1=mysqli_query($conn,"insert into testimoni(testimoni_nama,testimoni_foto,testimoni_status) values('$nama','$file','$aktif')");
+			$q3=mysqli_query($conn,"select * from testimoni where testimoni_id=(select max(testimoni_id) from testimoni)");
+			while($r3=mysqli_fetch_assoc($q3)){
+				$testimoni_id=$r3['testimoni_id'];
+			}
+			$q2=mysqli_query($conn,"insert into testimoni_bahasa(testimoni_id,bahasa_id,testimoni_profil,testimoni_text) values('$testimoni_id','$bahasa','$profil','$testimoni')");
+			echo "ADD";
+		}
+	}
 	if($_POST['jenis']=="DeleteAgenda"){
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from agenda_bahasa where agenda_bahasa_id='$nomer'");
@@ -451,6 +504,12 @@
 		$nomer		=$_POST['nomer'];
 		mysqli_query($conn,"delete from media_bahasa where media_bahasa_id='$nomer'");
 		mysqli_query($conn,"delete from media where media_id='$nomer'");
+		echo "Sukses";
+	}
+	if($_POST['jenis']=="DeleteTestimoni"){
+		$nomer		=$_POST['nomer'];
+		mysqli_query($conn,"delete from testimoni_bahasa where testimoni_bahasa_id='$nomer'");
+		mysqli_query($conn,"delete from testimoni where testimoni_id='$nomer'");
 		echo "Sukses";
 	}
 	if($_POST['jenis']=="EditAgenda"){
@@ -584,6 +643,24 @@
 			$arr['aktif']=$r2['media_status'];
 		}
 		$_SESSION['editMedia']=$nomer;
+		echo json_encode($arr);
+	}
+	if($_POST['jenis']=="EditTestimoni"){
+		$nomer		=$_POST['nomer'];
+		$arr[]		=array();
+		$q1 = mysqli_query($conn,"select * from testimoni_bahasa where testimoni_bahasa_id='$nomer'");
+		while($r1=mysqli_fetch_assoc($q1)){
+			$arr['testimoni']=$r1['testimoni_text'];
+			$arr['profil']=$r1['testimoni_profil'];
+			$arr['bahasa']=$r1['bahasa_id'];
+		}
+		$q2 = mysqli_query($conn,"select * from testimoni where testimoni_id='$nomer'");
+		while($r2=mysqli_fetch_assoc($q2)){
+			$arr['nama']=$r2['testimoni_nama'];
+			$arr['foto']=$r2['testimoni_foto'];
+			$arr['aktif']=$r2['testimoni_status'];
+		}
+		$_SESSION['editTestimoni']=$nomer;
 		echo json_encode($arr);
 	}
 	if($_POST['jenis']=="cekJurusanAda"){
