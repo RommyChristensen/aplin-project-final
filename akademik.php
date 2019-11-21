@@ -30,45 +30,39 @@
 </div>
 <!-- Intro -->
 
-<div class="container-fluid my-5">
+<div class="container-fluid my-5 mx-3">
     <div class="row">
         <div class="col-3">
-            <div class="list-group" id="list-tab" role="tablist">
-                <h4 class="text-center my-3">DIPLOMA 3</h4>
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
-                    href="#list-home" role="tab" aria-controls="home">D3 - Sistem Informasi</a>
-                <h4 class="text-center my-3">STRATA 1</h4>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                    href="#infor" role="tab" aria-controls="profile">S1 - Teknik Informatika</a>
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
-                    href="#sib" role="tab" aria-controls="messages">S1 - Sistem Informasi Bisnis</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
-                    href="#dkv" role="tab" aria-controls="settings">S1 - Desain Komunikasi Visual</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                    href="#list-profile" role="tab" aria-controls="profile">S1 - Teknik Industri</a>
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
-                    href="#list-messages" role="tab" aria-controls="messages">S1 - Teknik Elektro</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
-                    href="#list-settings" role="tab" aria-controls="settings">S1 - Desain Produk</a>
+            <div class="list-group z-depth-1" id="list-tab" role="tablist">
+                <h4 class="text-center py-3">DIPLOMA 3</h4>
+                <a class="list-group-item list-group-item-action active" id="d3" data-toggle="list"
+                    href="#list-home" role="tab" aria-controls="home" value="01">D3 - Sistem Informasi</a>
+                <h4 class="text-center py-3">STRATA 1</h4>
+                <a class="list-group-item list-group-item-action" id="pinfor" data-toggle="list"
+                    href="#infor" role="tab" aria-controls="profile" value="11">S1 - Teknik Informatika</a>
+                <a class="list-group-item list-group-item-action" id="psib" data-toggle="list"
+                    href="#sib" role="tab" aria-controls="messages" value="18">S1 - Sistem Informasi Bisnis</a>
+                <a class="list-group-item list-group-item-action" id="pdkv" data-toggle="list"
+                    href="#dkv" role="tab" aria-controls="settings" value="17">S1 - Desain Komunikasi Visual</a>
+                <a class="list-group-item list-group-item-action" id="pindustri" data-toggle="list"
+                    href="#industri" role="tab" aria-controls="profile" value="12">S1 - Teknik Industri</a>
+                <a class="list-group-item list-group-item-action" id="pelektro" data-toggle="list"
+                    href="#elektro" role="tab" aria-controls="messages" value="10">S1 - Teknik Elektro</a>
+                <a class="list-group-item list-group-item-action" id="pdespro" data-toggle="list"
+                    href="#despro" role="tab" aria-controls="settings" value="14">S1 - Desain Produk</a>
+                <h4 class="text-center py-3">STRATA 2</h4>
+                <a class="list-group-item list-group-item-action" id="ps2ti" data-toggle="list"
+                    href="#s2ti" role="tab" aria-controls="settings" value="21">S2 - Teknologi Informasi</a>
+                <h4 class="text-center py-3">Program Internasional</h4>
+                <a class="list-group-item list-group-item-action" id="pbit" data-toggle="list"
+                    href="#bit" role="tab" aria-controls="settings" value="02">Bachelor of Information Technology</a>
             </div>
         </div>
-        <div class="col-9">
+        
+        <div class="col-8 z-depth-1 mx-5 py-3">
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                    <?php
-                        $query = "SELECT * FROM jurusan_bahasa WHERE jurusan_bahasa_id = 1";
-                        $res = mysqli_query($conn, $query)->fetch_assoc();
-                        echo $res['jurusan_deskripsi'];
-                    ?>
-                </div>
-                <div class="tab-pane fade" id="infor" role="tabpanel" aria-labelledby="list-profile-list">
-                    infor
-                </div>
-                <div class="tab-pane fade" id="sib" role="tabpanel" aria-labelledby="list-messages-list">
-                    sib
-                </div>
-                <div class="tab-pane fade" id="dkv" role="tabpanel" aria-labelledby="list-settings-list">
-                    dkv
+                    
                 </div>
             </div>
         </div>
@@ -76,5 +70,34 @@
 </div>
 
 <?php include "tpl/footer.php"; ?>
+
+<script>
+    let getDescJurusan = (idMatkul) => {
+        $.ajax({
+            url: "getDescJurusan.php",
+            data: {idMatkul : idMatkul},
+            method: "post",
+            success: function(res){
+                $(".tab-pane").html(res);
+            }
+        });
+    }
+    $(document).ready(function(){
+        $.ajax({
+            url: "getDescJurusan.php",
+            data: {idMatkul : "01"},
+            method: "post",
+            success: function(res){
+                $(".tab-pane").html(res);
+            }
+        });
+
+        $(".list-group-item").click(function(){
+            let id = $(this).attr("value");
+            getDescJurusan(id);
+        });
+    });
+</script>
+
 </body>
 </html>
