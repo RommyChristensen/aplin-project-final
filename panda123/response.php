@@ -83,8 +83,8 @@
 				}
 				$kalimat.="<td>".$row['agenda_deskripsi']."</td>";
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['agenda_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['agenda_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['agenda_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['agenda_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";

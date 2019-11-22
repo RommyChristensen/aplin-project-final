@@ -136,6 +136,10 @@
     </div>
 </body>
 <?php include "fileinclude2.php";?>
+<td>
+                                            <button type="submit" value="<?= $value['event_id']; ?>" name="btnEdit" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></button>
+                                            <button type="submit" value="<?= $value['event_id']; ?>" name="btnDelete" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                                        </td>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('#sidebarCollapse').on('click', function () {
