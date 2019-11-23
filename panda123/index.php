@@ -51,7 +51,7 @@
 				{jenis:"login"},
 				function(result){
 					if(result=="Sukses"){
-						window.location="adminsite2.php";
+						window.location="adminsite.php";
 					}
 				}
 			);
