@@ -104,6 +104,8 @@
                 </div>
             </nav>
 			<div class='container'>
+			<table id="tbKategori" class="table table-striped" cellspacing="0" width="100%">
+				</table>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -120,8 +122,7 @@
 				<input type="text" id="tbSingkatanKategori" class="form-control"><br>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbKategori" class="table table-striped" cellspacing="0" width="100%">
-				</table>
+				
 			</div>
         </div>
     </div>
@@ -174,6 +175,7 @@
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ?")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteKategori",nomer:ambil},
@@ -182,6 +184,7 @@
 				isitabelKategori();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;

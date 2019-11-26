@@ -104,6 +104,8 @@
                 </div>
             </nav>
 			<div class='container'>
+			<table id="tbMatkul" class="table table-striped table-responsive" cellspacing="0" width="100%">
+				</table>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -141,8 +143,7 @@
 				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbMatkul" class="table table-striped table-responsive" cellspacing="0" width="100%">
-				</table>
+				
 			</div>
         </div>
     </div>
@@ -206,6 +207,7 @@
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ?")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteMatkul",nomer:ambil},
@@ -214,6 +216,7 @@
 				isitabelMatkul();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;

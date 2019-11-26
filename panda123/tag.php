@@ -104,6 +104,8 @@
                 </div>
             </nav>
 			<div class='container'>
+			<table id="tbTag" class="table table-striped" cellspacing="0" width="100%">
+				</table>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -118,8 +120,7 @@
 				<input type="text" id="tbNamaTag" class="form-control"><br>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbTag" class="table table-striped" cellspacing="0" width="100%">
-				</table>
+				
 			</div>
         </div>
     </div>
@@ -171,6 +172,7 @@ $(document).ready(function () {
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ?")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteTag",nomer:ambil},
@@ -179,6 +181,7 @@ $(document).ready(function () {
 				isitabelTag();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;

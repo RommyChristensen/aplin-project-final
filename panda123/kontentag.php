@@ -105,6 +105,8 @@
                 </div>
             </nav>
 			<div class='container'>
+			<table id="tbKontenTag" class="table table-striped table-responsive" cellspacing="0" width="100%">
+				</table>
 				Status Aktif<br>
 				<select id='cbAktif' class="browser-default custom-select">
 					<option value='1'>Aktif</option>
@@ -124,8 +126,7 @@
 				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbKontenTag" class="table table-striped table-responsive" cellspacing="0" width="100%">
-				</table>
+				
 			</div>
         </div>
     </div>
@@ -196,6 +197,7 @@ $(document).ready(function () {
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ?")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteKontenTag",nomer:ambil},
@@ -204,6 +206,7 @@ $(document).ready(function () {
 				isitabelKontenTag();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;

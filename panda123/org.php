@@ -105,6 +105,8 @@
                 </div>
             </nav>
 			<div class='container'>
+			<table id="tbOrg" class="table table-striped table-responsive" cellspacing="0" width="100%">
+				</table>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -128,8 +130,7 @@
 				<textarea id="tbDeskripsi" class="form-control"></textarea>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbOrg" class="table table-striped table-responsive" cellspacing="0" width="100%">
-				</table>
+				
 			</div>
         </div>
     </div>
@@ -192,6 +193,7 @@ $(document).ready(function () {
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ? ")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteOrg",nomer:ambil},
@@ -200,6 +202,7 @@ $(document).ready(function () {
 				isitabelOrg();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;

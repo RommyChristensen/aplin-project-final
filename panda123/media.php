@@ -105,6 +105,8 @@
                 </div>
             </nav>
 			<div class='container'>
+			<table id="tbMedia" class="table table-striped table-responsive" cellspacing="0" width="100%">
+				</table>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -132,8 +134,7 @@
 				<input type="date" id="tbTanggalSumberMedia" class="form-control"><br>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbMedia" class="table table-striped table-responsive" cellspacing="0" width="100%">
-				</table>
+				
 			</div>
         </div>
     </div>
@@ -198,6 +199,7 @@ $(document).ready(function () {
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ?")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteMedia",nomer:ambil},
@@ -206,6 +208,7 @@ $(document).ready(function () {
 				isitabelMedia();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;

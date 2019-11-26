@@ -104,6 +104,8 @@
                 </div>
             </nav>
 			<div class='container'>
+				<table id="tbAgenda" class="table table-striped table-responsive" cellspacing="0" width="100%">
+				</table>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -129,17 +131,12 @@
 				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				<table id="tbAgenda" class="table table-striped table-responsive" cellspacing="0" width="100%">
-				</table>
+				
 			</div>
         </div>
     </div>
 </body>
 <?php include "fileinclude2.php";?>
-<td>
-                                            <button type="submit" value="<?= $value['event_id']; ?>" name="btnEdit" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></button>
-                                            <button type="submit" value="<?= $value['event_id']; ?>" name="btnDelete" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></button>
-                                        </td>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('#sidebarCollapse').on('click', function () {
@@ -195,14 +192,16 @@
 		}
 	}
 	function deletes(e){
-		var ambil = e;
-		$.post("response.php",
-			{jenis:"DeleteAgenda",nomer:ambil},
-			function(result){
-				//alert(result);
-				isitabelAgenda();
-			}
-		);
+		if(confirm("Anda Yakin ?")==true){
+			var ambil = e;
+			$.post("response.php",
+				{jenis:"DeleteAgenda",nomer:ambil},
+				function(result){
+					//alert(result);
+					isitabelAgenda();
+				}
+			);
+		}
 	}
 	function edit(e){
 		var ambil = e;
