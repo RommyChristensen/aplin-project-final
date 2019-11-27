@@ -72,7 +72,7 @@
                     </a>
                 </li>
 				<li>
-                    <a href="organisasi.php">
+                    <a href="org.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
                     </a>
@@ -101,11 +101,11 @@
                         <span>See More</span>
                     </button>
 					<h1>MATA KULIAH</h1>
+					<button onclick='showForm()'>+Matkul</button>
                 </div>
             </nav>
 			<div class='container'>
-			<table id="tbMatkul" class="table table-striped table-responsive" cellspacing="0" width="100%">
-				</table>
+				<div id='forms'>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -143,7 +143,9 @@
 				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				
+				</div>
+				<table id="tbMatkul" class="table table-striped table-responsive" cellspacing="0" width="100%">
+				</table>
 			</div>
         </div>
     </div>
@@ -154,9 +156,13 @@
 		$('#sidebarCollapse').on('click', function () {
 			$('#sidebar').toggleClass('active');
 		});
+		$("#forms").hide();
 	});
 </script>
 <script language='javascript'>
+	function showForm(){
+		$("#forms").fadeToggle();
+	}
 	isicbBahasa();
 	isicbJurusan();
 	isitabelMatkul();
@@ -220,6 +226,8 @@
 	}
 	function edit(e){
 		var ambil = e;
+		$("#forms").fadeToggle();
+		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditMatkul",nomer:ambil},
 			function(result){

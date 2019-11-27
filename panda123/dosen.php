@@ -74,7 +74,7 @@
                     </a>
                 </li>
 				<li>
-                    <a href="organisasi.php">
+                    <a href="org.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
                     </a>
@@ -103,10 +103,12 @@
                         <span>See More</span>
                     </button>
 					<h1>DOSEN</h1>
+					<button onclick='showForm()'>+Dosen</button>
                 </div>
             </nav>
 			<div class='container'>
 				<!-- Default input -->
+				<div id='forms'>
 				<label for="tbNamaDosen">Nama Dosen</label>
 				<input type="text" id="tbNamaDosen" class="form-control">
 				<br>
@@ -117,6 +119,7 @@
 				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
+				</div>
 				<table id="tbDosen" class="table table-striped" cellspacing="0" width="100%">
 				</table>
 			</div>
@@ -129,9 +132,13 @@
 		$('#sidebarCollapse').on('click', function () {
 			$('#sidebar').toggleClass('active');
 		});
+		$("#forms").hide();
 	});
 </script>
 <script language='javascript'>
+	function showForm(){
+		$("#forms").fadeToggle();
+	}
 	isitabelDosen();
 	function isitabelDosen(){
 		$.post("response.php",
@@ -171,6 +178,8 @@
 	}
 	function edit(e){
 		var ambil = e;
+		$("#forms").fadeToggle();
+		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditDosen",nomer:ambil},
 			function(result){

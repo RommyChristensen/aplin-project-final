@@ -73,7 +73,7 @@
                     </a>
                 </li>
 				<li>
-                    <a href="organisasi.php">
+                    <a href="org.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
                     </a>
@@ -102,11 +102,11 @@
                         <span>See More</span>
                     </button>
 					<h1>KONTEN TAG</h1>
+					<button onclick='showForm()'>+Konten Tag</button>
                 </div>
             </nav>
 			<div class='container'>
-			<table id="tbKontenTag" class="table table-striped table-responsive" cellspacing="0" width="100%">
-				</table>
+				<div id='forms'>
 				Status Aktif<br>
 				<select id='cbAktif' class="browser-default custom-select">
 					<option value='1'>Aktif</option>
@@ -126,7 +126,9 @@
 				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
-				
+				</div>
+				<table id="tbKontenTag" class="table table-striped table-responsive" cellspacing="0" width="100%">
+				</table>
 			</div>
         </div>
     </div>
@@ -137,9 +139,13 @@ $(document).ready(function () {
 	$('#sidebarCollapse').on('click', function () {
 		$('#sidebar').toggleClass('active');
 	});
+	$("#forms").hide();
 });
 </script>
 <script language='javascript'>
+	function showForm(){
+		$("#forms").fadeToggle();
+	}
 	isicbParent();
 	isicbTag();
 	function isicbTag(){
@@ -210,6 +216,8 @@ $(document).ready(function () {
 	}
 	function edit(e){
 		var ambil = e;
+		$("#forms").fadeToggle();
+		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditKontenTag",nomer:ambil},
 			function(result){

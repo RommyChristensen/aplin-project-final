@@ -74,7 +74,7 @@
                     </a>
                 </li>
 				<li>
-                    <a href="organisasi.php">
+                    <a href="org.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
                     </a>
