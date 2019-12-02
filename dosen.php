@@ -78,7 +78,7 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%D3%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+							$kalimat.="<div class='col-md-4 mb-5'><div class='card'><!-- Card image -->
 										<div class='view overlay'>
 										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
 										<a href='#!'>
@@ -95,7 +95,8 @@
 											<h6>".$row['dosen_email']."</h6>
 											</p>
 										</div>
-										</div>";
+                                        </div>
+                                        </div>";
 						}
 						echo $kalimat;
 					?>
