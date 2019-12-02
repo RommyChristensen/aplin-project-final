@@ -16,7 +16,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="white-navbar.php">Berita</a>
+                    <a class="nav-link" href="berita.php">Berita</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Testimoni</a>

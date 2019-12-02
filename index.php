@@ -110,7 +110,7 @@ include "tpl/header.php";
                             <hr>
                             <!--Text-->
                             <p class="card-text text-truncate mb-3">
-                                deskripsi
+                                <?php echo $news['agenda_deskripsi']; ?>
                             </p>
                             <p class="font-small"><i class="far fa-clock-o"></i>
                                 Published on

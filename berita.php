@@ -9,354 +9,103 @@
     while($row = mysqli_fetch_assoc($res)){
         $berita[] = $row;
     }
+
+    $selectAllTags = "SELECT * FROM berita_bahasa bb LEFT JOIN konten_tag kt ON kt.konten_parent = bb.berita_id";
+    $result = mysqli_query($conn, $selectAllTags)->fetch_assoc();
+
     // echo "<pre>";
-    // print_r($data);
+    // print_r($result);
     // echo "</pre>";
 ?>
 
 <!-- Intro -->
 <div class="card card-intro purple-gradient">
+    <div class="card-body white-text rgba-black-light text-center">
 
-    <div class="card-body white-text rgba-black-light">
-        <div class="md-form">
-            <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
-            <label for="date-picker-example">Try me...</label>
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+
+            <!--Grid column-->
+            <div class="col-md-6">
+
+                <p class="h2 mb-2">
+                    BERITA
+                </p>
+
+            </div>
+            <!--Grid column-->
+
         </div>
+        <!--Grid row-->
+
     </div>
 
 </div>
 <!-- Intro -->
 
-<div class="container my-5">
-
-
-  <!--Section: Content-->
-  <section class="magazine-section dark-grey-text">
-
-    <!-- Section heading -->
-    <h3 class="text-center font-weight-bold mb-4 pb-2">Magazine newsfeed</h3>
-    <!-- Section description -->
-    <p class="text-center w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
-    esse cillum dolore eu fugiat nulla sint occaecat cupidatat non proident, sunt culpa
-    qui officia deserunt est laborum.</p>
-
-  	<!-- Grid row -->
+<div class="container mt-5">
     <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-12 mb-4">
-
-        <!-- Featured news -->
-        <div class="single-news mb-3">
-
-          <!-- Image -->
-          <div class="view overlay rounded z-depth-2 mb-4">
-            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/86.jpg" alt="Sample image">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-
-          <!-- Grid row -->
-          <div class="row mb-3">
-
-            <!-- Grid column -->
-            <div class="col-12">
-
-              <!-- Badge -->
-              <a href="#!"><span class="badge pink"><i class="fas fa-camera pr-2" aria-hidden="true"></i>Adventure</span></a>
-
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a class="font-weight-bold">This is title of the news</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Featured news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>24 Food Swaps That Slash Calories.</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>How to Make a Beet Cocktail?</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>8 Sneaky Reasons You're Always Hungry.</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0">
-              <a>5 Pressure Cooker Recipes You Need to Try.</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-6 mb-4">
-
-        <!-- Featured news -->
-        <div class="single-news mb-3">
-
-          <!-- Image -->
-          <div class="view overlay rounded z-depth-2 mb-4">
-            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/31.jpg" alt="Sample image">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-
-          <!-- Grid row -->
-          <div class="row mb-3">
-
-            <!-- Grid column -->
-            <div class="col-12">
-
-              <!-- Badge -->
-              <a href="#!"><span class="badge deep-orange"><i class="fas fa-plane pr-2" aria-hidden="true"></i>Travel</span></a>
-
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a class="font-weight-bold">This is title of the news</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Featured news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>Trends in the blogosphere for 2018.</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>Where can you eat the best lunch in Warsaw?</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>What camera is worth taking for holidays?</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0">
-              <a>Why should you visit Lisbon?</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-6 mb-4">
-
-        <!-- Featured news -->
-        <div class="single-news mb-3">
-
-          <!-- Image -->
-          <div class="view overlay rounded z-depth-2 mb-4">
-            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/52.jpg" alt="Sample image">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-
-          <!-- Grid row -->
-          <div class="row mb-3">
-
-            <!-- Grid column -->
-            <div class="col-12">
-
-              <!-- Badge -->
-              <a href="#!"><span class="badge success-color"><i class="fas fa-leaf pr-2" aria-hidden="true"></i>Nature</span></a>
-
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a class="font-weight-bold">This is title of the news</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Featured news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>How to recognize the footsteps of wild animals?</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>National Parks in Poland.</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-3">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0 mb-3">
-              <a>Traveling without littering the planet.</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news">
-
-          <!-- Title -->
-          <div class="d-flex justify-content-between">
-            <div class="col-11 text-truncate pl-0">
-              <a>How to protect rainforests?</a>
-            </div>
-            <a><i class="fas fa-angle-double-right"></i></a>
-          </div>
-
-        </div>
-        <!-- Small news -->
-
-      </div>
-      <!-- Grid column -->
-
+      <div class="col-md-9">
+        <!--Section: Content-->
+  <section class="dark-grey-text">
+
+<!-- Section heading -->
+<h2 class="text-center font-weight-bold mb-4 pb-2">Berita Terbaru</h2>
+<!-- Section description -->
+<p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
+
+<!-- Grid row -->
+<div class="row align-items-center">
+
+  <!-- Grid column -->
+  <div class="col-lg-5 col-xl-4">
+
+    <!-- Featured image -->
+    <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
+      <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Sample image">
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
     </div>
-    <!-- Grid row -->
 
-  </section>
-  <!--Section: Content-->
+  </div>
+  <!-- Grid column -->
 
+  <!-- Grid column -->
+  <div class="col-lg-7 col-xl-8">
+
+    <!-- Post title -->
+    <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+    <!-- Excerpt -->
+    <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
+      quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus
+      et aut officiis cum soluta nobis est eligendi placeat facere aut rerum.</p>
+    <!-- Post data -->
+    <p>by <a class="font-weight-bold">Jessica Clark</a>, 19/04/2018</p>
+    <!-- Read more button -->
+    <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
+
+  </div>
+  <!-- Grid column -->
 
 </div>
+<!-- Grid row -->
 
+<hr class="my-5">
 
+</section>
+<!--Section: Content-->
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+
+</div>
 
 <?php include "tpl/footer.php"; ?>
 
 <script>
-    $(document).ready(function(){
-        $('.datepicker').pickadate();
-    });
+
 </script>
 </body>
 </html>
