@@ -183,7 +183,7 @@
 			$.post("response.php",
 				{jenis:"AddBerita",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,aktif:aktif},
 				function(result){
-					alert(result);
+					//alert(result);
 					$("#btnAdd").html(result);
 					isitabelBerita();
 				}
