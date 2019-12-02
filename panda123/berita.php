@@ -207,7 +207,7 @@
 	}
 	function edit(e){
 		var ambil = e;
-		$("#forms").fadeToggle();
+		$("#forms").fadeIn();
 		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditBerita",nomer:ambil},
