@@ -11,8 +11,7 @@
             <div class="col-md-6 mt-md-0 mt-3">
 
                 <!-- Content -->
-                <h5 class="text-uppercase">Footer Content</h5>
-                <p>Here you can use rows and columns to organize your footer content.</p>
+                <h5 class="text-uppercase">LINK TO MANY PAGE</h5>
 
             </div>
             <!-- Grid column -->
@@ -23,20 +22,14 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
+                <h5 class="text-uppercase">LAYANAN MAHASISWA</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="sim.stts.edu">Sistem Informasi Mahasiswa</a>
                     </li>
                     <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
+                        <a href="http://e-resources.perpusnas.go.id/">Perpustakaan Nasional (PNRI)</a>
                     </li>
                 </ul>
 
@@ -47,26 +40,44 @@
             <div class="col-md-3 mb-md-0 mb-3">
 
                 <!-- Links -->
-                <h5 class="text-uppercase">Jurusan</h5>
+                <h5 class="text-uppercase">WEBSITE JURUSAN</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">S1 - Teknik Informatika</a>
+                        <a href="https://d3inf.stts.edu/">D3 - Sistem Informasi</a>
+                    </li>
+					<li>
+                        <a href="https://informatika.istts.ac.id/">S1 - Teknik Informatika</a>
+                    </li>
+					<li>
+                        <a href="http://s1infpro.stts.edu/">S1 - Teknik Informatika Profesional (kelas malam)</a>
                     </li>
                     <li>
-                        <a href="#!">S1 - Sistem Informasi Bisnis</a>
+                        <a href="http://sib.stts.edu/">S1 - Sistem Informasi Bisnis</a>
                     </li>
                     <li>
-                        <a href="#!">S1 - Desain Komunikasi Visual</a>
+                        <a href="http://dkv.stts.edu/">S1 - Desain Komunikasi Visual</a>
                     </li>
                     <li>
-                        <a href="#!">S1 - Teknik Industri</a>
+                        <a href="http://industri.stts.edu/">S1 - Teknik Industri</a>
                     </li>
                     <li>
-                        <a href="#!">S1 - Desain Produk</a>
+                        <a href="http://despro.stts.edu/">S1 - Desain Produk</a>
                     </li>
                     <li>
-                        <a href="#!">S1 - Teknik Elektro</a>
+                        <a href="http://elektro.stts.edu/">S1 - Teknik Elektro</a>
+                    </li>
+					<li>
+                        <a href="https://www.istts.ac.id/s2teknologiinformasi.php">S2 - Teknologi Informasi</a>
+                    </li>
+					<li>
+                        <a href="https://bit.stts.edu/">Bachelor of Information Technology</a>
+                    </li>
+					<li>
+                        <a href="https://bit.stts.edu/">Bachelor of Science in Cyber Forensic</a>
+                    </li>
+					<li>
+                        <a href="https://bit.stts.edu/">Joint Degree</a>
                     </li>
                 </ul>
 

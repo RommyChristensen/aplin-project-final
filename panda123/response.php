@@ -435,6 +435,8 @@
 	if($_POST['jenis']=="AddDosen"){
 		$nama		=$_POST['nama'];
 		$aktif 		=$_POST['aktif'];
+		$keterangan =$_POST['keterangan'];
+		$email 		=$_POST['email'];
 		if(isset($_SESSION['editDosen'])){
 			$nomer = $_SESSION['editDosen'];
 			mysqli_query($conn,"update dosen set dosen_nama='$nama',dosen_status='$aktif' where dosen_id='$nomer'");
@@ -442,7 +444,7 @@
 			echo "ADD";
 		}
 		else{
-			$q1=mysqli_query($conn,"insert into dosen(dosen_nama,dosen_status) values('$nama','$aktif')");
+			$q1=mysqli_query($conn,"insert into dosen(dosen_nama,dosen_status,dosen_email,dosen_keterangan) values('$nama','$aktif','$email','$keterangan')");
 			echo "ADD";
 		}
 	}
@@ -737,6 +739,8 @@
 		while($r1=mysqli_fetch_assoc($q1)){
 			$arr['nama']=$r1['dosen_nama'];
 			$arr['aktif']=$r1['dosen_status'];
+			$arr['email']=$r1['dosen_email'];
+			$arr['ket']=$r1['dosen_keterangan'];
 		}
 		$_SESSION['editDosen']=$nomer;
 		echo json_encode($arr);

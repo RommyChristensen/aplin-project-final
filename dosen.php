@@ -78,16 +78,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%D3%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -109,16 +117,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%S1 Teknik Informatika%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -140,16 +156,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%S2 Teknologi Informasi%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -171,16 +195,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%S1 Sistem Informasi Bisnis%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -202,16 +234,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%S1 Teknik Elektro%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -233,16 +273,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%S1 Desain Komunikasi Visual%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -264,16 +312,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%S1 Desain Produk%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -295,16 +351,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%S1 Teknik Industri%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>
@@ -326,16 +390,24 @@
 						$query = mysqli_query($conn,"select * from dosen where dosen_status=1 and dosen_keterangan like '%ECC%'");
 						$kalimat="";
 						while($row=mysqli_fetch_assoc($query)){
-							$kalimat.="<div class='col-md-3 mb-4'>
-										<a href='#!' class='card hoverable purple-gradient'>
-										<div class='card-body my-4'>
-										<p><i class='fas fa-camera-retro fa-2x text-muted white-text'></i></p>
-										<h6 class='white-text mb-0'>".$row['dosen_nama']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_keterangan']."</h6>
-										<h6 class='white-text mb-0'>".$row['dosen_email']."</h6>
-										</div>
+							$kalimat.="<div class='card col-md-4 mb-5'><!-- Card image -->
+										<div class='view overlay'>
+										<img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
+										<a href='#!'>
+										<div class='mask rgba-white-slight'></div>
 										</a>
-									</div>";
+										</div>	
+										<!-- Card content -->
+										<div class='card-body'>
+											<!-- Title -->
+											<h6 class='card-title'>".$row['dosen_nama']."</h6>
+											<!-- Text -->
+											<p class='card-text'>
+											<h6>".$row['dosen_keterangan']."</h6>
+											<h6>".$row['dosen_email']."</h6>
+											</p>
+										</div>
+										</div>";
 						}
 						echo $kalimat;
 					?>

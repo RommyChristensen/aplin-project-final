@@ -28,7 +28,7 @@
                     <a class="nav-link" href="akademik.php">Akademik</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dosen</a>
+                    <a class="nav-link" href="dosen.php">Dosen</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="history.php">Tentang</a>
