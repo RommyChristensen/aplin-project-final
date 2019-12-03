@@ -108,8 +108,8 @@
 				}
 				$kalimat.="<td>".$row['berita_deskripsi']."</td>";
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['berita_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['berita_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['berita_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['berita_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -117,13 +117,15 @@
 	}
 	if($_POST['jenis']=="isitabelDosen"){
 		$query = mysqli_query($conn,"select * from dosen");
-		$kalimat="<thead><tr><th class='th-sm'>Nama Dosen</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
+		$kalimat="<thead><tr><th class='th-sm'>Nama Dosen</th><th class='th-sm'>Keterangan</th><th class='th-sm'>Email</th><th class='th-sm'>Status Aktif</th><th class='th-sm'>Action</th></tr></thead><tbody>";
 		while($row=mysqli_fetch_assoc($query)){
 			$kalimat.="<tr>";
 				$kalimat.="<td>".$row['dosen_nama']."</td>";
+				$kalimat.="<td>".$row['dosen_keterangan']."</td>";
+				$kalimat.="<td>".$row['dosen_email']."</td>";
 				$kalimat.="<td>".$row['dosen_status']."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['dosen_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['dosen_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['dosen_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['dosen_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -150,8 +152,8 @@
 					$bahasa=$r2['bahasa_nama'];
 				}
 				$kalimat.="<td>".$bahasa."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['jurusan_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['jurusan_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['jurusan_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['jurusan_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -176,8 +178,8 @@
 					$aktif=$r1['kategori_status'];
 				}
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['kategori_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['kategori_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['kategori_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['kategori_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -212,8 +214,8 @@
 				$kalimat.="<td>".$semester."</td>";
 				$kalimat.="<td>".$aktif."</td>";
 				$kalimat.="<td>".$bahasa."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['matkul_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['matkul_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['matkul_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['matkul_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -236,8 +238,8 @@
 					$aktif=$r1['tag_status'];
 				}
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['tag_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['tag_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['tag_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['tag_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -266,8 +268,8 @@
 				}
 				$kalimat.="<td>".$bahasa."</td>";
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['media_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['media_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['media_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['media_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -295,8 +297,8 @@
 				}
 				$kalimat.="<td>".$bahasa."</td>";
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['testimoni_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['testimoni_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['testimoni_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['testimoni_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -341,8 +343,8 @@
 				}
 				$kalimat.="<td>".$tags."</td>";
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['konten_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['konten_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['konten_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['konten_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -375,8 +377,8 @@
 				}
 				$kalimat.="<td>".$bahasa."</td>";
 				$kalimat.="<td>".$aktif."</td>";
-				$kalimat.="<td><button class='btn btn-info btn-block my-4' type='button' onclick='edit(".$row['org_bahasa_id'].")'>Edit</button>";
-				$kalimat.="<button class='btn btn-info btn-block my-4' type='button' onclick='deletes(".$row['org_bahasa_id'].")'>Delete</button></td>";
+				$kalimat.="<td><button class='btn btn-warning btn-block my-4' type='button' onclick='edit(".$row['org_bahasa_id'].")'><i class='fa fa-edit'></i></button>";
+				$kalimat.="<button class='btn btn-danger btn-block my-4' type='button' onclick='deletes(".$row['org_bahasa_id'].")'><i class='fa fa-trash'></i></button></td>";
 			$kalimat.="</tr>";
 		}
 		$kalimat.="</tbody></table>";
@@ -433,6 +435,8 @@
 	if($_POST['jenis']=="AddDosen"){
 		$nama		=$_POST['nama'];
 		$aktif 		=$_POST['aktif'];
+		$keterangan =$_POST['keterangan'];
+		$email 		=$_POST['email'];
 		if(isset($_SESSION['editDosen'])){
 			$nomer = $_SESSION['editDosen'];
 			mysqli_query($conn,"update dosen set dosen_nama='$nama',dosen_status='$aktif' where dosen_id='$nomer'");
@@ -440,7 +444,7 @@
 			echo "ADD";
 		}
 		else{
-			$q1=mysqli_query($conn,"insert into dosen(dosen_nama,dosen_status) values('$nama','$aktif')");
+			$q1=mysqli_query($conn,"insert into dosen(dosen_nama,dosen_status,dosen_email,dosen_keterangan) values('$nama','$aktif','$email','$keterangan')");
 			echo "ADD";
 		}
 	}
@@ -735,6 +739,8 @@
 		while($r1=mysqli_fetch_assoc($q1)){
 			$arr['nama']=$r1['dosen_nama'];
 			$arr['aktif']=$r1['dosen_status'];
+			$arr['email']=$r1['dosen_email'];
+			$arr['ket']=$r1['dosen_keterangan'];
 		}
 		$_SESSION['editDosen']=$nomer;
 		echo json_encode($arr);

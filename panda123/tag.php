@@ -72,7 +72,7 @@
                     </a>
                 </li>
 				<li>
-                    <a href="organisasi.php">
+                    <a href="org.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
                     </a>
@@ -101,9 +101,11 @@
                         <span>See More</span>
                     </button>
 					<h1>TAG</h1>
+					<button onclick='showForm()'>+Tag</button>
                 </div>
             </nav>
 			<div class='container'>
+				<div id='forms'>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -118,6 +120,7 @@
 				<input type="text" id="tbNamaTag" class="form-control"><br>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
+				</div>
 				<table id="tbTag" class="table table-striped" cellspacing="0" width="100%">
 				</table>
 			</div>
@@ -130,9 +133,13 @@ $(document).ready(function () {
 	$('#sidebarCollapse').on('click', function () {
 		$('#sidebar').toggleClass('active');
 	});
+	$("#forms").hide();
 });
 </script>
 <script language='javascript'>
+	function showForm(){
+		$("#forms").fadeToggle();
+	}
 	isicbBahasa();
 	isitabelTag();
 	function isicbBahasa(){
@@ -171,6 +178,7 @@ $(document).ready(function () {
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ?")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteTag",nomer:ambil},
@@ -179,9 +187,12 @@ $(document).ready(function () {
 				isitabelTag();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;
+		$("#forms").fadeIn();
+		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditTag",nomer:ambil},
 			function(result){

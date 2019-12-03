@@ -74,7 +74,7 @@
                     </a>
                 </li>
 				<li>
-                    <a href="organisasi.php">
+                    <a href="org.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
                     </a>
@@ -103,32 +103,35 @@
                         <span>See More</span>
                     </button>
 					<h1>BERITA</h1>
+					<button onclick='showForm()'>+Berita</button>
                 </div>
             </nav>
 			<div class='container'>
-				Bahasa<br>
-				<select id='cbBahasa' class="browser-default custom-select">
-				</select>
-				<br><br>
-				<!-- Default input -->
-				<label for="tbJudulBerita">Judul Berita</label>
-				<input type="text" id="tbJudulBerita" class="form-control">
-				<br>
-				<!-- Default input -->
-				<label for="tbDeskripsiBerita">Deskripsi Berita</label>
-				<textarea id="tbDeskripsiBerita" class="form-control"></textarea>
-				Foto 
-				<div class="custom-file">
-				  <input type="file" class="custom-file-input" id="tbFile">
-				  <label class="custom-file-label" for="tbFile" data-browse="Browse">Choose File</label>
+				<div id='forms'>
+					Bahasa<br>
+					<select id='cbBahasa' class="browser-default custom-select">
+					</select>
+					<br><br>
+					<!-- Default input -->
+					<label for="tbJudulBerita">Judul Berita</label>
+					<input type="text" id="tbJudulBerita" class="form-control">
+					<br>
+					<!-- Default input -->
+					<label for="tbDeskripsiBerita">Deskripsi Berita</label>
+					<textarea id="tbDeskripsiBerita" class="form-control"></textarea>
+					Foto 
+					<div class="custom-file">
+					  <input type="file" class="custom-file-input" id="tbFile">
+					  <label class="custom-file-label" for="tbFile" data-browse="Browse">Choose File</label>
+					</div>
+					Status Aktif<br>
+					<select id='cbAktif' class="browser-default custom-select">
+						<option value='1'>Aktif</option>
+						<option value='0'>Non Aktif</option>
+					</select>
+					<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
+					<br>
 				</div>
-				Status Aktif<br>
-				<select id='cbAktif' class="browser-default custom-select">
-					<option value='1'>Aktif</option>
-					<option value='0'>Non Aktif</option>
-				</select>
-				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
-				<br>
 				<table id="tbBerita" class="table table-striped table-responsive" cellspacing="0" width="100%">
 				</table>
 			</div>
@@ -141,9 +144,13 @@
 		$('#sidebarCollapse').on('click', function () {
 			$('#sidebar').toggleClass('active');
 		});
+		$("#forms").hide();
 	});
 </script>
 <script language='javascript'>
+	function showForm(){
+		$("#forms").fadeToggle();
+	}
 	isicbBahasa();
 	isitabelBerita();
 	function isicbBahasa(){
@@ -176,7 +183,7 @@
 			$.post("response.php",
 				{jenis:"AddBerita",bahasa:bahasa,judul:judul,deskripsi:deskripsi,file:file,aktif:aktif},
 				function(result){
-					alert(result);
+					//alert(result);
 					$("#btnAdd").html(result);
 					isitabelBerita();
 				}
@@ -187,6 +194,7 @@
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ?")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteBerita",nomer:ambil},
@@ -195,9 +203,12 @@
 				isitabelBerita();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;
+		$("#forms").fadeIn();
+		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditBerita",nomer:ambil},
 			function(result){

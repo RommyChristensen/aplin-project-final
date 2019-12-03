@@ -102,9 +102,11 @@
                         <span>See More</span>
                     </button>
 					<h1>ORGANISASI</h1>
+					<button onclick='showForm()'>+Organisasi</button>
                 </div>
             </nav>
 			<div class='container'>
+				<div id='forms'>
 				Bahasa<br>
 				<select id='cbBahasa' class="browser-default custom-select">
 				</select>
@@ -128,6 +130,7 @@
 				<textarea id="tbDeskripsi" class="form-control"></textarea>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
+				</div>
 				<table id="tbOrg" class="table table-striped table-responsive" cellspacing="0" width="100%">
 				</table>
 			</div>
@@ -140,9 +143,13 @@ $(document).ready(function () {
 	$('#sidebarCollapse').on('click', function () {
 		$('#sidebar').toggleClass('active');
 	});
+	$("#forms").hide();
 });
 </script>
 <script language='javascript'>
+	function showForm(){
+		$("#forms").fadeToggle();
+	}
 	isicbBahasa();
 	function isicbBahasa(){
 		$.post("response.php",
@@ -192,6 +199,7 @@ $(document).ready(function () {
 		}
 	}
 	function deletes(e){
+		if(confirm("Anda Yakin ? ")==true){
 		var ambil = e;
 		$.post("response.php",
 			{jenis:"DeleteOrg",nomer:ambil},
@@ -200,9 +208,12 @@ $(document).ready(function () {
 				isitabelOrg();
 			}
 		);
+		}
 	}
 	function edit(e){
 		var ambil = e;
+		$("#forms").fadeIn();
+		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditOrg",nomer:ambil},
 			function(result){
@@ -210,7 +221,7 @@ $(document).ready(function () {
 				var bahasa=array['bahasa'];
 				$("#cbBahasa option[value="+bahasa+"]").attr('selected','selected');
 				var aktif=array['aktif'];
-				alert(aktif);
+				//alert(aktif);
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
 				var kategori=array['kategori'];
 				$("#cbKategori option[value="+kategori+"]").attr('selected','selected');

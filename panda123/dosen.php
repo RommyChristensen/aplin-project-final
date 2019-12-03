@@ -74,7 +74,7 @@
                     </a>
                 </li>
 				<li>
-                    <a href="organisasi.php">
+                    <a href="org.php">
                         <i class="fas fa-user-circle"></i>
                         Organisasi
                     </a>
@@ -103,12 +103,18 @@
                         <span>See More</span>
                     </button>
 					<h1>DOSEN</h1>
+					<button onclick='showForm()'>+Dosen</button>
                 </div>
             </nav>
 			<div class='container'>
 				<!-- Default input -->
+				<div id='forms'>
 				<label for="tbNamaDosen">Nama Dosen</label>
 				<input type="text" id="tbNamaDosen" class="form-control">
+				<label for="tbKeteranganDosen">Keterangan Dosen</label>
+				<input type="text" id="tbKeteranganDosen" class="form-control">
+				<label for="tbEmailDosen">Email Dosen</label>
+				<input type="text" id="tbEmailDosen" class="form-control">
 				<br>
 				Status Aktif<br>
 				<select id='cbAktif' class="browser-default custom-select">
@@ -117,6 +123,7 @@
 				</select>
 				<button class="btn btn-info btn-block my-4" type="button" id='btnAdd' onclick='add()'>ADD</button>
 				<br>
+				</div>
 				<table id="tbDosen" class="table table-striped" cellspacing="0" width="100%">
 				</table>
 			</div>
@@ -129,9 +136,13 @@
 		$('#sidebarCollapse').on('click', function () {
 			$('#sidebar').toggleClass('active');
 		});
+		$("#forms").hide();
 	});
 </script>
 <script language='javascript'>
+	function showForm(){
+		$("#forms").fadeToggle();
+	}
 	isitabelDosen();
 	function isitabelDosen(){
 		$.post("response.php",
@@ -142,18 +153,29 @@
 			}
 		);
 	}
+	function isValidEmailAddress(emailAddress) {
+		var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+		return pattern.test(emailAddress);
+	}
 	function add(){
 		var nama = $("#tbNamaDosen").val();
+		var keterangan = $("#tbKeteranganDosen").val();
+		var email = $("#tbEmailDosen").val();
 		var aktif = $("#cbAktif").val();
-		if(nama!="" && aktif!=""){
-			$.post("response.php",
-				{jenis:"AddDosen",nama:nama,aktif:aktif},
-				function(result){
-					//alert(result);
-					$("#btnAdd").html(result);
-					isitabelDosen();
-				}
-			);
+		if(nama!="" && aktif!="" && email!="" && keterangan!=""){
+			if(isValidEmailAddress(email)){
+				$.post("response.php",
+					{jenis:"AddDosen",nama:nama,aktif:aktif,email:email,keterangan:keterangan},
+					function(result){
+						//alert(result);
+						$("#btnAdd").html(result);
+						isitabelDosen();
+					}
+				);
+			}
+			else{
+				alert("Cek format email");
+			}
 		}
 		else{
 			alert("Semua field harus terisi");
@@ -171,14 +193,20 @@
 	}
 	function edit(e){
 		var ambil = e;
+		$("#forms").fadeIn();
+		$(document).scrollTop(10);
 		$.post("response.php",
 			{jenis:"EditDosen",nomer:ambil},
 			function(result){
 				var array = JSON.parse(result);
 				var nama=array['nama'];
 				var aktif=array['aktif'];
+				var keterangan=array['ket'];
+				var email=array['email'];
 				$("#cbAktif option[value="+aktif+"]").attr('selected','selected');
 				$("#tbNamaDosen").val(nama);
+				$("#tbKeteranganDosen").val(keterangan);
+				$("#tbEmailDosen").val(email);
 				$("#btnAdd").html("SAVE");
 			}
 		);
