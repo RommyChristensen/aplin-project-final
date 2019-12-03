@@ -34,7 +34,7 @@ echo "<div class='row'>
 
       <!--Image-->
       <div class='view overlay z-depth-1-half'>
-        <img src='assets/img/gedungN/gedungN.jpg' class='img-fluid' alt=''>
+        <img src='assets/img/gedungU/gedungU.jpg' class='img-fluid' alt=''>
         <a href=''>
           <div class='mask rgba-white-light' id='btnGambarRincian'></div>
         </a>
@@ -46,10 +46,10 @@ echo "<div class='row'>
     <!--Grid column-->
     <div class='col-md-6 mb-4 mb-md-0'>
 
-      <h3 class='font-weight-bold'>Gedung N</h3>
+      <h3 class='font-weight-bold'>Gedung U</h3>
 
       <p class='text-muted'>
-      Histori keberadaan STTS dicerminkan oleh desain khas gedung ini. Sebuah auditorium megah yang dihiasi oleh pohon-pohon raksasa nan indah menjadi pokok gedung ini. Beberapa ruang kantor berdiam di gedung ini, juga ruang kuliah yang umumnya digunakan oleh mahasiswa Strata 2.
+      Gedung ini merupakan pusat kegiatan administrasi di STTS. Biro Administrasi Akademik dan ruang dosen mendominasi ruang-ruang dalam gedung ini. Namun terkadang, beberapa kuliah diselenggarakan di gedung ini, termasuk U-401, ruangan terbesar dan tertinggi di gedung ini.
       </p>
 
     </div>
@@ -67,7 +67,7 @@ echo "<div class='row'>
     <div class='col-md-3 mb-2 mb-md-0'>
     <div class='view overlay z-depth-1-half'>
       <!--Image-->
-        <img src='assets/img/gedungN/rumAudit.jpg' class='img-fluid' alt=''>
+        <img src='assets/img/gedungU/BAA.jpg' class='img-fluid' alt=''>
         <a href=''>
           <div class='mask rgba-white-light' id='btnGambarRincian'></div>
         </a>
@@ -78,10 +78,10 @@ echo "<div class='row'>
     <!--Grid column-->
     <div class='col-md-9 mb-4 mb-md-0'>
 
-      <h3 class='font-weight-bold'>Auditorium</h3>
+      <h3 class='font-weight-bold'>Biro Akademik Administrasi (BAA)</h3>
 
       <p class='text-muted'>
-      Sejumlah pementasan teater, paduan suara, seminar, dan kegiatan besar lainnya pernah di selenggarakan di sini. Atapnya yang menjulang tinggi dengan suasana megah dan klasik menjadi trademark Auditorium STTS.
+      Dibawahi oleh Pembantu Ketua I, Biro Administrasi Akademik merupakan biro yang mengelola seluruh kegiatan perkuliahan dan penjadwalan kegiatan akademis di STTS.
       </p>
 
     </div>
@@ -99,7 +99,7 @@ echo "<div class='row'>
     <div class='col-md-3 mb-2 mb-md-0'>
     <div class='view overlay z-depth-1-half'>
       <!--Image-->
-        <img src='assets/img/gedungN/rumKelas.jpg' class='img-fluid' alt=''>
+        <img src='assets/img/gedungU/rumKls.jpg' class='img-fluid' alt=''>
         <a href=''>
           <div class='mask rgba-white-light' id='btnGambarRincian'></div>
         </a>
@@ -110,10 +110,42 @@ echo "<div class='row'>
     <!--Grid column-->
     <div class='col-md-9 mb-4 mb-md-0'>
 
-      <h3 class='font-weight-bold'>N-201</h3>
+      <h3 class='font-weight-bold'>Ruang Kelas (U-401)</h3>
 
       <p class='text-muted'>
-      Ruang ini dilengkapi dengan hampir 40 unit Notebook dengan spesifikasi tinggi. Tidak hanya itu, terdapat pula 2 buah projector siap-pakai yang dapat digunakan untuk menunjang kegiatan perkuliahan. Ruang ini kerap dimanfaatkan untuk kegiatan perkuliahan mahasiswa Strata 2.
+      Berada di lantai teratas gedung U, ruang U-401 sering juga digunakan sebagai ruang belajar mengajar. Ruangnya yang luas dilengkapi dengan sejumlah kursi, LCD projector, serta sebuah papan tulis, memungkinkan ruangan ini digunakan untuk acara pertemuan orang tua, kegiatan seminar dan beberapa kegiatan lainnya.
+      </p>
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+
+  <br>  
+
+  <!--Grid row-->
+  <div class='row'>
+
+    <!--Grid column-->
+    <div class='col-md-3 mb-2 mb-md-0'>
+    <div class='view overlay z-depth-1-half'>
+      <!--Image-->
+        <img src='assets/img/gedungU/rumRapat.jpg' class='img-fluid' alt=''>
+        <a href=''>
+          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+        </a>
+    </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class='col-md-9 mb-4 mb-md-0'>
+
+      <h3 class='font-weight-bold'>Ruang Rapat</h3>
+
+      <p class='text-muted'>
+      Rapat dosen sering digelar di ruang ini. Dilengkapi dengan meja elips yang besar, LCD projector dan whiteboard, ruang rapat menjadi ruang yang cocok untuk bertukar pikiran maupun diskusi. Banyak ide-ide besar yang dihasilkan di ruangan ini.
       </p>
 
     </div>
@@ -134,10 +166,10 @@ echo "<div class='row'>
   <ul class='pagination pg-purple'>
     
     <li class='page-item'><a class='page-link' id='satu'>1</a></li>
-    <li class='page-item active'><a class='page-link' id='dua'>2</a></li>
+    <li class='page-item'><a class='page-link' id='dua'>2</a></li>
     <li class='page-item'><a class='page-link' id='tiga'>3</a></li>
     <li class='page-item'><a class='page-link' id='empat'>4</a></li>
-    <li class='page-item'><a class='page-link' id='lima'>5</a></li>
+    <li class='page-item active'><a class='page-link' id='lima'>5</a></li>
     
   </ul>
 </nav>

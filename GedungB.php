@@ -42,7 +42,7 @@ echo "<div class='row'>
 
       <!--Image-->
       <div class='view overlay z-depth-1-half'>
-        <img src='assets/img/gedungE/gedungE.jpg' class='img-fluid' alt=''>
+        <img src='assets/img/gedungB/gedungB.jpg' class='img-fluid' alt=''>
         <a href=''>
           <div class='mask rgba-white-light' id='btnGambarRincian'></div>
         </a>
@@ -54,40 +54,10 @@ echo "<div class='row'>
     <!--Grid column-->
     <div class='col-md-6 mb-4 mb-md-0'>
 
-      <h3 class='font-weight-bold'>Gedung E</h3>
-
-      <p class='text-muted'>Gedung paling barat di STTS ini merupakan gedung baru yang telah diresmikan 8 November 2012 lalu. Dinamai Tower of The Eagles, gedung 7 lantai ini dilengkapi dengan berbagai fasilitas seperti E-Library, uang Kelas, Biro Administrasi Umum, Bagian IT, PMB.</p>
-
-    </div>
-    <!--Grid column-->
-
-  </div>
-  <!--Grid row-->
-  
-  <br>  
-  
-  <!--Grid row-->
-  <div class='row'>
-
-    <!--Grid column-->
-    <div class='col-md-3 mb-2 mb-md-0'>
-    <div class='view overlay z-depth-1-half'>
-      <!--Image-->
-        <img src='assets/img/gedungE/elib.jpg' class='img-fluid' alt=''>
-        <a href=''>
-          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
-        </a>
-    </div>
-    </div>
-    <!--Grid column-->
-
-    <!--Grid column-->
-    <div class='col-md-9 mb-4 mb-md-0'>
-
-      <h3 class='font-weight-bold'>E-Library</h3>
+      <h3 class='font-weight-bold'>Gedung B</h3>
 
       <p class='text-muted'>
-      Komputer canggih yang dilengkapi dengan internet berkecepatan tinggi menjadi daya tarik tersendiri bagi e-library. Kenyamanan tersebut dimanfaatkan mahasiswa untuk membantu mendapatkan segala resource yang dibutuhkan untuk menyelesaikan tugas maupun proyek perkuliahan.
+      Gedung yang terletak di sisi belakang STTS ini memiliki beberapa ruang kelas yang juga dipergunakan untuk proses belajar mengajar. Tak hanya itu, gedung ini juga dilengkapi dengan perpustakaan, lapangan basket, studio DKV, kantin, dan beberapa ruang lainnya. Gedung ini kerap kali dimanfaatkan oleh mahasiswa untuk beristirahat, melepas penat sembari bermain ping pong.
       </p>
 
     </div>
@@ -105,7 +75,135 @@ echo "<div class='row'>
     <div class='col-md-3 mb-2 mb-md-0'>
     <div class='view overlay z-depth-1-half'>
       <!--Image-->
-        <img src='assets/img/gedungE/rumKls.jpg' class='img-fluid' alt=''>
+        <img src='assets/img/gedungB/b100.jpg' class='img-fluid' alt=''>
+        <a href=''>
+          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+        </a>
+    </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class='col-md-9 mb-4 mb-md-0'>
+
+      <h3 class='font-weight-bold'>B-100</h3>
+
+      <p class='text-muted'>
+      Lokasinya yang dekat dengan kantin, menyebabkan daerah ini selalu ramai dipenuhi oleh mahasiswa, mulai dari mahasiswa yang sedang bersantap siang, mahasiswa yang sedang menunggu jadwal kuliah berikutnya maupun yang sedang menghabiskan waktu dengan bermain ping pong.
+      </p>
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+  
+  <br>  
+  
+  <!--Grid row-->
+  <div class='row'>
+
+    <!--Grid column-->
+    <div class='col-md-3 mb-2 mb-md-0'>
+    <div class='view overlay z-depth-1-half'>
+      <!--Image-->
+        <img src='assets/img/gedungB/kantin.jpg' class='img-fluid' alt=''>
+        <a href=''>
+          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+        </a>
+    </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class='col-md-9 mb-4 mb-md-0'>
+
+      <h3 class='font-weight-bold'>Kantin</h3>
+
+      <p class='text-muted'>
+      Walaupun di sekitar kampus STTS terdapat sejumlah tempat makan yang menyediakan berbagai jenis masakan, dari masakan Indonesia hingga Chinese Food, kantin STTS tetap menjadi pilihan favorit mahasiswa dan dosen STTS untuk melewatkan santap siangnya.
+      </p>
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+
+  <br>  
+  
+  <!--Grid row-->
+  <div class='row'>
+
+    <!--Grid column-->
+    <div class='col-md-3 mb-2 mb-md-0'>
+    <div class='view overlay z-depth-1-half'>
+      <!--Image-->
+        <img src='assets/img/gedungB/rumStudDKV.jpg' class='img-fluid' alt=''>
+        <a href=''>
+          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+        </a>
+    </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class='col-md-9 mb-4 mb-md-0'>
+
+      <h3 class='font-weight-bold'>Studio DKV</h3>
+
+      <p class='text-muted'>
+      Berangkat dari jurusan teknik, semua jurusan yang ada di STTS tidak dapat lepas dari komputer. Terletak di lantai dasar gedung B, alih-alih dilengkapi dengan meja kayu, ruang studio DKV ini dilengkapi dengan sejumlah iMac dan Waccom yang dapat mendukung mahasiswa dalam praktikum.
+      </p>
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+
+  <br>  
+  
+  <!--Grid row-->
+  <div class='row'>
+
+    <!--Grid column-->
+    <div class='col-md-3 mb-2 mb-md-0'>
+    <div class='view overlay z-depth-1-half'>
+      <!--Image-->
+        <img src='assets/img/gedungB/Perpus.jpg' class='img-fluid' alt=''>
+        <a href=''>
+          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+        </a>
+    </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class='col-md-9 mb-4 mb-md-0'>
+
+      <h3 class='font-weight-bold'>Perpustakaan</h3>
+
+      <p class='text-muted'>
+      Berusaha membantu mahasiswa dalam memperdalam materi kuliah, sebuah perpustakaan lengkap dengan koleksi lebih dari 100 ribu judul tersedia perpustakaan ini. Kenyamanan ruangan ini membuatnya menjadi salah satu tempat favorit mahasiswa untuk belajar ataupun sekadar melepas lelah sambil membaca maupun browsing.
+      </p>
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+  
+  <br>  
+  
+  <!--Grid row-->
+  <div class='row'>
+
+    <!--Grid column-->
+    <div class='col-md-3 mb-2 mb-md-0'>
+    <div class='view overlay z-depth-1-half'>
+      <!--Image-->
+        <img src='assets/img/gedungB/rumKls.jpg' class='img-fluid' alt=''>
         <a href=''>
           <div class='mask rgba-white-light' id='btnGambarRincian'></div>
         </a>
@@ -119,7 +217,7 @@ echo "<div class='row'>
       <h3 class='font-weight-bold'>Ruang Kelas</h3>
 
       <p class='text-muted'>
-      Ruang kelas akan selalu menjadi ruang kelas. Namun, berbeda dengan ruang kelas pada umumnya, segala kelas di Tower of The Eagles dilengkapi dengan projector screen siap pakai. Desain interiornya pun menambah semangat belajar.
+      Sebagian besar perkuliahan yang ada di STTS, menggunakan ruang kelas yang ada gedung ini. Dilengkapi dengan sebuah projector, papan tulis, dan sejumlah meja kursi, serta lantainya yang berkarpet, ruang kelas yang ada di gedung ini mendukung proses belajar mengajar.
       </p>
 
     </div>
@@ -128,8 +226,8 @@ echo "<div class='row'>
   </div>
   <!--Grid row-->
 
-  <br>  
-  
+  <br>
+
   <!--Grid row-->
   <div class='row'>
 
@@ -137,7 +235,7 @@ echo "<div class='row'>
     <div class='col-md-3 mb-2 mb-md-0'>
     <div class='view overlay z-depth-1-half'>
       <!--Image-->
-        <img src='assets/img/gedungE/rumPMB.jpg' class='img-fluid' alt=''>
+        <img src='assets/img/gedungB/lapBasket.jpg' class='img-fluid' alt=''>
         <a href=''>
           <div class='mask rgba-white-light' id='btnGambarRincian'></div>
         </a>
@@ -148,10 +246,10 @@ echo "<div class='row'>
     <!--Grid column-->
     <div class='col-md-9 mb-4 mb-md-0'>
 
-      <h3 class='font-weight-bold'>Penerimaan Mahasiswa Baru</h3>
+      <h3 class='font-weight-bold'>Lapangan Basket</h3>
 
       <p class='text-muted'>
-      Kantor penerimaan, yang paling sering dikunjungi mahasiswa baru. Di kantor ini bekerja beberapa staff dan dosen yang khusus melayani penerimaan mahasiswa baru. Kantor ini juga menjadi gerbang STTS ke komunitas luar.
+      Tidak hanya fokus pada dunia akademik, STTS juga turut memperhatikan minat dan bakat masing-masing mahasiswa. Berbagai fasilitas yang tersedia, seperti ring basket, gawang futsal, net badminton, serta podium penonton, membuat lantai teratas dari gedung B ini sebagai pusat kegiatan olahraga.
       </p>
 
     </div>
@@ -160,69 +258,7 @@ echo "<div class='row'>
   </div>
   <!--Grid row-->
 
-  <br>  
-  
-  <!--Grid row-->
-  <div class='row'>
-
-    <!--Grid column-->
-    <div class='col-md-3 mb-2 mb-md-0'>
-    <div class='view overlay z-depth-1-half'>
-      <!--Image-->
-        <img src='assets/img/gedungE/rumTeater.jpg' class='img-fluid' alt=''>
-        <a href=''>
-          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
-        </a>
-    </div>
-    </div>
-    <!--Grid column-->
-
-    <!--Grid column-->
-    <div class='col-md-9 mb-4 mb-md-0'>
-
-      <h3 class='font-weight-bold'>Ruang Teater</h3>
-
-      <p class='text-muted'>
-      Jenis ruang kelas yang paling banyak dimininati mahasiswa maupun dosen pengajar. Ruangan ini menciptakan suasana akademik yang cukup baik sehingga meningkatkan minat belajar. Terdapat total 3 ruang kelas berjenis ini.                  
-      </p>
-
-    </div>
-    <!--Grid column-->
-
-  </div>
-  <!--Grid row-->
-  
-  <br>  
-  
-  <!--Grid row-->
-  <div class='row'>
-
-    <!--Grid column-->
-    <div class='col-md-3 mb-2 mb-md-0'>
-    <div class='view overlay z-depth-1-half'>
-      <!--Image-->
-        <img src='assets/img/gedungE/rumBAU.jpg' class='img-fluid' alt=''>
-        <a href=''>
-          <div class='mask rgba-white-light' id='btnGambarRincian'></div>
-        </a>
-    </div>
-    </div>
-    <!--Grid column-->
-
-    <!--Grid column-->
-    <div class='col-md-9 mb-4 mb-md-0'>
-
-      <h3 class='font-weight-bold'>Biro Administrasi Keuangan</h3>
-
-      <p class='text-muted'>
-      Biro yang dibawahi oleh Pembantu Ketua II ini menangani segala bentuk kegiatan finansial STTS, mulai dari penerimaan pembayaran SPP, hingga operasional lingkup kerja kampus. Sepi merupakan kata yang paling tidak cocok dengan ruangan ini.
-      </p>
-
-    </div>
-    <!--Grid column-->
-
-  </div>
-  <!--Grid row-->
+  <br>
 </section>
 <!--Section: Content-->
 
@@ -232,9 +268,9 @@ echo "<div class='row'>
 <nav>
   <ul class='pagination pg-purple'>
     
-    <li class='page-item active'><a class='page-link' id='satu'>1</a></li>
+    <li class='page-item'><a class='page-link' id='satu'>1</a></li>
     <li class='page-item'><a class='page-link' id='dua'>2</a></li>
-    <li class='page-item'><a class='page-link' id='tiga'>3</a></li>
+    <li class='page-item active'><a class='page-link' id='tiga'>3</a></li>
     <li class='page-item'><a class='page-link' id='empat'>4</a></li>
     <li class='page-item'><a class='page-link' id='lima'>5</a></li>
     

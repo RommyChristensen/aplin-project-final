@@ -44,14 +44,14 @@
             <a href="" class="list-group-item list-group-item-action" id="btnGantiGedung">Gedung & Fasilitas</a>
             <a href="" class="list-group-item list-group-item-action" onclick="gantiLembaga()">Lembaga</a>
         </div><br>
-        <div>
+        <div style="padding:20px;">
         <h4>Visi</h4><hr>
         Pada Tahun 2022, iSTTS menjadi perguruan tinggi bidang sains, teknologi,
         dan desain yang mampu bersaing di tingkat Asia Tenggara, dengan mengedepankan kualitas, 
         inovasi, dan nilai-nilai keindonesiaan.
         
         </div><br>
-        <div>
+        <div style="padding:20px;">
         <h4>Misi</h4><hr>
         <ul>
         <li>Memberikan materi pendidikan dan pengajaran terbaik di bidang sains, teknologi, dan desain, dengan beberapa warna keindonesiaan di dalamnya, mengacu pada berbagai standar internasional, disesuaikan dengan situasi dan kondisi kebutuhan dan perkembangan sosial, ekonomi, dan budaya masyarakat Asia Tenggara.</li>
@@ -499,6 +499,21 @@
             $(".ganti").html(e);
           });
       }
+      function GedungB() {
+          $.get("GedungB.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
+      function GedungL() {
+          $.get("GedungL.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
+      function GedungU() {
+          $.get("GedungU.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
 
       $(document).ready(function(){
         $("#btnGantiLokasi").click(function(e){
@@ -519,11 +534,27 @@
         })
         $(document).on("click", "#btnRincianGedung",function(e){
             e.preventDefault();
-            rincianGedung();
+            GedungE();
+        })
+        $(document).on("click", "#satu",function(e){
+            e.preventDefault();
+            GedungE();
         })
         $(document).on("click", "#dua",function(e){
             e.preventDefault();
             GedungN();
+        })
+        $(document).on("click", "#tiga",function(e){
+            e.preventDefault();
+            GedungB();
+        })
+        $(document).on("click", "#empat",function(e){
+            e.preventDefault();
+            GedungL();
+        })
+        $(document).on("click", "#lima",function(e){
+            e.preventDefault();
+            GedungU();
         })
 
       function rincianGedung(){
