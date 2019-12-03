@@ -489,8 +489,13 @@
             $(".ganti").html(e);
           });
       }
-      function RincianGedung() {
-          $.get("RincianGedung.php",{},function (e){
+      function GedungE() {
+          $.get("GedungE.php",{},function (e){
+            $(".ganti").html(e);
+          });
+      }
+      function GedungN() {
+          $.get("GedungN.php",{},function (e){
             $(".ganti").html(e);
           });
       }
@@ -504,15 +509,22 @@
             e.preventDefault();
             gantiGedung();
         });
+        
+        
+      });
+      
         $(document).on("click", "#btnGambarRincian",function(e){
             e.preventDefault();
-            rincianGedung();
+            GedungE();
         })
         $(document).on("click", "#btnRincianGedung",function(e){
             e.preventDefault();
             rincianGedung();
         })
-      });
+        $(document).on("click", "#dua",function(e){
+            e.preventDefault();
+            GedungN();
+        })
 
       function rincianGedung(){
         $("#btnRincianGedung").click(function(){
