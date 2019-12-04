@@ -515,19 +515,18 @@
           });
       }
 
-      $(document).ready(function(){
-        $("#btnGantiLokasi").click(function(e){
+        $(document).on("click", "#btnGantiLokasi",function(e){
             e.preventDefault();
             gantiLokasi();
-        });
-        $("#btnGantiGedung").click(function(e){
+        })
+        $(document).on("click", "#btnGantiGedung",function(e){
             e.preventDefault();
             gantiGedung();
-        });
-        
-        
-      });
-      
+        })
+        $(document).on("click", "#btnGambarRincian",function(e){
+            e.preventDefault();
+            GedungE();
+        })
         $(document).on("click", "#btnGambarRincian",function(e){
             e.preventDefault();
             GedungE();
