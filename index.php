@@ -18,19 +18,11 @@ include "tpl/header.php";
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Agenda</a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">News</a>
-                            <a class="dropdown-item" href="#">Events</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agenda.php">Agenda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="berita.php">Berita</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Testimoni</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="aktivitasMahasiswa.php">Aktivitas Mahasiswa</a>
@@ -39,7 +31,7 @@ include "tpl/header.php";
                         <a class="nav-link" href="akademik.php">Akademik</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dosen</a>
+                        <a class="nav-link" href="dosen.php">Dosen</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="history.php">Tentang</a>
