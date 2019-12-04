@@ -10,7 +10,7 @@ echo "<div class='row'>
         <a href='' class='list-group-item list-group-item-action' id='btnGantiGedung'>Gedung & Fasilitas</a>
         <a href='' class='list-group-item list-group-item-action' onclick='gantiLembaga()'>Lembaga</a>
     </div><br>
-    <div>
+    <div style='padding:20px;'>
     <h4>Visi</h4><hr>
     Pada Tahun 2022, iSTTS menjadi perguruan tinggi bidang sains, teknologi,
     dan desain yang mampu bersaing di tingkat Asia Tenggara, dengan mengedepankan kualitas, 
@@ -18,7 +18,7 @@ echo "<div class='row'>
     
     </div>
     <br>
-        <div>
+        <div style='padding:20px;'>
         <h4>Misi</h4><hr>
         <ul>
         <li>Memberikan materi pendidikan dan pengajaran terbaik di bidang sains, teknologi, dan desain, dengan beberapa warna keindonesiaan di dalamnya, mengacu pada berbagai standar internasional, disesuaikan dengan situasi dan kondisi kebutuhan dan perkembangan sosial, ekonomi, dan budaya masyarakat Asia Tenggara.</li>
@@ -231,23 +231,13 @@ echo "<div class='row'>
 </div>
 <nav>
   <ul class='pagination pg-purple'>
-    <li class='page-item'>
-      <a class='page-link' aria-label='Previous'>
-        <span aria-hidden='true'>&laquo;</span>
-        <span class='sr-only'>Previous</span>
-      </a>
-    </li>
-    <li class='page-item active'><a class='page-link'>1</a></li>
-    <li class='page-item'><a class='page-link'>2</a></li>
-    <li class='page-item'><a class='page-link'>3</a></li>
-    <li class='page-item'><a class='page-link'>4</a></li>
-    <li class='page-item'><a class='page-link'>5</a></li>
-    <li class='page-item'>
-      <a class='page-link' aria-label='Next'>
-        <span aria-hidden='true'>&raquo;</span>
-        <span class='sr-only'>Next</span>
-      </a>
-    </li>
+    
+    <li class='page-item active'><a class='page-link' id='satu'>1</a></li>
+    <li class='page-item'><a class='page-link' id='dua'>2</a></li>
+    <li class='page-item'><a class='page-link' id='tiga'>3</a></li>
+    <li class='page-item'><a class='page-link' id='empat'>4</a></li>
+    <li class='page-item'><a class='page-link' id='lima'>5</a></li>
+    
   </ul>
 </nav>
 </div>
