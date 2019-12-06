@@ -101,8 +101,8 @@ include "tpl/header.php";
                             </h4>
                             <hr>
                             <!--Text-->
-                            <p class="card-text text-truncate mb-3">
-                                <?php echo $news['agenda_deskripsi']; ?>
+                            <p class="card-text mb-3">
+                                <?= substr($news['agenda_deskripsi'], 0, 300); ?>...
                             </p>
                             <p class="font-small"><i class="far fa-clock-o"></i>
                                 Published on
