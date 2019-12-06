@@ -3,18 +3,20 @@
     include "tpl/header.php";
     include "tpl/white-navbar.php";
 
-    $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id";
+    $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id LIMIT 10";
     $res = mysqli_query($conn, $query);
     $berita = [];
     while($row = mysqli_fetch_assoc($res)){
         $berita[] = $row;
     }
 
-    $selectAllTags = "SELECT * FROM berita_bahasa bb LEFT JOIN konten_tag kt ON kt.konten_parent = bb.berita_id";
+    $selectAllTags = "SELECT * FROM berita_bahasa bb 
+                      LEFT JOIN konten_tag kt ON kt.konten_parent = bb.berita_id
+                      LEFT JOIN berita b ON b.berita_id = bb.berita_id";
     $result = mysqli_query($conn, $selectAllTags)->fetch_assoc();
 
     // echo "<pre>";
-    // print_r($result);
+    // print_r($berita);
     // echo "</pre>";
 ?>
 
@@ -43,62 +45,43 @@
 </div>
 <!-- Intro -->
 
-<div class="container mt-5">
-    <div class="row">
-      <div class="col-md-9">
-        <!--Section: Content-->
-  <section class="dark-grey-text">
+<div class="container-fluid mt-5">
+  <div class="row mx-5">
+  <div id="page">
+    <ul class="pagination">
 
-<!-- Section heading -->
-<h2 class="text-center font-weight-bold mb-4 pb-2">Berita Terbaru</h2>
-<!-- Section description -->
-<p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
-
-<!-- Grid row -->
-<div class="row align-items-center">
-
-  <!-- Grid column -->
-  <div class="col-lg-5 col-xl-4">
-
-    <!-- Featured image -->
-    <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-      <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Sample image">
-      <a>
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-
+    </ul>
   </div>
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-  <div class="col-lg-7 col-xl-8">
-
-    <!-- Post title -->
-    <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
-    <!-- Excerpt -->
-    <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-      quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus
-      et aut officiis cum soluta nobis est eligendi placeat facere aut rerum.</p>
-    <!-- Post data -->
-    <p>by <a class="font-weight-bold">Jessica Clark</a>, 19/04/2018</p>
-    <!-- Read more button -->
-    <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
-
+  <div id="info"></div>
   </div>
-  <!-- Grid column -->
+  <div class="row">
+    <div class="col-md-8">
+      <!--Section: Content-->
+      <section class="dark-grey-text z-depth-1 py-5 px-5 mb-5">
 
-</div>
-<!-- Grid row -->
+        <!-- Section heading -->
+        <h2 class="text-center font-weight-bold mb-4 pb-2">Berita Terbaru</h2>
+        <!-- Section description -->
+        <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum
+          porro a pariatur veniam.</p>
 
-<hr class="my-5">
+        <div id="konten-berita"></div>
 
-</section>
-<!--Section: Content-->
-      </div>
-      <div class="col-md-3">
-      </div>
+      </section>
+      <!--Section: Content-->
+      
     </div>
+    <div class="col-md-4">
+    <section class="dark-grey-text z-depth-1 py-5 px-5 mb-5">
+      
+      <!-- Section heading -->
+      <h2 class="text-center font-weight-bold mb-4 pb-2">Media</h2>
+      <!-- Section description -->
+      
+    </section>      
+    </div>
+  </div>
 
 </div>
 
@@ -106,6 +89,45 @@
 
 <script>
 
+let paginate = page => {
+  $(function() {
+    $.ajax({
+      method: 'post',
+      url: 'getBeritaInfo.php',
+      success: function(result){
+        let dataSize = result;
+        let dataLimit = (dataSize / 10) + 1;
+
+        $('#page').Pagination({
+          size: dataSize,
+          pageShow: 5,
+          page: page,
+          limit: 10,
+        }, function(obj){
+          let currPage = obj.page;
+
+          $.ajax({
+            method: 'post',
+            url: 'getBerita.php',
+            data: {currPage: currPage},
+            success: function(result){
+              $("#konten-berita").html(result);
+            }
+          });
+        });
+      }
+    });
+  });
+}
+
+$(document).ready(function(){
+  paginate(1);
+
+  $(document).on("click", ".btn-read-more", function(){
+    let id = $(this).attr("id");
+    window.location = './beritaDetail.php?id=' + id;
+  });
+});
 </script>
 </body>
 </html>
