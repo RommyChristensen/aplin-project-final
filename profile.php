@@ -8,7 +8,7 @@
     <a href='' class='list-group-item list-group-item-action' onclick='gantiProfile()'>Profil</a>
     <a href='' class='list-group-item list-group-item-action' id='btnGantiLokasi'>Lokasi</a>
     <a href='' class='list-group-item list-group-item-action' id='btnGantiGedung'>Gedung & Fasilitas</a>
-    <a href='' class='list-group-item list-group-item-action' onclick='gantiLembaga()'>Lembaga</a>
+    
     </div>
     </div>
     <div class='col-md-9'>";
