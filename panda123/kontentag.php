@@ -194,7 +194,7 @@ $(document).ready(function () {
 				{jenis:"AddKontenTag",aktif:aktif,jenisKonten:jenisKonten,parent:parent,tag:tag},
 				function(result){
 					$("#btnAdd").html(result);
-					isitabelTestimoni();
+					isitabelKontenTag();
 				}
 			);
 		}
