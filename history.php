@@ -42,7 +42,7 @@
             <a href="" class="list-group-item list-group-item-action" id="btnGantiProfile">Profil</a>
             <a href="" class="list-group-item list-group-item-action" id="btnGantiLokasi">Lokasi</a>
             <a href="" class="list-group-item list-group-item-action" id="btnGantiGedung">Gedung & Fasilitas</a>
-            <a href="" class="list-group-item list-group-item-action" onclick="gantiLembaga()">Lembaga</a>
+            
         </div><br>
         <div style="padding:20px;">
         <h4>Visi</h4><hr>
