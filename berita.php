@@ -15,9 +15,16 @@
                       LEFT JOIN berita b ON b.berita_id = bb.berita_id";
     $result = mysqli_query($conn, $selectAllTags)->fetch_assoc();
 
-    // echo "<pre>";
-    // print_r($berita);
-    // echo "</pre>";
+    $queryMedia = "SELECT * FROM media m JOIN media_bahasa mb ON mb.media_id = m.media_id LIMIT 5";
+    $resMedia = mysqli_query($conn, $queryMedia);
+    $media = [];
+    while($row = mysqli_fetch_assoc($resMedia)){
+        $media[] = $row;
+    }
+
+    echo "<pre>";
+    print_r($media);
+    echo "</pre>";
 ?>
 
 <!-- Intro -->
@@ -74,12 +81,32 @@
     </div>
     <div class="col-md-4">
     <section class="dark-grey-text z-depth-1 py-5 px-5 mb-5">
-      
+
       <!-- Section heading -->
       <h2 class="text-center font-weight-bold mb-4 pb-2">Media</h2>
       <!-- Section description -->
-      
-    </section>      
+
+      <!-- Card -->
+<div class="card">
+
+  <!-- Card image -->
+  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title"><a>Card title</a></h4>
+    <!-- Text -->
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <!-- Button -->
+    <a href="#" class="btn btn-primary">Button</a>
+
+  </div>
+
+</div>
+<!-- Card -->
+    </section>
     </div>
   </div>
 
