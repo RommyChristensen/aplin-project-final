@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2019 at 08:53 AM
+-- Generation Time: Dec 07, 2019 at 07:14 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -778,10 +778,10 @@ INSERT INTO `agenda_bahasa` (`agenda_bahasa_id`, `agenda_id`, `bahasa_id`, `agen
 (341, 341, 1, 'Penyisihan IT Vaganza 2017', '<p>\r\n	<img alt=\"\" class=\"img-responsive\" src=\"/images/galeri/agenda/22654.jpg\" /></p>\r\n'),
 (342, 342, 1, 'Main Event ITVaganza 2017', '<p>\r\n	<img alt=\"\" class=\"img-responsive\" src=\"/images/galeri/agenda/22654.jpg\" /></p>\r\n'),
 (343, 343, 1, 'Workshop Pelatihan Kreasi Video', '<p>\r\n	<img alt=\"\" class=\"img-responsive\" src=\"/images/galeri/berita/200371.jpg\" /></p>\r\n'),
-(344, 344, 1, 'Pengumpulan Video Akhir di Panitia', '<p>\r\n	<img alt=\"\" class=\"img-responsive\" src=\"/images/galeri/berita/200371.jpg\" /></p>\r\n'),
-(345, 345, 1, 'Pengumuman Pemenang', '<p>\r\n	<img alt=\"\" class=\"img-responsive\" src=\"/images/galeri/berita/200371.jpg\" /></p>\r\n'),
-(346, 346, 1, 'Storytelling Competition \"Calvin and Hobbes\"', '<p>\r\n	<img alt=\"\" class=\"img-responsive\" src=\"/images/galeri/berita/f0c7cd9b-9c64-4d37-9a92-6a14c69d32f6.jpg\" /></p>\r\n<p>\r\n	Ketentuan :</p>\r\n<ol>\r\n	<li>\r\n		Menceritakan dari comic strip dalam Bahasa Inggris</li>\r\n	<li>\r\n		Terbuka bagi seluruh mahasiswa STTS</li>\r\n	<li>\r\n		Mendaftar di bu Imelda (U301) sampai 9 Mei</li>\r\n</ol>\r\n'),
-(347, 347, 1, 'Wisuda STTS Angkatan XXXV', '<p>\r\n	<img alt=\"\" src=\"/images/galeri/agenda/web-wisuda.jpg\" /></p>\r\n'),
+(344, 344, 1, 'Pengumpulan Video Akhir di Panitia', 'Diumumkan kepada para peserta lomba video, Video dikumpulkan terakhir hari ini ke Panitia\r\n'),
+(345, 345, 1, 'Pengumuman Pemenang', 'Berikut diumumkan nama-nama para pemenang'),
+(346, 346, 1, 'Storytelling Competition \"Calvin and Hobbes\"', '<p>\r\n	Ketentuan :</p>\r\n<ol>\r\n	<li>\r\n		Menceritakan dari comic strip dalam Bahasa Inggris</li>\r\n	<li>\r\n		Terbuka bagi seluruh mahasiswa STTS</li>\r\n	<li>\r\n		Mendaftar di bu Imelda (U301) sampai 9 Mei</li>\r\n</ol>\r\n'),
+(347, 347, 1, 'Wisuda STTS Angkatan XXXV', 'Selamat untuk Wisudawan dan Wisudawati yang telah menyelesaikan pendidikan di STTS. Ketahuilah, bahwa kehidupan yang sesungguhnya baru saja akan dimulai.\r\n'),
 (348, 348, 2, 'Food and Fashion Fair 2016', 'HIMA DKV STTS, proudly present :<br>\nFood and Fashion Fair 2016<br>\nCome and Make the Crowd<br>\nOpening Ceremony, 2016 June 20th, on 09.00<br>\nRecycle Fashion Show, 2016 June 20th, on 10.00<br>\nProduct Photo Workshop, 2016 June 20th, on 13.00<br>\nFood and Beverages Bazaar, 2016 June 20th-21st, on 09.00 - 19.00<br>\nLive Accoustic Band<br>\nFood and Fashion FAir, 2016 June, 20th-21st, on 09.00-19.00<br>\n<br>\nCP and Workshop Registration : Amelia Anggraeni Hadi (081231475406) '),
 (349, 349, 2, 'Online FRS Filling', 'On September 3rd-7th : Online FRS Filling for Odd Semester'),
 (350, 349, 2, 'Barista  & Latte Art Training', '<p>On 2014, May 13th, Industrial Engineering Major are going to conduct Barista & Latte Art Training. On this Agenda, the participant In Coffee 2014 will be taught how to make cappuccino / coffee latte by the expert. Beside that, the participants also will be taught how to draw / how to make a latte art on a hot coffee. The participant will also guided / told about the business chance on the coffee industry</p>\n<p>\nGoal :\n<br> - Sharing the business chance on coffee industry\n<br> - Teaching the participant how to create or how to draw a latte art on a hot coffee\n</p>'),
@@ -2009,7 +2009,16 @@ CREATE TABLE IF NOT EXISTS `konten` (
   `konten_nama` varchar(255) DEFAULT NULL,
   `konten_status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`konten_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `konten`
+--
+
+INSERT INTO `konten` (`konten_id`, `konten_nama`, `konten_status`) VALUES
+(1, 'agenda', 1),
+(2, 'agenda', 1),
+(3, 'agenda', 1);
 
 -- --------------------------------------------------------
 
@@ -2026,6 +2035,15 @@ CREATE TABLE IF NOT EXISTS `konten_tag` (
   KEY `tag_id` (`tag_id`),
   KEY `konten_parent` (`konten_parent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `konten_tag`
+--
+
+INSERT INTO `konten_tag` (`konten_id`, `konten_parent`, `tag_id`) VALUES
+(1, 347, 1),
+(2, 347, 3),
+(3, 344, 5);
 
 -- --------------------------------------------------------
 
