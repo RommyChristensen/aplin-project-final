@@ -1,7 +1,13 @@
 <?php
     require_once("helpers/koneksi.php");
     include "tpl/header.php";
-    include "tpl/white-navbar.php";
+
+    if(isset($_SESSION['bahasa'])){
+
+    }else{
+      include "tpl/white-navbar.php";
+    }
+    
 
     $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id LIMIT 10";
     $res = mysqli_query($conn, $query);

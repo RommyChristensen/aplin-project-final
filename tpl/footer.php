@@ -130,5 +130,17 @@
             $(".page1").addClass("active");
             $(".page2").removeClass("active");
         });
+        
     });
+
+    // function bahasaIng() {
+    //     $.get("bahasaIng.php",{},function(e){
+    //         location.reload();
+    //     })
+    // }
+    // function bahasaInd() {
+    //     $.get("bahasaInd.php",{},function(e){
+    //         location.reload();
+    //     })
+    // }
 </script>

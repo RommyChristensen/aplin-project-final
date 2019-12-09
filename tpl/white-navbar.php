@@ -26,11 +26,19 @@
                     <a class="nav-link" href="history.php">Tentang</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Bahasa</a>
-                </li>
-            </ul>
+            <form action="" method="get">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdownBahasa" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Bahasa</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdownBahasa">
+                            <a class="dropdown-item" name="id" href="bahasaIng.php">Indonesia</a>
+                            <a class="dropdown-item" name="en" href="bahasaIng.php">Inggris</a>
+                        </div>
+                    </li>
+                </ul>
+            
+            </form>
         </div>
     </div>
 </nav>
