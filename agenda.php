@@ -1,7 +1,14 @@
 <?php
+  //session_start();
     require_once("helpers/koneksi.php");
     include "tpl/header.php";
-    include "tpl/white-navbar.php";
+    if(isset($_SESSION['bahasa'])){
+      include "tpl/navbarID.php";
+      $bahasa=2;
+    }else{
+      include "tpl/white-navbar.php";
+      $bahasa=1;
+    }
 ?>
 
 <!-- Intro -->
@@ -37,11 +44,18 @@
   <section class="magazine-section dark-grey-text">
 
     <!-- Section heading -->
-    <h3 class="font-weight-bold mb-4 pb-2">Event Yang Akan Datang</h3>
+    <h3 class="font-weight-bold mb-4 pb-2">
+    <?php if(isset($_SESSION['bahasa'])){
+        echo "Upcoming Event";
+      }
+      else{
+        echo "Event Yang Akan Datang";
+      }
+      ?></h3>
     <!-- Section description -->
-    <p class="w-responsive mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
+    <!--<p class="w-responsive mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
     esse cillum dolore eu fugiat nulla sint occaecat cupidatat non proident, sunt culpa
-    qui officia deserunt est laborum.</p>
+    qui officia deserunt est laborum.</p>-->
 
   	<!-- Grid row -->
     <div class="row">
@@ -63,193 +77,80 @@
           <!-- Data -->
           <div class="news-data d-flex justify-content-between">
             <a href="#!" class="deep-orange-text">
-              <h6 class="font-weight-bold"><i class="fas fa-utensils pr-2"></i>Culinary</h6>
+              <h6 class="font-weight-bold">
+				<?php
+					$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa order by agenda_id desc limit 1");
+					while($row=mysqli_fetch_assoc($query)){
+						$idMax=$row['agenda_id'];
+					}
+					$q1 = mysqli_query($conn,"select * from konten where konten_nama='agenda'");
+					$kalimat="";
+					while($r1=mysqli_fetch_assoc($q1)){
+						$konten_id=$r1['konten_id'];
+						$q2=mysqli_query($conn,"select * from konten_tag where konten_id=$konten_id and konten_parent='$idMax'");
+						while($r2=mysqli_fetch_assoc($q2)){
+							$tag_id=$r2['tag_id'];
+							$q3=mysqli_query($conn,"select * from tag_bahasa where tag_id='$tag_id'");
+							while($r3=mysqli_fetch_assoc($q3)){
+								$kalimat.="#";
+								$kalimat.=$r3['tag_nama'];
+								$kalimat.=" ";
+							}
+						}
+					}
+					echo $kalimat;
+				?>
+			  </h6>
             </a>
-            <p class="font-weight-bold dark-grey-text"><i class="fas fa-clock-o pr-2"></i>27/02/2018</p>
+			<input type='hidden' id='tbHidden' value="<?php echo $idMax;?>">
+            <p class="font-weight-bold dark-grey-text"><i class="fas fa-clock-o pr-2"></i>
+			<?php 
+				$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa order by agenda_id desc limit 1");
+				while($row=mysqli_fetch_assoc($query)){
+					$idMax=$row['agenda_id'];
+					
+					$q2=mysqli_query($conn,"select * from agenda where agenda_id='$idMax'");
+					while($r2=mysqli_fetch_assoc($q2)){
+						$tanggal= $r2['agenda_tgl'];
+					}
+					$judul=$row['agenda_judul'];
+					$desk=$row['agenda_deskripsi'];
+				}
+				echo $tanggal;
+			?></p>
           </div>
 
           <!-- Excerpt -->
-          <h3 class="font-weight-bold dark-grey-text mb-3"><a>Title of the news</a></h3>
-          <p class="dark-grey-text">Sed ut perspiciatis unde voluptatem omnis iste natus
-            error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-            inventore veritatis et quasi architecto beatae vitae explicabo. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+          <h3 class="font-weight-bold dark-grey-text mb-3">
+			<?php 
+				$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa order by agenda_id desc limit 1");
+				while($row=mysqli_fetch_assoc($query)){
+					$idAgenda=$row['agenda_id'];
+				}
+				echo "<a href='agendadetail.php?agendaid=".$idAgenda."'>";
+				echo $judul;
+			?>
+		  </a></h3>
+          <p class="dark-grey-text">
+			<?php echo $desk;?>
+		  </p>
 
         </div>
         <!-- Featured news -->
 
       </div>
       <!-- Grid column -->
+	  
 
       <!-- Grid column -->
       <div class="col-lg-6 col-md-12 mb-4">
+			<div id="page">
+    <ul class="pagination">
 
-        <!-- Small news -->
-        <div class="single-news mb-4">
-
-          <!-- Grid row -->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-3">
-
-              <!--Image-->
-              <div class="view overlay rounded z-depth-1 mb-4">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(29).jpg" alt="Sample image">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-9">
-
-              <!-- Excerpt -->
-              <p class="font-weight-bold dark-grey-text">26/02/2018</p>
-              <div class="d-flex justify-content-between">
-                <div class="col-11 text-truncate pl-0 mb-3">
-                  <a href="#!" class="dark-grey-text">At vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis</a>
-                </div>
-                <a><i class="fas fa-angle-double-right"></i></a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-4">
-
-          <!-- Grid row -->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-3">
-
-              <!--Image-->
-              <div class="view overlay rounded z-depth-1 mb-4">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
-                  alt="Sample image">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-9">
-
-              <!-- Excerpt -->
-              <p class="font-weight-bold dark-grey-text">25/02/2018</p>
-              <div class="d-flex justify-content-between">
-                <div class="col-11 text-truncate pl-0 mb-3">
-                  <a href="#!" class="dark-grey-text">Itaque earum rerum hic tenetur a sapiente delectus</a>
-                </div>
-                <a><i class="fas fa-angle-double-right"></i></a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news mb-4">
-
-          <!-- Grid row -->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-3">
-
-              <!--Image-->
-              <div class="view overlay rounded z-depth-1 mb-4">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/87.jpg" alt="Sample image">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-9">
-
-              <!-- Excerpt -->
-              <p class="font-weight-bold dark-grey-text">24/02/2018</p>
-              <div class="d-flex justify-content-between">
-                <div class="col-11 text-truncate pl-0 mb-3">
-                  <a href="#!" class="dark-grey-text">Soluta nobis est eligendi optio cumque nihil impedit quo
-                    minus</a>
-                </div>
-                <a><i class="fas fa-angle-double-right"></i></a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-        </div>
-        <!-- Small news -->
-
-        <!-- Small news -->
-        <div class="single-news">
-
-          <!-- Grid row -->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-3">
-
-              <!--Image-->
-              <div class="view overlay rounded z-depth-1 mb-md-0 mb-4">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" alt="Sample image">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-9">
-
-              <!-- Excerpt -->
-              <p class="font-weight-bold dark-grey-text">23/02/2018</p>
-              <div class="d-flex justify-content-between">
-                <div class="col-11 text-truncate pl-0 mb-lg-3">
-                  <a href="#!" class="dark-grey-text">Duis aute irure dolor in reprehenderit in voluptate</a>
-                </div>
-                <a><i class="fas fa-angle-double-right"></i></a>
-              </div>
-
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-        </div>
-        <!-- Small news -->
+    </ul>
+  </div>
+ <div id="konten-agenda"></div> 
+ 
 
       </div>
       <!--Grid column-->
@@ -266,6 +167,48 @@
 <?php 
     include "tpl/footer.php";
 ?>
+<script>
 
+var idMax= $("#tbHidden").val();
+let paginate = page => {
+  $(function() {
+    $.ajax({
+      method: 'post',
+      url: 'getAgendaInfo.php',
+      success: function(result){
+        let dataSize = result;
+        let dataLimit = (dataSize / 10) + 1;
+
+        $('#page').Pagination({
+          size: dataSize,
+          pageShow: 5,
+          page: page,
+          limit: dataLimit,
+        }, function(obj){
+          let currPage = obj.page;
+          $.ajax({
+            method: 'post',
+            url: 'getAgenda.php',
+            data: {currPage: currPage,idMax:idMax},
+            success: function(result){
+              $("#konten-agenda").html(result);
+            }
+          });
+        });
+      }
+    });
+  });
+}
+
+$(document).ready(function(){
+  paginate(1);
+  $(document).on("click", ".btn-read-more", function(){
+    let id = $(this).attr("id");
+    window.location = './agendadetail.php?agendaid=' + id;
+  });
+});
+
+  
+</script>
 </body>
 </html>

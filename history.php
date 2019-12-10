@@ -1,5 +1,15 @@
-<?php include "tpl/header.php"; ?>
-<?php include "tpl/white-navbar.php"; ?>
+<?php
+  //session_start();
+    require_once("helpers/koneksi.php");
+    include "tpl/header.php";
+    if(isset($_SESSION['bahasa'])){
+      include "tpl/navbarID.php";
+      $bahasa=2;
+    }else{
+      include "tpl/white-navbar.php";
+      $bahasa=1;
+    }
+?>
 <script src="assets/js/jquery-3.4.1.min.js"></script>
 <!-- Intro -->
 <div class="card card-intro blue-gradient">
@@ -13,7 +23,14 @@
             <div class="col-md-6">
 
                 <p class="h5 mb-2">
-                    Tentang
+                    <?php
+                    if(isset($_SESSION['bahasa'])){
+                        echo "About";
+                    }
+                    else{
+                        echo "Tentang";
+                    }
+                    ?>
                 </p>
 
                 <p class="mb-0">Institut Sains & Teknologi Terpadu Surabaya</p>
@@ -37,7 +54,7 @@
     <div class="col-md-3">
         <div class="list-group ml-3 mt-3">
             <a href="#!" class="list-group-item list-group-item-action active">
-                TENTANG
+                Tentang
             </a>
             <a href="" class="list-group-item list-group-item-action" id="btnGantiProfile">Profil</a>
             <a href="" class="list-group-item list-group-item-action" id="btnGantiLokasi">Lokasi</a>

@@ -1,3 +1,4 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "mysql", "sttsedunew");
+    $conn = mysqli_connect("localhost", "root", "", "sttsedunew");
+    session_start();
 ?>

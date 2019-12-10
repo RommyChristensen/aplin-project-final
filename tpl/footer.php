@@ -130,5 +130,16 @@
             $(".page1").addClass("active");
             $(".page2").removeClass("active");
         });
+        
     });
+
+    function refresh(e) {
+    var param=e;
+    $.post("bahasa.php",
+      {param:param},
+      function(result){
+        location.reload(true);
+      }
+    );
+  }
 </script>

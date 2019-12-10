@@ -1,6 +1,14 @@
 <?php require_once("helpers/koneksi.php"); ?>
 <?php include "tpl/header.php"; ?>
-<?php include "tpl/white-navbar.php"; ?>
+<?php 
+    if(isset($_SESSION['bahasa'])){
+      include "tpl/navbarID.php";
+      $bahasa=2;
+    }else{
+      include "tpl/white-navbar.php";
+      $bahasa=1;
+    }
+?>
 <?php
     $desc_ukk = mysqli_query($conn, "SELECT * FROM org_bahasa WHERE org_bahasa_id = 24")->fetch_assoc();
 ?>
@@ -16,7 +24,13 @@
             <div class="col-md-6">
 
                 <p class="h2 mb-2">
-                    Aktivitas Mahasiswa
+                    <?php
+                      if(isset($_SESSION['bahasa'])){
+                        echo "Students Activity";
+                      }else{
+                        echo "Aktivitas Mahasiswa";
+                      }
+                    ?>
                 </p>
 
             </div>

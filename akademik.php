@@ -1,7 +1,13 @@
 <?php
     require_once("helpers/koneksi.php");
     include "tpl/header.php";
-    include "tpl/white-navbar.php";
+    if(isset($_SESSION['bahasa'])){
+        include "tpl/navbarID.php";
+        $bahasa=2;
+      }else{
+        include "tpl/white-navbar.php";
+        $bahasa=1;
+      }
 ?>
 
 <!-- Intro -->
@@ -16,7 +22,13 @@
             <div class="col-md-6">
 
                 <p class="h5 mb-2">
-                    AKADEMIK
+                    <?php
+                      if(isset($_SESSION['bahasa'])){
+                        echo "Academics";
+                      }else{
+                        echo "Akademik";
+                      }
+                    ?>
                 </p>
 
             </div>
