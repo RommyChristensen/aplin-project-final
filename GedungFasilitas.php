@@ -48,7 +48,7 @@ echo "<div class='row'>
 
       <p class='text-muted'>Denah yang berada di Institut Sains dan Teknologi Terpadu Surabaya Terdapat 5 Gedung, Jika Ingin Tahu Lebih dalam. Double Klik Tombol Di Bawah/Gambar Denah:</p>
 
-      <a class='btn btn-brown btn-md ml-0' href='' role='button' id='btnRincianGedung'>Travel<i class='fa fa-plane ml-2'></i></a>
+      <a class='btn btn-brown btn-md ml-0' href='' role='button' id='btnRincianGedung'>Jelajahi<i class='fa fa-plane ml-2'></i></a>
 
     </div>
     <!--Grid column-->
