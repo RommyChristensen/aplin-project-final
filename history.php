@@ -317,8 +317,7 @@
                                 <p class="text-muted">
                                 <?php
                                 if (isset($_SESSION['bahasa'])) {
-                                    echo "With the increasing number of students, the ITES campus has moved to Gubeng Pojok street no. 15 Surabaya.
-                                                                            Now the place is used by Gracia Surabaya Middle School and High School.";
+                                    echo "With the increasing number of students, the ITES campus has moved to Gubeng Pojok street no. 15 Surabaya. Now the place is used by Gracia Surabaya Middle School and High School.";
                                 }else{
                                     echo "Dengan jumlah mahasiswa yang semakin banyak, kampus ITES pindah ke jalan Gubeng Pojok no. 15 Surabaya.
                                     Sekarang Tempat itu di pakai oleh SMP dan SMA Gracia Surabaya.";
@@ -372,17 +371,12 @@
                                 <p class="text-muted">
                                 <?php
                                 if (isset($_SESSION['bahasa'])) {
-                                    echo "With the endorsement from Kopertis Region VII, STIELS conducted a full degree program through the Minister of Education and Culture Decree No. RI. 261 / O / 1983. In December 1983,
-                                                                            STIELS began taking the baccalaureate exam and the following year began taking the state bachelor's examination.
-                                                                            STIELS is the first private tertiary institution outside Jakarta and Bandung to take the state undergraduate examination.";
+                                    echo "With the endorsement from Kopertis Region VII, STIELS conducted a full degree program through the Minister of Education and Culture Decree No. RI. 261 / O / 1983. In December 1983, STIELS began taking the baccalaureate exam and the following year began taking the state bachelor's examination. STIELS is the first private tertiary institution outside Jakarta and Bandung to take the state undergraduate examination.";
                                 }else{
-                                    echo "Dengan pengesahan dari Kopertis Wilayah VII, STIELS menyelenggarakan program sarjana penuh melalui SK Menteri Pendidikan dan Kebudayaan RI No. 261/O/1983. Pada bulan Desember 1983,
-                                    STIELS mulai mengikuti ujian sarjana muda dan pada tahun berikutnya mulai mengikuti ujian sarjana negara.
-                                    STIELS merupakan perguruan tinggi swasta pertama di luar Jakarta dan Bandung yang mengikuti ujian sarjana negara.
-                                    ";
+                                    echo "Dengan pengesahan dari Kopertis Wilayah VII, STIELS menyelenggarakan program sarjana penuh melalui SK Menteri Pendidikan dan Kebudayaan RI No. 261/O/1983. Pada bulan Desember 1983, STIELS mulai mengikuti ujian sarjana muda dan pada tahun berikutnya mulai mengikuti ujian sarjana negara. STIELS merupakan perguruan tinggi swasta pertama di luar Jakarta dan Bandung yang mengikuti ujian sarjana negara.";
                                 }
                                 ?>
-                                        </p>
+                                </p>
                             </div>
                         </li>
     
@@ -402,8 +396,7 @@
                                 <p class="text-muted">
                                 <?php
                                 if (isset($_SESSION['bahasa'])) {
-                                    echo "STIELS changed its name to Surabaya Technical College (STTS) and opened a new major, namely Strata-1 Informatics and Computer Engineering.
-                                                                    Since then the teaching and learning activities have been gradually transferred to the new campus on Jalan Ngagel Jaya Tengah no. 73-77 which is equipped with a laboratory building.";
+                                    echo "STIELS changed its name to Surabaya Technical College (STTS) and opened a new major, namely Strata-1 Informatics and Computer Engineering. Since then the teaching and learning activities have been gradually transferred to the new campus on Jalan Ngagel Jaya Tengah no. 73-77 which is equipped with a laboratory building.";
                                 }else{
                                     echo "STIELS berganti nama menjadi Sekolah Tinggi Teknik Surabaya (STTS) dan membuka jurusan baru, yaitu Strata-1 Teknik Informatika dan Komputer.
                                     Sejak itu pula kegiatan belajar mengajar secara bertahap dipindahkan ke kampus baru di jalan Ngagel Jaya Tengah no. 73-77 yang dilengkapi dengan gedung laboratorium.";
@@ -430,12 +423,9 @@
                                 <?php
                                 if (isset($_SESSION['bahasa'])) {
                                     echo "The Accreditation Team of the Directorate General of Higher Education of the Republic of Indonesia decided to raise the status of REGISTERED to RECOGNIZED for all study programs at STTS, namely:
-                                                                        <br>
-                                                                        - Strata-1 Electrical Engineering
-                                                                        <br>
-                                                                        - Strata-1 Informatics and Computer Engineering
-                                                                        <br>
-                                                                        - Diploma-3 in Informatics Management and Computer Engineering";
+                                        <br>- Strata-1 Electrical Engineering
+                                        <br>- Strata-1 Informatics and Computer Engineering
+                                        <br>- Diploma-3 in Informatics Management and Computer Engineering";
                                 }else{
                                     echo "Tim Akreditasi Direktorat Jendral Pendidikan Tinggi Republik Indonesia memutuskan kenaikan status TERDAFTAR menjadi DIAKUI untuk semua program studi yang ada di STTS, yaitu:
                                     <br>
@@ -468,7 +458,7 @@
                                 <?php
                                 if (isset($_SESSION['bahasa'])) {
                                     echo "STTS opens the Department of Industrial Engineering and Management, which equips students with a number of engineering and management sciences in the industrial field.
-                                                                    Besides this program also emphasizes the use of computers as an element of control.";
+                                    Besides this program also emphasizes the use of computers as an element of control.";
                                 }else{
                                     echo "STTS membuka jurusan Strata-1 Teknik dan Manajemen Industri, yang membekali mahasiswa dengan sejumlah teknik dan ilmu manajemen di bidang industri.
                                     Selain itu program ini juga menekankan penggunaan komputer sebagai unsur pengendalian.";
@@ -495,12 +485,12 @@
                                 <?php
                                 if (isset($_SESSION['bahasa'])) {
                                     echo "The Government through the Directorate General of Higher Education of the Republic of Indonesia has decided to increase the status from ACKNOWLEDGED to RECOMMENDED for 3 (three) study programs, namely:
-                                                                            <br>
-                                                                            - Strata-1 Electrical Engineering
-                                                                            <br>
-                                                                            - Strata-1 Informatics and Computer Engineering
-                                                                            <br>
-                                                                            - Diploma-3 in Informatics Management and Computer Engineering";
+                                        <br>
+                                        - Strata-1 Electrical Engineering
+                                        <br>
+                                        - Strata-1 Informatics and Computer Engineering
+<br>
+                                        - Diploma-3 in Informatics Management and Computer Engineering";
                                 }else{
                                     echo "Pemerintah melalui Direktorat Jendral Pendidikan Tinggi Republik Indonesia memutuskan kenaikan status dari DIAKUI menjadi DISAMAKAN untuk 3 (tiga) program studi, yaitu:
                                     <br>
@@ -597,9 +587,9 @@
                             <?php
                                 if (isset($_SESSION['bahasa'])) {
                                     echo "To produce human resources in the field of information technology, STTS holds a Postgraduate Program.
-                                                                Postgraduate Program STTS Information Technology study program is the first private tertiary education graduate program in East Java based on information technology.";
+                                    Postgraduate Program STTS Information Technology study program is the first private tertiary education graduate program in East Java based on information technology.";
                                 }else{
-                                    echo " Untuk menghasilkan sumber daya manusia di bidang teknologi informasi, STTS menyelenggarakan Program Pascasarjana. 
+                                    echo "Untuk menghasilkan sumber daya manusia di bidang teknologi informasi, STTS menyelenggarakan Program Pascasarjana. 
                                     Program Pascasarjana program studi Teknologi Informasi STTS merupakan program pascasarjana perguruan tinggi swasta pertama di Jatim yang berbasiskan teknologi informasi.";
                                 }
                                 ?>
@@ -649,7 +639,7 @@
                             <?php
                             if (isset($_SESSION['bahasa'])) {
                                 echo "STTS is an information technology based university which is certainly able to contribute in the design field.
-                                                            In line with the needs and demands of design workers who increasingly entered STTS in 2008 STTS opened the Visual Communication Design department and three years later, in 2011 STTS opened the Product Design department.";
+                                In line with the needs and demands of design workers who increasingly entered STTS in 2008 STTS opened the Visual Communication Design department and three years later, in 2011 STTS opened the Product Design department.";
                             }else{
                                 echo "STTS merupakan Perguruan Tinggi berbasis teknologi informasi yang tentunya mampu memberikan kontribusi di bidang desain. 
                                 Selaras dengan kebutuhan dan permintaan tenaga desain yang semakin banyak masuk ke STTS pada tahun 2008 STTS membuka jurusan Desain Komunikasi Visual dan tiga tahun kemudian , di tahun 2011 STTS membuka jurusan Desain Produk.";
@@ -702,9 +692,9 @@
                             <?php
                             if (isset($_SESSION['bahasa'])) {
                                 echo "In 2011 STTS collaborated with 2 universities in the Netherlands, namely the University of Technology fonts and Saxion university of Technology.
-                                                            The collaboration carried out is a Join degree so that students can get 2 similar degrees, namely an STTS bachelor's degree and a Bachelor's degree from Fontys University / Saxion University in approximately 4 years.
-                                                            In 2011 STTS also added a new seven-story building facility named Tower of Eagle.
-                                                            This building is used for E-library services, meeting rooms, lecture halls, theater-style lecture halls and meeting rooms for student activities.";
+                                The collaboration carried out is a Join degree so that students can get 2 similar degrees, namely an STTS bachelor's degree and a Bachelor's degree from Fontys University / Saxion University in approximately 4 years.
+                                In 2011 STTS also added a new seven-story building facility named Tower of Eagle.
+                                This building is used for E-library services, meeting rooms, lecture halls, theater-style lecture halls and meeting rooms for student activities.";
                             }else{
                                 echo "Pada tahun 2011 STTS bekerja sama dengan 2 univesitas di Netherland yaitu fontys Univesity of Technologi dan Saxion university of Technology. 
                                 Kerjasama yang dilakukan adalah Join degree sehingga mahasiswa bisa mendapatkan 2 gelar sejenis yaitu Gelar sarjana STTS dan gelar Bachelor dari Fontys University/ Saxion University dalam waktu kurang lebih 4 tahun. 
@@ -758,22 +748,22 @@
                             <?php
                             if (isset($_SESSION['bahasa'])) {
                                 echo "Cooperation between STTS and Malaysia University of Science and Technology (MUST) is established. The collaboration includes: <br>
-                                                            - Offering undergraduate and postgraduate students to take joint or dual
-                                                            degrees from MUST and STTS
-                                                            - Placement of intern students
-                                                            - Hold conferences, seminars, or workshops together, both for
-                                                            internal or general <br>
-                                                            - Hold a guest lecture
-                                                            - Research collaboration and information exchange
-                                                            <br>
-                                                            <br>
-                                                            5 of the 6 Undergraduate Study Programs at STTS have been accredited B: <br>
-                                                            - S1 Electrical Engineering (B) <br>
-                                                            - S1 Informatics Engineering (B)
-                                                            - S1 Industrial Engineering (B)
-                                                            - S1 Visual Communication Design (B) <br>
-                                                            - S1 Product Design (B)
-                                                            - S1 Information System (C) * Currently in the process of filing a recommendation.";
+                                - Offering undergraduate and postgraduate students to take joint or dual
+                                degrees from MUST and STTS<br>
+- Placement of intern students<br>
+- Hold conferences, seminars, or workshops together, both for<br>
+internal or general <br>
+- Hold a guest lecture<br>
+- Research collaboration and information exchange<br>
+<br>
+<br>
+5 of the 6 Undergraduate Study Programs at STTS have been accredited B: <br>
+- S1 Electrical Engineering (B) <br>
+- S1 Informatics Engineering (B)<br>
+- S1 Industrial Engineering (B)<br>
+- S1 Visual Communication Design (B) <br>
+- S1 Product Design (B)<br>
+- S1 Information System (C) * Currently in the process of filing a recommendation.";
                             }else{
                                 echo "Kerjasama STTS dan Malaysia University of Science and Technology(MUST) terjalin. Kerjasama tersebut mencakup: <br>
                                 - Menawarkan mahasiswa S1 maupun S2 untuk mengambil joint atau dual 
@@ -844,10 +834,10 @@
                             <?php
                             if (isset($_SESSION['bahasa'])) {
                                 echo "<ul>
-                                                            <li> Established the STTS Professional Certification Institute (LSP) under the National Certification Agency (BNSP). </li>
-                                                            <li> Obtained status enhancement from the College of the Fostered group to the College of the Middle group. </li>
-                                                            <li> Achieved the title of PT Unggulan. </li>
-                                                            </ul>";
+                                <li> Established the STTS Professional Certification Institute (LSP) under the National Certification Agency (BNSP). </li>
+                                <li> Obtained status enhancement from the College of the Fostered group to the College of the Middle group. </li>
+                                <li> Achieved the title of PT Unggulan. </li>
+                                </ul>";
                             }else{
                                 echo "<ul>
                                 <li> Didirikan Lembaga Sertifikasi Profesi (LSP) STTS yang bernaung di bawah Badan Nasional Sertifikasi Nasional (BNSP). </li>
@@ -880,9 +870,9 @@
                             <?php
                             if (isset($_SESSION['bahasa'])) {
                                 echo "<ul>
-                                                            <li> STTS inaugurated a new unit, the Office of International Affairs (KUI). This KUI is tasked with managing various kinds of STTS activities that are international in nature, for example international seminars, study abroad, student exchanges, and so on. </li>
-                                                            <li> Once again won the title of Higher Education. The predicate has been won 8 times. </li>
-                                                            </ul>";
+                                <li> STTS inaugurated a new unit, the Office of International Affairs (KUI). This KUI is tasked with managing various kinds of STTS activities that are international in nature, for example international seminars, study abroad, student exchanges, and so on. </li>
+                                <li> Once again won the title of Higher Education. The predicate has been won 8 times. </li>
+                                </ul>";
                             }else{
                                 echo "<ul>
                                 <li>STTS meresmikan unit baru yaitu Kantor Urusan Internasional (KUI). KUI ini bertugas mengurusi berbagai macam kegiatan STTS yang bersifat internasional,misalnya seminar internasional, studi ke luar negeri, pertukaran mahasiswa, dan lain sebagainya.</li>
@@ -913,8 +903,8 @@
                             <?php
                             if (isset($_SESSION['bahasa'])) {
                                 echo "In his remarks at the Graduation Ceremony of STTS XXXV in November 2018, the Head of LL-Dikti region VII East Java stated that STTS had reached
-                                                            achievement to be the best Technical High School in the LL-Dikti area of ​​East Java VII region and was asked to continue to grow and contribute
-                                                            for education in Indonesia.";
+                                achievement to be the best Technical High School in the LL-Dikti area of ​​East Java VII region and was asked to continue to grow and contribute
+                                for education in Indonesia.";
                             }else{
                                 echo "Dalam Sambutan pada acara Wisuda STTS XXXV bulan November 2018, Kepala LL-Dikti wilayah VII Jawa Timur menyatakan bahwa STTS telah mencapai
                                 prestasi menjadi Sekolah Tinggi bidang Teknik terbaik di lingkungan LL-Dikti wilayah VII JawaTimur dan diminta untuk terus berkembang dan memberikan kontribusi
@@ -944,7 +934,7 @@
                             <?php
                             if (isset($_SESSION['bahasa'])) {
                                 echo "On June 24, 2019, Ministerial Decree Number 481 / KPT / I / 2019 concerning the Permit to change the name of the Surabaya Technical College (STTS) was officially
-                                                            changed to Surabaya Integrated Science and Technology Institute (iSTTS).    ";
+                                changed to Surabaya Integrated Science and Technology Institute (iSTTS).    ";
                             }else{
                                 echo "Pada tanggal 24 Juni 2019, SK Menteri Nomor 481/KPT/ I /2019 tentang Izin perubahan bentuk nama Sekolah Tinggi Teknik Surabaya (STTS) telah resmi
                                 berubah menjadi Institut Sains dan Teknologi Terpadu Surabaya (iSTTS).";
