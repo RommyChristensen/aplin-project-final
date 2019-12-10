@@ -5,11 +5,11 @@ if(isset($_SESSION['bahasa'])){
 <div class='col-md-3'>
     <div class='list-group ml-3 mt-3'>
         <a href='#!' class='list-group-item list-group-item-action active'>
-            TENTANG
+            ABOUT
         </a>
-        <a href='' class='list-group-item list-group-item-action' id='btnGantiProfile'>Profil</a>
-        <a href='' class='list-group-item list-group-item-action' id='btnGantiLokasi'>Lokasi</a>
-        <a href='' class='list-group-item list-group-item-action' id='btnGantiGedung'>Gedung & Fasilitas</a>
+        <a href='' class='list-group-item list-group-item-action' id='btnGantiProfile'>Profile</a>
+        <a href='' class='list-group-item list-group-item-action' id='btnGantiLokasi'>Location</a>
+        <a href='' class='list-group-item list-group-item-action' id='btnGantiGedung'>Building & Facilities</a>
         
     </div><br>
     <div style='padding:20px;'>

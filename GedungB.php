@@ -1,4 +1,278 @@
 <?php
+session_start();
+if(isset($_SESSION['bahasa'])){
+  echo "<div class='row'>
+  <div class='col-md-3'>
+      <div class='list-group ml-3 mt-3'>
+          <a href='#!' class='list-group-item list-group-item-action active'>
+              ABOUT
+          </a>
+          <a href='' class='list-group-item list-group-item-action' id='btnGantiProfile'>Profile</a>
+          <a href='' class='list-group-item list-group-item-action' id='btnGantiLokasi'>Location</a>
+          <a href='' class='list-group-item list-group-item-action' id='btnGantiGedung'>Building & Facilities</a>
+          
+      </div><br>
+      <div style='padding:20px;'>
+      <h4>Vision</h4><hr>
+      In 2022, STTS shall be a higher institution in science, technology, and design which can compete at Southeast Asia level, emphasizing quality, innovation, and Indonesian values
+    
+      </div>
+      <br>
+          <div style='padding:20px;'>
+          <h4>Mission</h4><hr>
+          <ul>
+          <li>To provide the best education and teaching material in science, technology, and design, with some Indonesian colors therein, referring to various international standards in accordance with the situation and condition of the demand and development in social, economic, and cultural aspects of Southeast Asian community</li>
+          <li>To conduct reasearch with international standards in science, technology, and design, in accordance with the demand and development in social, economic, and cultural aspects of Southeast Asian community, using Indonesian values as part of the research</li>
+          <li>To provide various innovative and superior solutions based on science, technology, and design for various social, economic, and cultural problems, referring to various international standards, especially in dealing with ASEAN economic community (AEC)</li>
+          </ul>
+          </div>
+  </div>
+  <div class='col-md-9'>
+  <div class='container my-5 py-5 z-depth-1'>
+  
+   
+  <!--Section: Content-->
+  <section class='px-md-5 mx-md-5 text-center text-lg-left dark-grey-text'>
+  
+    <!--Grid row-->
+    <div class='row'>
+  
+      <!--Grid column-->
+      <div class='col-md-6 mb-4 mb-md-0'>
+  
+        <!--Image-->
+        <div class='view overlay z-depth-1-half'>
+          <img src='assets/img/gedungB/gedungB.jpg' class='img-fluid' alt=''>
+          <a href=''>
+            <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+          </a>
+        </div>
+  
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class='col-md-6 mb-4 mb-md-0'>
+  
+        <h3 class='font-weight-bold'>B Building</h3>
+  
+        <p class='text-muted'>
+        The building located on the rear side of STTS has several classrooms used for teaching and learning process. Besides, this building is also equipped with library, basketball court, DKV studio, cafetaria, and some other rooms. This building is often used by students for resting, relaxing while playing pingpong.</p>
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+    
+    <br>  
+    
+    <!--Grid row-->
+    <div class='row'>
+  
+      <!--Grid column-->
+      <div class='col-md-3 mb-2 mb-md-0'>
+      <div class='view overlay z-depth-1-half'>
+        <!--Image-->
+          <img src='assets/img/gedungB/b100.jpg' class='img-fluid' alt=''>
+          <a href=''>
+            <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+          </a>
+      </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class='col-md-9 mb-4 mb-md-0'>
+  
+        <h3 class='font-weight-bold'>B-100</h3>
+  
+        <p class='text-muted'>
+        Being close to the cafetaria makes this area always crowded by students, be it those having lunch, those waiting for next class schedules, or those spending time by playing pingpong.</p>
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+    
+    <br>  
+    
+    <!--Grid row-->
+    <div class='row'>
+  
+      <!--Grid column-->
+      <div class='col-md-3 mb-2 mb-md-0'>
+      <div class='view overlay z-depth-1-half'>
+        <!--Image-->
+          <img src='assets/img/gedungB/kantin.jpg' class='img-fluid' alt=''>
+          <a href=''>
+            <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+          </a>
+      </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class='col-md-9 mb-4 mb-md-0'>
+  
+        <h3 class='font-weight-bold'>Canteen</h3>
+  
+        <p class='text-muted'>
+        Although there are some restaurants providing various kinds of food starting from Indonesian food to Chinese food around STTS campus, the STTS cafetaria is still the favorite choice of STTS students and faculty staff for lunch.</p>
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+  
+    <br>  
+    
+    <!--Grid row-->
+    <div class='row'>
+  
+      <!--Grid column-->
+      <div class='col-md-3 mb-2 mb-md-0'>
+      <div class='view overlay z-depth-1-half'>
+        <!--Image-->
+          <img src='assets/img/gedungB/rumStudDKV.jpg' class='img-fluid' alt=''>
+          <a href=''>
+            <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+          </a>
+      </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class='col-md-9 mb-4 mb-md-0'>
+  
+        <h3 class='font-weight-bold'>VCD Studio</h3>
+  
+        <p class='text-muted'>
+        Originated from engineering, all STTS departments are inseparable from computers. Located on the ground floor of B building, instead of being equipped with wooden tables, this DKV studio is equipped with a number of iMac and Waccom to support DKV students in their lab work.</p>
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+  
+    <br>  
+    
+    <!--Grid row-->
+    <div class='row'>
+  
+      <!--Grid column-->
+      <div class='col-md-3 mb-2 mb-md-0'>
+      <div class='view overlay z-depth-1-half'>
+        <!--Image-->
+          <img src='assets/img/gedungB/Perpus.jpg' class='img-fluid' alt=''>
+          <a href=''>
+            <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+          </a>
+      </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class='col-md-9 mb-4 mb-md-0'>
+  
+        <h3 class='font-weight-bold'>Library</h3>
+  
+        <p class='text-muted'>
+        To help the students better comprehend their class material, a complete library with a collection of more than 100 thousand books is provided in this building. The comfort inside its rooms makes this place one of the students' favorite places to study or just relax while reading and browsing.</p>
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+    
+    <br>  
+    
+    <!--Grid row-->
+    <div class='row'>
+  
+      <!--Grid column-->
+      <div class='col-md-3 mb-2 mb-md-0'>
+      <div class='view overlay z-depth-1-half'>
+        <!--Image-->
+          <img src='assets/img/gedungB/rumKls.jpg' class='img-fluid' alt=''>
+          <a href=''>
+            <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+          </a>
+      </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class='col-md-9 mb-4 mb-md-0'>
+  
+        <h3 class='font-weight-bold'>Class Rooms</h3>
+  
+        <p class='text-muted'>
+        Most classes at STTS use the rooms in this building. Equipped with a projector, whiteboard, a number of desks, and carpeted floor, the classrooms in this building support the teaching and learning process.</p>
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+  
+    <br>
+  
+    <!--Grid row-->
+    <div class='row'>
+  
+      <!--Grid column-->
+      <div class='col-md-3 mb-2 mb-md-0'>
+      <div class='view overlay z-depth-1-half'>
+        <!--Image-->
+          <img src='assets/img/gedungB/lapBasket.jpg' class='img-fluid' alt=''>
+          <a href=''>
+            <div class='mask rgba-white-light' id='btnGambarRincian'></div>
+          </a>
+      </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class='col-md-9 mb-4 mb-md-0'>
+  
+        <h3 class='font-weight-bold'>Basketball Field</h3>
+  
+        <p class='text-muted'>
+        Not only focusing on the academic world, STTS also pays attention to the students' interests and talents. Various available facilities such as basketball ring, futsal goal, badminton net, and tribune for spectators make the top floor of B building a sports center.</p>
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+  
+    <br>
+  </section>
+  <!--Section: Content-->
+  
+  
+  
+  </div>
+  <nav>
+    <ul class='pagination pg-purple'>
+      
+      <li class='page-item'><a class='page-link' id='satu'>1</a></li>
+      <li class='page-item'><a class='page-link' id='dua'>2</a></li>
+      <li class='page-item active'><a class='page-link' id='tiga'>3</a></li>
+      <li class='page-item'><a class='page-link' id='empat'>4</a></li>
+      <li class='page-item'><a class='page-link' id='lima'>5</a></li>
+      
+    </ul>
+  </nav>
+  </div>
+  </div>";  
+}
+else{
 echo "<div class='row'>
 <div class='col-md-3'>
     <div class='list-group ml-3 mt-3'>
@@ -278,4 +552,5 @@ echo "<div class='row'>
 </nav>
 </div>
 </div>";
+}
 ?>
