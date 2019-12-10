@@ -67,18 +67,17 @@
 
 <div class="container-fluid mt-5">
   <div class="row mx-5">
-  <div id="page">
-    <ul class="pagination">
-
-    </ul>
-  </div>
-  <div id="info"></div>
+  
   </div>
   <div class="row">
     <div class="col-md-8">
       <!--Section: Content-->
       <section class="dark-grey-text z-depth-1 py-5 px-5 mb-5">
+      <div id="page">
+        <ul class="pagination">
 
+        </ul>
+      </div>
         <!-- Section heading -->
         <h2 class="text-center font-weight-bold mb-4 pb-2">Berita Terbaru</h2>
         <!-- Section description -->
@@ -93,6 +92,21 @@
       
     </div>
     <div class="col-md-4">
+    <section class="dark-grey-text z-depth-1 py-1 px-3 mb-2">
+      <?php 
+        $queryTag = "SELECT * FROM tag_bahasa";
+        $resTag = mysqli_query($conn, $queryTag);
+      ?>
+      <select class="selectpicker form-control mb-3" multiple data-live-search="true">
+        <?php
+          while($row = mysqli_fetch_assoc($resTag)){
+            echo "<option value='$row[tag_id]'>$row[tag_nama]</option>";
+          }
+        ?>
+      </select>
+      <button class="btn btn-secondary btn-search">Cari</button>
+
+    </section>
     <section class="dark-grey-text z-depth-1 py-5 px-5 mb-5">
 
       <!-- Section heading -->
@@ -124,6 +138,8 @@
 </div>
 
 <?php include "tpl/footer.php"; ?>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 <script>
 
@@ -169,6 +185,19 @@ $(document).ready(function(){
   $(document).on("click", ".btn-selengkapnya", function(){
     let id = $(this).attr("id");
     window.location = "./mediaDetail.php?id=" + id;
+  });
+
+  $(".btn-search").click(function(){
+    let tags = $(".selectpicker").val();
+    console.log(tags);
+    $.ajax({
+      url: 'filterBerita.php',
+      method: 'post',
+      data: {tags: tags},
+      success: function(result){
+        $("#konten-berita").html(result);
+      }
+    })
   });
 });
 </script>
