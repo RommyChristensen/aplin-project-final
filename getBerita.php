@@ -1,8 +1,15 @@
 <?php
     require_once('helpers/koneksi.php');
+    
+    if(isset($_SESSION['bahasa'])){
+      $bahasa=2;
+    }
+    else{
+      $bahasa=1;
+    }
     $currPage = $_POST['currPage'];
     $offset = ($currPage-1) * 10;
-    $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id";
+    $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id where bb.bahasa_id=$bahasa";
     $res = mysqli_query($conn, $query);
     $berita = [];
 
@@ -40,7 +47,16 @@
             <!-- Post data -->
             <p>by <a class="font-weight-bold">Admin</a>, <?= $berita[$i]['berita_tanggal'] ?></p>
             <!-- Read more button -->
-            <a class="btn btn-primary btn-md mx-0 btn-rounded btn-read-more" id="<?= $berita[$i]['berita_id']; ?>">Read more</a>
+            <a class="btn btn-primary btn-md mx-0 btn-rounded btn-read-more" id="<?= $berita[$i]['berita_id']; ?>">
+              <?php
+                if(isset($_SESSION['bahasa'])){
+                  echo "Read More";
+                }
+                else{
+                  echo "Selengkapnya";
+                }
+              ?>
+            </a>
 
           </div>
           <!-- Grid column -->

@@ -10,7 +10,7 @@
       $bahasa=1;
     }
 
-    $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id LIMIT 10";
+    $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id where bb.bahasa_id=$bahasa LIMIT 10";
     $res = mysqli_query($conn, $query);
     $berita = [];
     while($row = mysqli_fetch_assoc($res)){
@@ -19,10 +19,10 @@
 
     $selectAllTags = "SELECT * FROM berita_bahasa bb 
                       LEFT JOIN konten_tag kt ON kt.konten_parent = bb.berita_id
-                      LEFT JOIN berita b ON b.berita_id = bb.berita_id";
+                      LEFT JOIN berita b ON b.berita_id = bb.berita_id where bb.bahasa_id=$bahasa";
     $result = mysqli_query($conn, $selectAllTags)->fetch_assoc();
 
-    $queryMedia = "SELECT * FROM media m JOIN media_bahasa mb ON mb.media_id = m.media_id LIMIT 5";
+    $queryMedia = "SELECT * FROM media m JOIN media_bahasa mb ON mb.media_id = m.media_id where mb.bahasa_id=$bahasa LIMIT 5";
     $resMedia = mysqli_query($conn, $queryMedia);
     $media = [];
     while($row = mysqli_fetch_assoc($resMedia)){
@@ -81,9 +81,6 @@
         <!-- Section heading -->
         <h2 class="text-center font-weight-bold mb-4 pb-2">Berita Terbaru</h2>
         <!-- Section description -->
-        <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum
-          porro a pariatur veniam.</p>
 
         <div id="konten-berita"></div>
 
@@ -104,7 +101,16 @@
           }
         ?>
       </select>
-      <button class="btn btn-secondary btn-search">Cari</button>
+      <button class="btn btn-secondary btn-search">
+          <?php
+            if(isset($_SESSION['bahasa'])){
+              echo "Find";
+            }
+            else{
+              echo "Cari";
+            }
+          ?>
+      </button>
 
     </section>
     <section class="dark-grey-text z-depth-1 py-5 px-5 mb-5">
