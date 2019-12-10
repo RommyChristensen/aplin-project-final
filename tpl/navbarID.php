@@ -12,29 +12,29 @@
                     <a class="nav-link" href="agenda.php">Agenda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="berita.php">Berita</a>
+                    <a class="nav-link" href="berita.php">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="aktivitasMahasiswa.php">Aktivitas Mahasiswa</a>
+                    <a class="nav-link" href="aktivitasMahasiswa.php">Students Activity</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="akademik.php">Akademik</a>
+                    <a class="nav-link" href="akademik.php">Academics</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dosen.php">Dosen</a>
+                    <a class="nav-link" href="dosen.php">Lecturer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="history.php">Tentang</a>
+                    <a class="nav-link" href="history.php">About</a>
                 </li>
             </ul>
             <form action="" method="get">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="dropdownBahasa" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Bahasa</a>
+                            aria-haspopup="true" aria-expanded="false">Language</a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdownBahasa">
                             <a class="dropdown-item bahasa" name='id' modeBahasa='test' onclick='cekBahasa("id")'>Indonesia</a>
-                            <a class="dropdown-item bahasa" name="en" modeBahasa='en' onclick='cekBahasa("en")'>Inggris</a>
+                            <a class="dropdown-item bahasa" name="en" modeBahasa='en' onclick='cekBahasa("en")'>English</a>
                         </div>
                     </li>
                 </ul>
@@ -44,7 +44,6 @@
     </div>
 </nav>
 <script>
-    
     function cekBahasa(e){
         var param=e;
         //alert(param);

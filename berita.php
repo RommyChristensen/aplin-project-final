@@ -3,11 +3,12 @@
     include "tpl/header.php";
 
     if(isset($_SESSION['bahasa'])){
-
+      include "tpl/navbarID.php";
+      $bahasa=2;
     }else{
       include "tpl/white-navbar.php";
+      $bahasa=1;
     }
-    
 
     $query = "SELECT * FROM berita b JOIN berita_bahasa bb ON bb.berita_id = b.berita_id LIMIT 10";
     $res = mysqli_query($conn, $query);
@@ -44,7 +45,13 @@
             <div class="col-md-6">
 
                 <p class="h2 mb-2">
-                    BERITA
+                    <?php
+                      if(isset($_SESSION['bahasa'])){
+                        echo "News";
+                      }else{
+                        echo "Berita";
+                      }
+                    ?>
                 </p>
 
             </div>

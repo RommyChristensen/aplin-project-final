@@ -1,7 +1,14 @@
 <?php
+  //session_start();
     require_once("helpers/koneksi.php");
     include "tpl/header.php";
-    include "tpl/white-navbar.php";
+    if(isset($_SESSION['bahasa'])){
+      include "tpl/navbarID.php";
+      $bahasa=2;
+    }else{
+      include "tpl/white-navbar.php";
+      $bahasa=1;
+    }
 ?>
 
 <!-- Intro -->
@@ -37,7 +44,14 @@
   <section class="magazine-section dark-grey-text">
 
     <!-- Section heading -->
-    <h3 class="font-weight-bold mb-4 pb-2">Event Yang Akan Datang</h3>
+    <h3 class="font-weight-bold mb-4 pb-2">
+    <?php if(isset($_SESSION['bahasa'])){
+        echo "Upcoming Event";
+      }
+      else{
+        echo "Event Yang Akan Datang";
+      }
+      ?></h3>
     <!-- Section description -->
     <!--<p class="w-responsive mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
     esse cillum dolore eu fugiat nulla sint occaecat cupidatat non proident, sunt culpa
@@ -65,7 +79,7 @@
             <a href="#!" class="deep-orange-text">
               <h6 class="font-weight-bold">
 				<?php
-					$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=1 order by agenda_id desc limit 1");
+					$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa order by agenda_id desc limit 1");
 					while($row=mysqli_fetch_assoc($query)){
 						$idMax=$row['agenda_id'];
 					}
@@ -91,7 +105,7 @@
 			<input type='hidden' id='tbHidden' value="<?php echo $idMax;?>">
             <p class="font-weight-bold dark-grey-text"><i class="fas fa-clock-o pr-2"></i>
 			<?php 
-				$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=1 order by agenda_id desc limit 1");
+				$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa order by agenda_id desc limit 1");
 				while($row=mysqli_fetch_assoc($query)){
 					$idMax=$row['agenda_id'];
 					
@@ -109,7 +123,7 @@
           <!-- Excerpt -->
           <h3 class="font-weight-bold dark-grey-text mb-3">
 			<?php 
-				$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=1 order by agenda_id desc limit 1");
+				$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa order by agenda_id desc limit 1");
 				while($row=mysqli_fetch_assoc($query)){
 					$idAgenda=$row['agenda_id'];
 				}
@@ -193,6 +207,8 @@ $(document).ready(function(){
     window.location = './agendadetail.php?agendaid=' + id;
   });
 });
+
+  
 </script>
 </body>
 </html>

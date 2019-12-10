@@ -1,6 +1,14 @@
 <?php require_once("helpers/koneksi.php"); ?>
 <?php include "tpl/header.php"; ?>
-<?php include "tpl/white-navbar.php"; ?>
+<?php 
+    if(isset($_SESSION['bahasa'])){
+      include "tpl/navbarID.php";
+      $bahasa=2;
+    }else{
+      include "tpl/white-navbar.php";
+      $bahasa=1;
+    }
+?>
 <!-- Intro -->
 <div class="card card-intro purple-gradient">
     <div class="card-body white-text rgba-black-light text-center">
@@ -12,7 +20,14 @@
             <div class="col-md-6">
 
                 <p class="h2 mb-2">
-                    DOSEN
+                <?php
+                    if(isset($_SESSION['bahasa'])){
+                        echo "Lecturers";
+                    }
+                    else{
+                        echo "Dosen";
+                    }
+                    ?>
                 </p>
 
             </div>

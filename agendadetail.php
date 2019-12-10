@@ -1,10 +1,17 @@
 <?php
 	if(isset($_GET['agendaid'])){
 		$idAgenda=$_GET['agendaid'];
-	}
+  }
+  
     require_once("helpers/koneksi.php");
     include "tpl/header.php";
     include "tpl/white-navbar.php";
+    if(isset($_SESSION['bahasa'])){
+      $bahasa=2;
+    }
+    else{
+      $bahasa=1;
+    }
 ?>
 
 <!-- Intro -->
@@ -56,7 +63,7 @@
             <a href="#!" class="deep-orange-text">
               <h6 class="font-weight-bold">
 				<?php
-					$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=1 and agenda_id='$idAgenda'");
+					$query = mysqli_query($conn,"select * from agenda_bahasa where agenda_id='$idAgenda'");
 					
 					$q1 = mysqli_query($conn,"select * from konten where konten_nama='agenda'");
 					$kalimat="";
@@ -79,7 +86,7 @@
             </a>
             <p class="font-weight-bold dark-grey-text"><i class="fas fa-clock-o pr-2"></i>
 			<?php 
-				$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=1 and agenda_id='$idAgenda'");
+				$query = mysqli_query($conn,"select * from agenda_bahasa where agenda_id='$idAgenda'");
 				while($row=mysqli_fetch_assoc($query)){
 					$q2=mysqli_query($conn,"select * from agenda where agenda_id='$idAgenda'");
 					while($r2=mysqli_fetch_assoc($q2)){

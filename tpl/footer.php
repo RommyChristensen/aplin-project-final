@@ -133,14 +133,13 @@
         
     });
 
-    // function bahasaIng() {
-    //     $.get("bahasaIng.php",{},function(e){
-    //         location.reload();
-    //     })
-    // }
-    // function bahasaInd() {
-    //     $.get("bahasaInd.php",{},function(e){
-    //         location.reload();
-    //     })
-    // }
+    function refresh(e) {
+    var param=e;
+    $.post("bahasa.php",
+      {param:param},
+      function(result){
+        location.reload(true);
+      }
+    );
+  }
 </script>

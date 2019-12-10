@@ -2,8 +2,14 @@
     require_once('helpers/koneksi.php');
     $currPage = $_POST['currPage'];
     $offset = ($currPage-1) * 10;
-	$idMax=$_POST['idMax'];
-    $query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=1 and agenda_id!='$idMax' order by agenda_id desc");
+  $idMax=$_POST['idMax'];
+  if(isset($_SESSION['bahasa'])){
+    $bahasa=2;
+  }
+  else{
+    $bahasa=1;
+  }
+    $query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa and agenda_id!='$idMax' order by agenda_id desc");
     $agenda = [];
 
     while($row = mysqli_fetch_assoc($query)){
@@ -47,7 +53,16 @@
 				echo $tanggal;
 			?></p>
             <!-- Read more button -->
-            <a class="btn btn-primary btn-md mx-0 btn-rounded btn-read-more" id="<?= $agenda[$i]['agenda_id']; ?>">Selengkapnya</a>
+            <a class="btn btn-primary btn-md mx-0 btn-rounded btn-read-more" id="<?= $agenda[$i]['agenda_id']; ?>">
+              <?php
+                if(!(isset($_SESSION['bahasa']))){
+                  echo "Selengkapnya";
+                }
+                else{
+                  echo "Read More";
+                }
+              ?>
+            </a>
 
           </div>
           <!-- Grid column -->
