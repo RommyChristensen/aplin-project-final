@@ -22,9 +22,9 @@
         $media[] = $row;
     }
 
-    echo "<pre>";
-    print_r($media);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($media);
+    // echo "</pre>";
 ?>
 
 <!-- Intro -->
@@ -86,26 +86,24 @@
       <h2 class="text-center font-weight-bold mb-4 pb-2">Media</h2>
       <!-- Section description -->
 
-      <!-- Card -->
-<div class="card">
+      <?php foreach($media as $row) { ?>
 
-  <!-- Card image -->
-  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+        <!-- Card -->
+        <div class="card card-image mb-2"
+          style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
 
-  <!-- Card content -->
-  <div class="card-body">
+          <!-- Content -->
+          <div class="text-white text-center d-flex align-items-center rgba-black-strong px-3 py-2">
+            <h6 class="card-title pt-2"><strong><?= $row['media_judul'] ?></strong></h6>
+          </div>
+          <div class="rgba-black-strong d-flex justify-content-end">
+            <a class="btn btn-secondary btn-sm btn-selengkapnya" id="<?= $row['media_id']; ?>">Selengkapnya...</a>
+          </div>
 
-    <!-- Title -->
-    <h4 class="card-title"><a>Card title</a></h4>
-    <!-- Text -->
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <!-- Button -->
-    <a href="#" class="btn btn-primary">Button</a>
+        </div>
+        <!-- Card -->
 
-  </div>
-
-</div>
-<!-- Card -->
+      <?php } ?>
     </section>
     </div>
   </div>
@@ -153,6 +151,11 @@ $(document).ready(function(){
   $(document).on("click", ".btn-read-more", function(){
     let id = $(this).attr("id");
     window.location = './beritaDetail.php?id=' + id;
+  });
+
+  $(document).on("click", ".btn-selengkapnya", function(){
+    let id = $(this).attr("id");
+    window.location = "./mediaDetail.php?id=" + id;
   });
 });
 </script>
