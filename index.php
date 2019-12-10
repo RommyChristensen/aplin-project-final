@@ -38,8 +38,8 @@ if(isset($_SESSION['bahasa'])){
 
             <!-- Section heading -->
             <div class="text-center mt-4 mb-5">
-                <h3 class="text-center mb-5">Latest news</h3>
-                <a class="btn purple-gradient btn-rounded" href="#!">Browse all News <i class="fa fa-angle-right"></i></a>
+                <h3 class="text-center mb-5">Agenda Terbaru</h3>
+                <a class="btn purple-gradient btn-rounded" href="agenda.php">Lihat Semua Agenda <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="row">
                 <?php
@@ -77,7 +77,7 @@ if(isset($_SESSION['bahasa'])){
                             </p>
                             <p class="font-small grey-text mb-0"><i class="fa fa-map"></i> ISTTS</p>
                             <p class="text-right mb-0 font-small font-weight-bold"><a
-                                    class="btn btn-outline-default waves-effect btn-sm">read more <i class="fas fa-angle-right"></i></a></p>
+                                    class="btn btn-outline-default waves-effect btn-sm" href="agendadetail.php?agendaid=<?=$news['agenda_id']?>">selengkapnya <i class="fas fa-angle-right"></i></a></p>
                         </div>
                         <!--/.Card content-->
 
@@ -128,12 +128,6 @@ if(isset($_SESSION['bahasa'])){
                                     </p>
                                     <h4 class="font-weight-bold text-white"><?= $row['testimoni_nama'] ?></h4>
                                     <h6 class="font-weight-bold text-white my-3"><?= $row['testimoni_profil'] ?></h6>
-                                    <!--Review-->
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star blue-text"> </i>
-                                    <i class="fas fa-star-half-alt blue-text"> </i>
                                 </div>
                             </div>
                             <?php
