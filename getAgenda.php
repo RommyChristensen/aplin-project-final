@@ -1,7 +1,13 @@
 <?php
 	require_once("helpers/koneksi.php");
 	$idMax=$_POST['idMax'];
-	$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=1 and agenda_id!='$idMax' order by agenda_id desc");
+	if(isset($_SESSION['bahasa'])){
+		$bahasa=2;
+	}
+	else{
+		$bahasa=1;
+	}
+	$query = mysqli_query($conn,"select * from agenda_bahasa where bahasa_id=$bahasa and agenda_id!='$idMax' order by agenda_id desc");
 	
 	$kalimat="";
 	while($row=mysqli_fetch_assoc($query)){
