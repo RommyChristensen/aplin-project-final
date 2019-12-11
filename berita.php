@@ -94,7 +94,10 @@
         $queryTag = "SELECT * FROM tag_bahasa";
         $resTag = mysqli_query($conn, $queryTag);
       ?>
-      <select class="selectpicker form-control mb-3" multiple data-live-search="true">
+      <div class="active-purple-3 active-purple-4 ml-2 mt-2 mb-3">
+        <input class="form-control" id="text-search" type="text" placeholder="Search" aria-label="Search">
+      </div>
+      <select class="selectpicker form-control mb-4" multiple data-live-search="true">
         <?php
           while($row = mysqli_fetch_assoc($resTag)){
             echo "<option value='$row[tag_id]'>$row[tag_nama]</option>";
@@ -195,15 +198,19 @@ $(document).ready(function(){
 
   $(".btn-search").click(function(){
     let tags = $(".selectpicker").val();
-    console.log(tags);
-    $.ajax({
-      url: 'filterBerita.php',
-      method: 'post',
-      data: {tags: tags},
-      success: function(result){
-        $("#konten-berita").html(result);
-      }
-    })
+    let searchquery = $("#text-search").val();
+    if(tags.length == 0 && searchquery == ""){
+      alert("Tidak Ada Yang Di Filter");
+    }else{
+      $.ajax({
+        url: 'filterBerita.php',
+        method: 'post',
+        data: {tags: tags, sq: searchquery},
+        success: function(result){
+          $("#konten-berita").html(result);
+        }
+      })
+    }
   });
 });
 </script>
